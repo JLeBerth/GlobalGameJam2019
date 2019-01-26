@@ -38,9 +38,11 @@ public class Enemy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Debug.Log("BEgIN");
+
         enemyPosition = this.transform.position;
 
-        playerScript = playerObject.GetComponent<Player>();
+        //playerScript = playerObject.GetComponent<Player>();
 
         enemyRigid = this.GetComponent<Rigidbody2D>();
 	}
@@ -69,7 +71,7 @@ public class Enemy : MonoBehaviour {
     /// <summary>
     /// Applies a force to the enemy
     /// </summary>
-    /// <param name="_force">The force applied</param>
+    /// <param name="force">The force applied</param>
     public void ApplyForce(Vector3 _force)
     {
         acceleration += _force / mass;
