@@ -10,22 +10,26 @@ public class BulletManager : MonoBehaviour
     RaycastHit2D hit;
     public float width;
     public float height;
-    public static List<Bullet> bullets;
+    public static List<GameObject> bullets;
     public float speed;
+    LayerMask mask;
 
 
 
     void Awake()
     {
+
     }
 
 	// Use this for initialization
 	void Start ()
     {
-        bullets = new List<Bullet>();
+        bullets = new List<GameObject>();
         cam = Camera.main;
         height = 2f * cam.orthographicSize;
         width = height * cam.aspect;
+
+        mask = LayerMask.GetMask("Terrain");
     }
 	
 	// Update is called once per frame
@@ -37,21 +41,32 @@ public class BulletManager : MonoBehaviour
             {
                 bullets[i].transform.Translate(speed * bullets[i].transform.right * Time.deltaTime, Space.World);
                 Debug.Log("Speed: " + speed * bullets[i].transform.right * Time.deltaTime);
+                
 
-                if (bullets[i].transform.position.x < -width || 
+                hit = Physics2D.Raycast(bullets[i].transform.position,
+                    bullets[i].transform.right,
+                    speed * Time.deltaTime,
+                    mask);
+
+                if (hit.collider != null)
+                {
+                    GameObject tempBullet = bullets[i];
+                    bullets.Remove(bullets[i]);
+                    Destroy(tempBullet);
+                    Debug.Log("This shit ded");
+                }
+
+
+                else if (bullets[i].transform.position.x < -width ||
                     bullets[i].transform.position.x > width ||
                     bullets[i].transform.position.y < -height ||
                     bullets[i].transform.position.y > height)
                 {
-                    Bullet tempBullet = bullets[i];
+                    GameObject tempBullet = bullets[i];
                     bullets.Remove(bullets[i]);
                     Destroy(tempBullet);
                 }
 
-                hit = Physics.Raycast(bullets[i].transform.position,
-                    bullets[i].transform.right,
-                    speed);
-                if (hit.collider != null)
                 /*ApplyForce(transform.right);
 
                 velocity += acceleration;
