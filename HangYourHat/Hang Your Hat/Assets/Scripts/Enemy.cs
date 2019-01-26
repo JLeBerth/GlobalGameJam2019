@@ -39,8 +39,6 @@ public class Enemy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Debug.Log("BEgIN");
-
         enemyPosition = this.transform.position;
 
         //playerScript = playerObject.GetComponent<Player>();
@@ -95,12 +93,18 @@ public class Enemy : MonoBehaviour {
 
         if (bShoot) // If the player is close enough, do below code
         {
-            Vector2 toPlayer = playerObject.transform.position - transform.position;
+            Vector2 toPlayer = playerObject.transform.position - pivotPoint.transform.position;
 
-            //ApplyForce(toPlayer);
+            float angleRad;
 
-            float angleDeg;
+            angleRad = Mathf.Atan2(toPlayer.y, toPlayer.x);
 
+            angleRad *= Mathf.Rad2Deg;
+            angleRad += 180f;
+
+            pivotPoint.transform.rotation = Quaternion.Euler (0, 0, angleRad);
+
+            //Debug.log("SHOOOOT");
         }
     }
 
@@ -121,7 +125,7 @@ public class Enemy : MonoBehaviour {
 
         if (bWander) // If the player is close enough, do below code
         {
-            
+            //Debug.Log("WAAAANDER");
         }
     }
 
