@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour {
     private Player playerScript;    // Holds the player script for reference
     public GameObject playerObject; // Holds the player object
     public Rigidbody2D enemyRigid;  // Holds the enemy rigidBody
+    public GameObject pivotPoint;   // Holds the pivotPoint for the gun
 
     // Floats
     private float playerDistance;   // Distance of the player from the enemy (DISTANCES MEASURED IN DISTANCE SQUARED)
@@ -96,9 +97,10 @@ public class Enemy : MonoBehaviour {
         {
             Vector2 toPlayer = playerObject.transform.position - transform.position;
 
-            toPlayer.Normalize();
+            //ApplyForce(toPlayer);
 
-            ApplyForce(toPlayer);
+            float angleDeg;
+
         }
     }
 
