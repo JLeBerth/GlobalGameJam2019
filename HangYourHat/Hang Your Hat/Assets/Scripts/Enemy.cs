@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour {
     /// <summary>
     /// Applies a force to the enemy
     /// </summary>
-    /// <param name="force">The force applied</param>
+    /// <param name="_force">The force applied</param>
     public void ApplyForce(Vector3 _force)
     {
         acceleration += _force / mass;
