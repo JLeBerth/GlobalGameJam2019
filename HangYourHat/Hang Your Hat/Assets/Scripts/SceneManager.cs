@@ -23,6 +23,11 @@ public class SceneManager : MonoBehaviour {
         enemyScript = enemies[0].GetComponent<Enemy>();
 
         enemyScript.playerObject = playerObject;
+
+        for (int i = 0; i < 10; i++)
+        {
+            AddEnemy(Random.Range(-10, 10), Random.Range(-5, 5));
+        }
     }
 	
 	// Update is called once per frame
@@ -41,6 +46,18 @@ public class SceneManager : MonoBehaviour {
         }
 
         playerObject.transform.position += new Vector3(.05f, 0);
+
+        // Enemy Updates
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            enemyScript = enemies[i].GetComponent<Enemy>();
+
+            enemyScript.playerDistance = enemyScript.GetDistanceSqrd(playerObject);
+
+            //enemyScript.Shoot(playerObject); // Shoots at the player if they are nearby
+
+            enemyScript.Wander(); // Wanders if player is nearby
+        }
     }
 
     // Add enemies to the scene
