@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour {
     public Vector3 velocity;        
     public Vector3 acceleration;
     public Vector3 direction;
+    public Vector3 startPos;
 
     // Objects
     private Player playerScript;    // Holds the player script for reference
@@ -17,7 +18,7 @@ public class Enemy : MonoBehaviour {
     public GameObject pivotPoint;   // Holds the pivotPoint for the gun
 
     // Floats
-    private float playerDistance;   // Distance of the player from the enemy (DISTANCES MEASURED IN DISTANCE SQUARED)
+    public float playerDistance;   // Distance of the player from the enemy (DISTANCES MEASURED IN DISTANCE SQUARED)
     public float wanderLimit;       // The distance at which the enemy starts wandering
     public float shootLimit;        // The distance at which the enemy starts shooting at the player
 
@@ -32,6 +33,7 @@ public class Enemy : MonoBehaviour {
     public bool bShoot;              // Should the enemy shoot at the player?
     public bool moveRight;
     public bool moveLeft;
+    public bool backToStart;
 
     //public bool onPlatform;          // Tells if the enemy is on a platform or not
 
@@ -46,6 +48,7 @@ public class Enemy : MonoBehaviour {
         //playerScript = playerObject.GetComponent<Player>();
 
         enemyRigid = this.GetComponent<Rigidbody2D>();
+        startPos = this.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -65,7 +68,7 @@ public class Enemy : MonoBehaviour {
 
         // Check player distance and associated fxns
         playerDistance = GetDistanceSqrd(playerObject);
-        StartCoroutine(Wander());
+        Wander();
         Shoot();
 	}
 
@@ -113,7 +116,7 @@ public class Enemy : MonoBehaviour {
     /// <summary>
     /// Checks if the player is close enough, and wanders if they are
     /// </summary>
-    IEnumerator Wander()
+    public void Wander()
     {
         // Check if the player is close enough to begin wandering
         if (playerDistance < wanderLimit)
@@ -122,23 +125,31 @@ public class Enemy : MonoBehaviour {
         }
         else
         {
-            bWander = false;
+            bWander = true;
         }
 
         if (bWander) // If the player is close enough, do below code
         {
-            for (int i = 0; i < 5; i++)
+            if (enemyPosition.x >= startPos.x + 5f)
             {
-                enemyPosition.x++;
-                Debug.Log("right");
+                backToStart = true;
+            }
+            else if (enemyPosition.x <= startPos.x)
+            {
+                backToStart = false;
             }
 
-            yield return 0;
-
-            for (int i = 0; i < 5; i++)
+            // Move left
+            if (backToStart)
             {
-                enemyPosition.x--;
+                ApplyForce(new Vector3(-1f, 0f, 0f));
                 Debug.Log("left");
+            }
+            // Move right
+            else if (backToStart == false)
+            {
+                ApplyForce(new Vector3(1f, 0f, 0f));
+                Debug.Log("right");
             }
         }
     }
