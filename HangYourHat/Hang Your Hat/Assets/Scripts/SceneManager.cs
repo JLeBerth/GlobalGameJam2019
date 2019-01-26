@@ -57,11 +57,19 @@ public class SceneManager : MonoBehaviour {
         {
             enemyScript = enemies[i].GetComponent<Enemy>();
 
-            // enemyScript.playerDistance = enemyScript.GetDistanceSqrd(playerObject);
+            enemyScript.playerDistance = enemyScript.GetDistanceSqrd(playerObject);
 
-            //enemyScript.Shoot(playerObject); // Shoots at the player if they are nearby
+            enemyScript.Shoot(playerObject); // Shoots at the player if they are nearby
 
             enemyScript.Wander(); // Wanders if player is nearby
+
+            // Enemy Dying
+            if (!enemyScript.alive)
+            {
+                enemyObjectPlaceholder = enemies[i];
+                enemies.Remove(enemies[i]);
+                Destroy(enemyObjectPlaceholder);
+            }
         }
 
         // Saving of the Game
