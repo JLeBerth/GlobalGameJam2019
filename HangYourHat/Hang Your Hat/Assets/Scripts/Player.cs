@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public Vector3 velocity;                //the players velocity added to position
     public Vector3 acceleration;            //the players acceleration added to velocity
     public Vector2 mousePos;                //locates where the mouse is
-    public Vector2 playerToMouse;           //draws a line between the player and the mouse position
+    public Vector3 playerToMouse;           //draws a line between the player and the mouse position
     public GameObject bullet;               // The bullet
 
     public float mass;                      //the mass of a player
@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     public float timer;
     public float distToGround;              //Distance from the center of the sprite to the ground
     public float offset;                    // This is so the raycast never hits its own collider
+    public float angle;
 
 
     public int baseHealth;                  //the total amount of health the player has
@@ -67,11 +68,19 @@ public class Player : MonoBehaviour
             
             Debug.Log("FIRE!");
             //Make GameObject from Bullet prefab
-            GameObject b = Instantiate(bullet, transform.position, Quaternion.identity);
+            GameObject b = Instantiate(bullet, 
+                transform.position, 
+                Quaternion.identity);
             // Get angle of fire
             GetAngle();
             // Change bullet's transform.forward to the angle of fire
-            b.transform.forward = playerToMouse;
+            // b.transform.up = playerToMouse;
+
+            angle = Mathf.Atan2(playerToMouse.y, playerToMouse.x);
+            
+            b.transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * angle);
+
+            Debug.Log(Mathf.Rad2Deg * angle);
 
 
             // Add bullet to manager list
@@ -301,6 +310,7 @@ public class Player : MonoBehaviour
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         playerToMouse = mousePos - position;
         playerToMouse.Normalize();
+        
     }
 
     //public void OnCollisionEnter2D(Collision2D collision)
