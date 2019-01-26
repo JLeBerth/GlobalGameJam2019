@@ -272,7 +272,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
   mousePos: {x: 0, y: 0}
-  playerToMouse: {x: 0, y: 0}
+  playerToMouse: {x: 0, y: 0, z: 0}
   bullet: {fileID: 1617385681821264, guid: fbc84897502b1bc49a44dac5ed0f2470, type: 2}
   mass: 1
   maxAcceleration: 0.001
@@ -284,6 +284,7 @@ MonoBehaviour:
   timer: 0
   distToGround: 0
   offset: 0
+  angle: 0
   baseHealth: 0
   currentHealth: 0
   reloadTime: 0
