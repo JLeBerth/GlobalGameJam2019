@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour {
     private Player playerScript;    // Holds the player script for reference
     public GameObject playerObject; // Holds the player object
     public Rigidbody2D enemyRigid;  // Holds the enemy rigidBody
+    public GameObject pivotPoint;   // Holds the pivotPoint for the gun
 
     // Floats
     private float playerDistance;   // Distance of the player from the enemy (DISTANCES MEASURED IN DISTANCE SQUARED)
@@ -40,7 +41,7 @@ public class Enemy : MonoBehaviour {
 	void Start () {
         enemyPosition = this.transform.position;
 
-        playerScript = playerObject.GetComponent<Player>();
+        //playerScript = playerObject.GetComponent<Player>();
 
         enemyRigid = this.GetComponent<Rigidbody2D>();
 	}
@@ -92,11 +93,18 @@ public class Enemy : MonoBehaviour {
 
         if (bShoot) // If the player is close enough, do below code
         {
-            Vector2 toPlayer = playerObject.transform.position - transform.position;
+            Vector2 toPlayer = playerObject.transform.position - pivotPoint.transform.position;
 
-            toPlayer.Normalize();
+            float angleRad;
 
-            ApplyForce(toPlayer);
+            angleRad = Mathf.Atan2(toPlayer.y, toPlayer.x);
+
+            angleRad *= Mathf.Rad2Deg;
+            angleRad += 180f;
+
+            pivotPoint.transform.rotation = Quaternion.Euler (0, 0, angleRad);
+
+            //Debug.log("SHOOOOT");
         }
     }
 
@@ -117,7 +125,7 @@ public class Enemy : MonoBehaviour {
 
         if (bWander) // If the player is close enough, do below code
         {
-            
+            //Debug.Log("WAAAANDER");
         }
     }
 
