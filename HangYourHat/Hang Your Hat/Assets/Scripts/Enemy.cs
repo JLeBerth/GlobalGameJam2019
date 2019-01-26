@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour {
     public Vector3 velocity;        
     public Vector3 acceleration;
     public Vector3 direction;
+    public Vector3 startPos;
 
     // Objects
     private Player playerScript;    // Holds the player script for reference
@@ -17,7 +18,7 @@ public class Enemy : MonoBehaviour {
     public GameObject pivotPoint;   // Holds the pivotPoint for the gun
 
     // Floats
-    private float playerDistance;   // Distance of the player from the enemy (DISTANCES MEASURED IN DISTANCE SQUARED)
+    public float playerDistance;   // Distance of the player from the enemy (DISTANCES MEASURED IN DISTANCE SQUARED)
     public float wanderLimit;       // The distance at which the enemy starts wandering
     public float shootLimit;        // The distance at which the enemy starts shooting at the player
 
@@ -30,6 +31,9 @@ public class Enemy : MonoBehaviour {
     // Bools
     public bool bWander;             // Should the enemy wander? (Based on player distance?)
     public bool bShoot;              // Should the enemy shoot at the player?
+    public bool moveRight;
+    public bool moveLeft;
+    public bool backToStart;
 
     //public bool onPlatform;          // Tells if the enemy is on a platform or not
 
@@ -44,6 +48,7 @@ public class Enemy : MonoBehaviour {
         //playerScript = playerObject.GetComponent<Player>();
 
         enemyRigid = this.GetComponent<Rigidbody2D>();
+        startPos = this.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -120,16 +125,32 @@ public class Enemy : MonoBehaviour {
         }
         else
         {
-            bWander = false;
+            bWander = true;
         }
 
         if (bWander) // If the player is close enough, do below code
         {
-            transform.position = Vector3.Lerp(transform.position, (transform.position + new Vector3(2f, 0f, 0f)), (Mathf.Sin(velocity.x * Time.deltaTime) + 1.0f) / 2.0f);
-            /*transform.position = Vector3.Lerp(transform.position, (transform.position + new Vector3(5f, 0f, 0f)), Mathf.PingPong(Time.time * velocity.x, 1.0f));
-            transform.Rotate(Vector3.up * 10f * Time.deltaTime);
-            velocity.x = 0f;*/
-            //Debug.Log("WAAAANDER");
+            if (enemyPosition.x >= startPos.x + 5f)
+            {
+                backToStart = true;
+            }
+            else if (enemyPosition.x <= startPos.x)
+            {
+                backToStart = false;
+            }
+
+            // Move left
+            if (backToStart)
+            {
+                ApplyForce(new Vector3(-1f, 0f, 0f));
+                Debug.Log("left");
+            }
+            // Move right
+            else if (backToStart == false)
+            {
+                ApplyForce(new Vector3(1f, 0f, 0f));
+                Debug.Log("right");
+            }
         }
     }
 

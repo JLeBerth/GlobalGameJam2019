@@ -122,11 +122,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4282555261331044, guid: 5cf040b7a692914419e51604e3abc24d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.72
+      value: -3.06
       objectReference: {fileID: 0}
     - target: {fileID: 4282555261331044, guid: 5cf040b7a692914419e51604e3abc24d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.26
+      value: 1.11
       objectReference: {fileID: 0}
     - target: {fileID: 4282555261331044, guid: 5cf040b7a692914419e51604e3abc24d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -156,6 +156,11 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114107218071417636, guid: 5cf040b7a692914419e51604e3abc24d,
+        type: 2}
+      propertyPath: playerObject
+      value: 
+      objectReference: {fileID: 470202360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cf040b7a692914419e51604e3abc24d, type: 2}
   m_IsPrefabAsset: 0
@@ -195,11 +200,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myBody: {fileID: 0}
+  sprite: {fileID: 0}
   position: {x: 0, y: 0}
-  velocity: {x: 0, y: 0, z: 0}
+  tempPosition: {x: 0, y: 0}
+  velocity: {x: 1, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
   mousePos: {x: 0, y: 0}
-  playerToMouse: {x: 0, y: 0}
+  playerToMouse: {x: 0, y: 0, z: 0}
+  bullet: {fileID: 0}
   mass: 1
   maxAcceleration: 1
   maxVelocity: 1
@@ -209,6 +217,8 @@ MonoBehaviour:
   jumpSpeed: 1
   timer: 0
   distToGround: 0
+  offset: 0
+  angle: 0
   baseHealth: 1
   currentHealth: 1
   reloadTime: 0
@@ -269,7 +279,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 470202360}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.49, y: -2.12, z: 0}
+  m_LocalPosition: {x: -3.3, y: -2.85, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -347,14 +357,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b79a02c74adc8cc42a51b6a1aceab81c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 470202360}
   playerScript: {fileID: 470202361}
   playerObject: {fileID: 470202360}
-  enemyPrefab: {fileID: 0}
-  enemies:
-  - {fileID: 2069651625}
+  enemyPrefab: {fileID: 2069651625}
+  enemies: []
   enemyObjectPlaceholder: {fileID: 0}
-  enemyScript: {fileID: 0}
+  enemyScript: {fileID: 2069651627}
 --- !u!4 &1065796632
 Transform:
   m_ObjectHideFlags: 0
@@ -465,16 +474,26 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
+  startPos: {x: 0, y: 0, z: 0}
   playerObject: {fileID: 470202360}
   enemyRigid: {fileID: 0}
   pivotPoint: {fileID: 434985539}
+  playerDistance: 0
   wanderLimit: 150
   shootLimit: 85
   enemySpeed: 4
   mass: 0.1
   bWander: 0
   bShoot: 0
+  moveRight: 0
+  moveLeft: 0
   health: 3
+--- !u!114 &2069651627 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114107218071417636, guid: 5cf040b7a692914419e51604e3abc24d,
+    type: 2}
+  m_PrefabInternal: {fileID: 172452521}
+  m_Script: {fileID: 11500000, guid: b7895fb628a48134199aacb5b95503d9, type: 3}
 --- !u!61 &2069651629
 BoxCollider2D:
   m_ObjectHideFlags: 0
