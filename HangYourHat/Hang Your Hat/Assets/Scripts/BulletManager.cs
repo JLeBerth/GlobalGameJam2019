@@ -6,7 +6,7 @@ using UnityEngine;
 public class BulletManager : MonoBehaviour
 {
     public static List<GameObject> bullets;
-    public float speed = 2;
+    public float speed = .01f;
 
 
     void Awake()
@@ -27,7 +27,7 @@ public class BulletManager : MonoBehaviour
         {
             foreach (GameObject b in bullets)
             {
-                b.transform.Translate(speed * b.transform.forward);
+                b.transform.Translate(speed * b.transform.right *Time.deltaTime, Space.World);
             }
         }
     }
