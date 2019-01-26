@@ -125,6 +125,10 @@ public class Enemy : MonoBehaviour {
 
         if (bWander) // If the player is close enough, do below code
         {
+            transform.position = Vector3.Lerp(transform.position, (transform.position + new Vector3(2f, 0f, 0f)), (Mathf.Sin(velocity.x * Time.deltaTime) + 1.0f) / 2.0f);
+            /*transform.position = Vector3.Lerp(transform.position, (transform.position + new Vector3(5f, 0f, 0f)), Mathf.PingPong(Time.time * velocity.x, 1.0f));
+            transform.Rotate(Vector3.up * 10f * Time.deltaTime);
+            velocity.x = 0f;*/
             //Debug.Log("WAAAANDER");
         }
     }
