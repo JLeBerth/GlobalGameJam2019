@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour {
     // Objects
     private Player playerScript;    // Holds the player script for reference
     public GameObject playerObject; // Holds the player object
+    public Rigidbody2D enemyRigid;  // Holds the enemy rigidBody
 
     // Floats
     private float playerDistance;   // Distance of the player from the enemy (DISTANCES MEASURED IN DISTANCE SQUARED)
@@ -28,7 +29,11 @@ public class Enemy : MonoBehaviour {
     // Bools
     public bool bWander;             // Should the enemy wander? (Based on player distance?)
     public bool bShoot;              // Should the enemy shoot at the player?
+
     //public bool onPlatform;          // Tells if the enemy is on a platform or not
+
+    // Ints
+    public int health;
 
 
 	// Use this for initialization
@@ -36,6 +41,8 @@ public class Enemy : MonoBehaviour {
         enemyPosition = this.transform.position;
 
         playerScript = playerObject.GetComponent<Player>();
+
+        enemyRigid = this.GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
@@ -43,13 +50,15 @@ public class Enemy : MonoBehaviour {
         // Move the enemy
         velocity += acceleration * Time.deltaTime;
 
+        velocity = Vector3.ClampMagnitude(velocity, enemySpeed);
+
         enemyPosition += velocity * Time.deltaTime;
 
         direction = velocity.normalized;
 
         acceleration = Vector3.zero; // zero out acceleration so each frame the forces are taken into effect
 
-        this.transform.position = enemyPosition;
+        enemyRigid.position = enemyPosition;
 
         // Check player distance and associated fxns
         playerDistance = GetDistanceSqrd(playerObject);
@@ -64,12 +73,10 @@ public class Enemy : MonoBehaviour {
     public void ApplyForce(Vector3 _force)
     {
         acceleration += _force / mass;
-
-        Debug.Log(acceleration);
     }
 
     /// <summary>
-    /// Checks if the player is closse enough, and shoots at them if they are
+    /// Checks if the player is close enough, and shoots at them if they are
     /// </summary>
     public void Shoot ()
     {
@@ -85,13 +92,9 @@ public class Enemy : MonoBehaviour {
 
         if (bShoot) // If the player is close enough, do below code
         {
-            Debug.Log("Shoot! Bang Bang!");
-
             Vector2 toPlayer = playerObject.transform.position - transform.position;
 
             toPlayer.Normalize();
-
-            toPlayer *= enemySpeed;
 
             ApplyForce(toPlayer);
         }
@@ -114,7 +117,7 @@ public class Enemy : MonoBehaviour {
 
         if (bWander) // If the player is close enough, do below code
         {
-            Debug.Log("Wander Time");
+            
         }
     }
 

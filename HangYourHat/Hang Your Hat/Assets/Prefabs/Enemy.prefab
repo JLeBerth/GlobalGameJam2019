@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503547441980876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.55, z: 0}
+  m_LocalPosition: {x: 2.15, y: 0.84, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,14 +52,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7895fb628a48134199aacb5b95503d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 0, y: 0}
-  playerScript: {fileID: 0}
+  enemyPosition: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  acceleration: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 0}
   playerObject: {fileID: 0}
-  playerDistance: 0
-  wanderLimit: 90
-  shootLimit: 45
+  wanderLimit: 150
+  shootLimit: 85
+  enemySpeed: 4
+  mass: 0.1
   bWander: 0
   bShoot: 0
+  health: 3
 --- !u!212 &212371719994114056
 SpriteRenderer:
   m_ObjectHideFlags: 1
