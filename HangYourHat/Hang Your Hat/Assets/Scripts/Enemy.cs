@@ -128,7 +128,7 @@ public class Enemy : MonoBehaviour {
             bWander = true;
         }
 
-        if (bWander) // If the player is close enough, do below code
+        if (bWander && !bShoot) // If the player is close enough, do below code
         {
             if (enemyPosition.x >= startPos.x + 5f)
             {
