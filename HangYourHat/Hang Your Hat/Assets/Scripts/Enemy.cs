@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour {
     public bool moveRight;
     public bool moveLeft;
     public bool backToStart;
+    public bool alive;
 
     //public bool onPlatform;          // Tells if the enemy is on a platform or not
 
@@ -43,6 +44,8 @@ public class Enemy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        alive = true;
+
         enemyPosition = this.transform.position;
 
         //playerScript = playerObject.GetComponent<Player>();
@@ -67,9 +70,6 @@ public class Enemy : MonoBehaviour {
         enemyRigid.position = enemyPosition;
 
         // Check player distance and associated fxns
-        playerDistance = GetDistanceSqrd(playerObject);
-        Wander();
-        Shoot();
 	}
 
     /// <summary>
@@ -84,7 +84,7 @@ public class Enemy : MonoBehaviour {
     /// <summary>
     /// Checks if the player is close enough, and shoots at them if they are
     /// </summary>
-    public void Shoot ()
+    public void Shoot (GameObject _shootAt)
     {
         // Check if the player is close enough to begin shooting
         if (playerDistance < shootLimit)
@@ -98,7 +98,7 @@ public class Enemy : MonoBehaviour {
 
         if (bShoot) // If the player is close enough, do below code
         {
-            Vector2 toPlayer = playerObject.transform.position - pivotPoint.transform.position;
+            Vector2 toPlayer = _shootAt.transform.position - pivotPoint.transform.position;
 
             float angleRad;
 
@@ -128,7 +128,7 @@ public class Enemy : MonoBehaviour {
             bWander = true;
         }
 
-        if (bWander) // If the player is close enough, do below code
+        if (bWander && !bShoot) // If the player is close enough, do below code
         {
             if (enemyPosition.x >= startPos.x + 5f)
             {
