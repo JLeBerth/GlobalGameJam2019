@@ -152,6 +152,10 @@ public class Enemy : MonoBehaviour {
                 Debug.Log("right");
             }
         }
+        else
+        {
+            velocity = Vector3.zero;
+        }
     }
 
     /// <summary>
