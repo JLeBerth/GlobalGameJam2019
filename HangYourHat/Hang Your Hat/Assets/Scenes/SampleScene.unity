@@ -214,7 +214,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!1 &662741516
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +248,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -265,21 +265,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66fe1373000c09e42890ad59f9d41c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 0, y: 0, z: 0}
+  myBody: {fileID: 0}
+  position: {x: 0, y: 0}
   velocity: {x: 0, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
-  mousePos: {x: 0, y: 0, z: 0}
-  playerToMouse: {x: 0, y: 0, z: 0}
-  collisionPoint: {x: 0, y: 0, z: 0}
+  mousePos: {x: 0, y: 0}
+  playerToMouse: {x: 0, y: 0}
   mass: 1
   maxAcceleration: 0.001
   maxVelocity: 0.05
+  rollSpeed: 15
+  normalSpeed: 10
+  fallSpeed: -2
+  jumpSpeed: 25
+  timer: 0
   baseHealth: 0
   currentHealth: 0
   reloadTime: 0
   timeReloading: 0
   bulletsTillReload: 0
   falling: 0
+  rolling: 0
 --- !u!212 &662741519
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -402,6 +408,16 @@ Prefab:
     - target: {fileID: 4945219723448380, guid: 6def3d131f629354bacd870cb6ace4db, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61019065022065798, guid: 6def3d131f629354bacd870cb6ace4db,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 61019065022065798, guid: 6def3d131f629354bacd870cb6ace4db,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: -4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6def3d131f629354bacd870cb6ace4db, type: 2}
