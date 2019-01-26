@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
             Debug.Log(Mathf.Rad2Deg * angle);
             
             // Add bullet to manager list
-            BulletManager.bullets.Add(b.GetComponent<Bullet>());
+            BulletManager.bullets.Add(b);
         }
 
         // moving right
