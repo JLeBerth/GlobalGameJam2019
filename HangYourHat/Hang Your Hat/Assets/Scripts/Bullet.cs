@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
-
+    
 	// Use this for initialization
 	void Start () {
 		
@@ -13,4 +13,10 @@ public class Bullet : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(this);
+        Debug.Log("This shit ded");
+    }
 }

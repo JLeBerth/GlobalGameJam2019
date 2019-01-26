@@ -6,11 +6,12 @@ using UnityEngine;
 public class BulletManager : MonoBehaviour
 {
     private Camera cam;
+
+    RaycastHit2D hit;
     public float width;
     public float height;
-    public static List<GameObject> bullets;
+    public static List<Bullet> bullets;
     public float speed;
-    int numOfBullets;
 
 
 
@@ -21,7 +22,7 @@ public class BulletManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        bullets = new List<GameObject>();
+        bullets = new List<Bullet>();
         cam = Camera.main;
         height = 2f * cam.orthographicSize;
         width = height * cam.aspect;
@@ -42,10 +43,15 @@ public class BulletManager : MonoBehaviour
                     bullets[i].transform.position.y < -height ||
                     bullets[i].transform.position.y > height)
                 {
-                    GameObject tempBullet = bullets[i];
+                    Bullet tempBullet = bullets[i];
                     bullets.Remove(bullets[i]);
                     Destroy(tempBullet);
                 }
+
+                hit = Physics.Raycast(bullets[i].transform.position,
+                    bullets[i].transform.right,
+                    speed);
+                if (hit.collider != null)
                 /*ApplyForce(transform.right);
 
                 velocity += acceleration;

@@ -215,7 +215,7 @@ MonoBehaviour:
   acceleration: {x: 0, y: 0, z: 0}
   mousePos: {x: 0, y: 0, z: 0}
   playerToMouse: {x: 0, y: 0, z: 0}
-  bullet: {fileID: 1617385681821264, guid: fbc84897502b1bc49a44dac5ed0f2470, type: 2}
+  bullet: {fileID: 1240043379785252, guid: c69ba25b8b4e8fb4d98c90afdd50ef55, type: 2}
   pivotPoint: {fileID: 1469786491533010}
   bulletSpawn: {fileID: 1991965392693546}
   mass: 1
@@ -236,6 +236,7 @@ MonoBehaviour:
   timeReloading: 0
   falling: 0
   rolling: 0
+  facingLeft: 0
 --- !u!212 &212009871767139646
 SpriteRenderer:
   m_ObjectHideFlags: 1

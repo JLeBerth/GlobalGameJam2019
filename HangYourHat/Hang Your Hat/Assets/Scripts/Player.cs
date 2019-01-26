@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
 
     public bool falling;                    //boolean of whether the player is currently falling
     public bool rolling;                    // Boolean of whether the player is currently rolling
+    public bool facingLeft;
 
 	// Use this for initialization
 	void Start ()
@@ -90,38 +91,43 @@ public class Player : MonoBehaviour
             
             b.transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * angle);
 
+
             Debug.Log(Mathf.Rad2Deg * angle);
-
-
+            
             // Add bullet to manager list
-            BulletManager.bullets.Add(b);
+            BulletManager.bullets.Add(b.GetComponent<Bullet>());
         }
 
         // moving right
         if (Input.GetKey(KeyCode.D))
         {
             ApplyForce(new Vector2(maxVelocity, 0));
-
-            if (Input.GetKey(KeyCode.Space) && timer > .2f)
-            {
-                rolling = true;
-                timer = 0;
-                
-            }
+            facingLeft = false;
         }
 
         // moving left
         if (Input.GetKey(KeyCode.A))
         {
             ApplyForce(new Vector2(-maxVelocity, 0));
+            facingLeft = true;
+        }
 
-            if (Input.GetKey(KeyCode.Space) && timer > .2f)
-            {
-                rolling = true;
-                timer = 0;
-               
 
-            }
+        if (Input.GetKey(KeyCode.Space) && timer > .2f)
+        {
+            rolling = true;
+            timer = 0;
+
+        }
+
+
+        if (facingLeft)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
         //jump
@@ -295,12 +301,12 @@ public class Player : MonoBehaviour
     /// </summary>
     public void Roll()
     {
-        if (velocity.x > 0)
+        if (!facingLeft)
         {
             velocity.x = rollSpeed;
         }
 
-        else if (velocity.x < 0)
+        else if (facingLeft)
         {
             velocity.x = -rollSpeed;
         }
