@@ -52,7 +52,7 @@ public class SceneManager : MonoBehaviour {
         {
             enemyScript = enemies[i].GetComponent<Enemy>();
 
-            enemyScript.playerDistance = enemyScript.GetDistanceSqrd(playerObject);
+            //enemyScript.playerDistance = enemyScript.GetDistanceSqrd(playerObject);
 
             //enemyScript.Shoot(playerObject); // Shoots at the player if they are nearby
 
