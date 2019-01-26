@@ -62,6 +62,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1991965392693546
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4120888280218190}
+  m_Layer: 0
+  m_Name: BulletSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4120888280218190
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1991965392693546}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.16, y: 0.26, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4344549140497796}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4300350019909990
 Transform:
   m_ObjectHideFlags: 1
@@ -99,7 +127,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.1548247, y: 0.27702072, z: 0}
   m_LocalScale: {x: 0.6276829, y: 0.5945314, z: 1.3051527}
-  m_Children: []
+  m_Children:
+  - {fileID: 4120888280218190}
   m_Father: {fileID: 4300350019909990}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -135,7 +164,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.2, y: 0.2}
+  m_Offset: {x: -0.2, y: 0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -146,7 +175,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 4.5}
+  m_Size: {x: 2, y: 4.7}
   m_EdgeRadius: 0
 --- !u!95 &95517189261499962
 Animator:
@@ -184,9 +213,11 @@ MonoBehaviour:
   tempPosition: {x: 0, y: 0}
   velocity: {x: 0, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
-  mousePos: {x: 0, y: 0}
+  mousePos: {x: 0, y: 0, z: 0}
   playerToMouse: {x: 0, y: 0, z: 0}
   bullet: {fileID: 1617385681821264, guid: fbc84897502b1bc49a44dac5ed0f2470, type: 2}
+  pivotPoint: {fileID: 1469786491533010}
+  bulletSpawn: {fileID: 1991965392693546}
   mass: 1
   maxAcceleration: 0.001
   maxVelocity: 0.05
@@ -198,11 +229,11 @@ MonoBehaviour:
   distToGround: 0
   offset: 0
   angle: 0
+  bulletsTillReload: 0
   baseHealth: 0
   currentHealth: 0
   reloadTime: 0
   timeReloading: 0
-  bulletsTillReload: 0
   falling: 0
   rolling: 0
 --- !u!212 &212009871767139646

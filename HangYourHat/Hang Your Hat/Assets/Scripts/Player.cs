@@ -14,9 +14,11 @@ public class Player : MonoBehaviour
     public Vector2 tempPosition;            // Temporary position for hit detection
     public Vector3 velocity;                //the players velocity added to position
     public Vector3 acceleration;            //the players acceleration added to velocity
-    public Vector2 mousePos;                //locates where the mouse is
+    public Vector3 mousePos;                //locates where the mouse is
     public Vector3 playerToMouse;           //draws a line between the player and the mouse position
     public GameObject bullet;               // The bullet
+    public GameObject pivotPoint;           // The point at which the gun pivots in the hand
+    public GameObject bulletSpawn;          // Point from the gun where the bullet spawns
 
     public float mass;                      //the mass of a player
     public float maxAcceleration;             //the maximum acceleration of a player
@@ -62,6 +64,7 @@ public class Player : MonoBehaviour
         GetAngle();
 
         angle = Mathf.Atan2(playerToMouse.y, playerToMouse.x);
+        pivotPoint.transform.rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg);
 
 
 
@@ -77,7 +80,7 @@ public class Player : MonoBehaviour
             Debug.Log("FIRE!");
             //Make GameObject from Bullet prefab
             GameObject b = Instantiate(bullet, 
-                transform.position, 
+                bulletSpawn.transform.position, 
                 Quaternion.identity);
             // Get angle of fire
             // Change bullet's transform.forward to the angle of fire
@@ -321,7 +324,7 @@ public class Player : MonoBehaviour
     public void GetAngle()
     {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        playerToMouse = mousePos - position;
+        playerToMouse = mousePos - pivotPoint.transform.position;
         playerToMouse.Normalize();
         
     }

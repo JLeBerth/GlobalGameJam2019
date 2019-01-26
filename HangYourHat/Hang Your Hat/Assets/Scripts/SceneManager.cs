@@ -56,7 +56,7 @@ public class SceneManager : MonoBehaviour {
 
             //enemyScript.Shoot(playerObject); // Shoots at the player if they are nearby
 
-            enemyScript.Wander(); // Wanders if player is nearby
+            // enemyScript.Wander(); // Wanders if player is nearby
         }
     }
 

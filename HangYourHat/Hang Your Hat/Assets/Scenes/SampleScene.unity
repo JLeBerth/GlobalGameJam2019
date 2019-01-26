@@ -152,26 +152,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 61178280978467938, guid: 17270f42f289d0049b72f4c6d4644fae,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 61178280978467938, guid: 17270f42f289d0049b72f4c6d4644fae,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 4.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 61178280978467938, guid: 17270f42f289d0049b72f4c6d4644fae,
-        type: 2}
-      propertyPath: m_Offset.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212108979446223674, guid: 17270f42f289d0049b72f4c6d4644fae,
-        type: 2}
-      propertyPath: m_DrawMode
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17270f42f289d0049b72f4c6d4644fae, type: 2}
   m_IsPrefabAsset: 0
@@ -334,9 +314,11 @@ MonoBehaviour:
   tempPosition: {x: 0, y: 0}
   velocity: {x: 0, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
-  mousePos: {x: 0, y: 0}
+  mousePos: {x: 0, y: 0, z: 0}
   playerToMouse: {x: 0, y: 0, z: 0}
   bullet: {fileID: 1617385681821264, guid: fbc84897502b1bc49a44dac5ed0f2470, type: 2}
+  pivotPoint: {fileID: 0}
+  bulletSpawn: {fileID: 0}
   mass: 1
   maxAcceleration: 0.001
   maxVelocity: 0.05
@@ -348,11 +330,11 @@ MonoBehaviour:
   distToGround: 0
   offset: 0
   angle: 0
+  bulletsTillReload: 0
   baseHealth: 0
   currentHealth: 0
   reloadTime: 0
   timeReloading: 0
-  bulletsTillReload: 0
   falling: 0
   rolling: 0
 --- !u!212 &662741519
