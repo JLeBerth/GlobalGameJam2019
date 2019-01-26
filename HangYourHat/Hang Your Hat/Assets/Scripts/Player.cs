@@ -5,13 +5,17 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Rigidbody2D myBody;              //players rigidBody
+    public SpriteRenderer sprite;           // The player sprite
+    public RaycastHit2D ground;
     public Collision2D botCollision;                  // Stores a vertical collision
     public Collision2D test = new Collision2D();
     public Vector2 position;                //the players current location
+    public Vector2 tempPosition;            // Temporary position for hit detection
     public Vector3 velocity;                //the players velocity added to position
     public Vector3 acceleration;            //the players acceleration added to velocity
     public Vector2 mousePos;                //locates where the mouse is
     public Vector2 playerToMouse;           //draws a line between the player and the mouse position
+    public GameObject bullet;               // The bullet
 
     public float mass;                      //the mass of a player
     public float maxAcceleration;             //the maximum acceleration of a player
@@ -22,6 +26,7 @@ public class Player : MonoBehaviour
     public float jumpSpeed;                 //jump height
     public float timer;
     public float distToGround;              //Distance from the center of the sprite to the ground
+    public float offset;                    // This is so the raycast never hits its own collider
 
 
     public int baseHealth;                  //the total amount of health the player has
@@ -39,7 +44,9 @@ public class Player : MonoBehaviour
     {
         position = transform.position;
         myBody = gameObject.GetComponent<Rigidbody2D>();
-        distToGround = gameObject.GetComponent<SpriteRenderer>().bounds.extents.y;
+        sprite = gameObject.GetComponent<SpriteRenderer>();
+        distToGround = sprite.bounds.extents.y;
+        offset = distToGround + .01f;
 	}
 	
 	// Update is called once per frame
@@ -47,11 +54,28 @@ public class Player : MonoBehaviour
     {
         acceleration = Vector3.zero;
 
-        GetAngle();
+        
 
 		if (currentHealth <= 0)
         {
             PlayerDeath(); 
+        }
+
+        // Shooting
+        if (Input.GetMouseButtonDown(0))
+        {
+            
+            Debug.Log("FIRE!");
+            //Make GameObject from Bullet prefab
+            GameObject b = Instantiate(bullet, transform.position, Quaternion.identity);
+            // Get angle of fire
+            GetAngle();
+            // Change bullet's transform.forward to the angle of fire
+            b.transform.forward = playerToMouse;
+
+
+            // Add bullet to manager list
+            BulletManager.bullets.Add(b);
         }
 
         // moving right
@@ -76,6 +100,7 @@ public class Player : MonoBehaviour
             {
                 rolling = true;
                 timer = 0;
+               
 
             }
         }
@@ -87,12 +112,24 @@ public class Player : MonoBehaviour
             )
         {
             ApplyForce(new Vector2(0, jumpSpeed));
+            // falling = true;
+        }
+
+        // Checks if grounded
+        ground = IsGrounded();
+        
+        // If the player is above a certain point, start fallign
+        if (ground.distance >= .1f || ground.collider == null)
+        {
             falling = true;
         }
-        
-        if (IsGrounded())
+
+        // Otherwise, the player is grounded, so stop falling and set
+        // vertical velocity to zero
+        else
         {
-            falling = false;
+           falling = false;
+            velocity.y = 0;
         }
 
         // Falling
@@ -104,10 +141,12 @@ public class Player : MonoBehaviour
         // Roll
         if (rolling)
         {
+            // Change max velocity so you move faster
             maxVelocity = rollSpeed;
         }
         else
         {
+            
             maxVelocity = normalSpeed;
         }
 
@@ -143,9 +182,51 @@ public class Player : MonoBehaviour
     /// Method to check if player is grounded??? Doesn't work, but it might
     /// </summary>
     /// <returns></returns>
-    public bool IsGrounded()
+    public RaycastHit2D IsGrounded()
     {
-        return Physics.Raycast(transform.position, -Vector2.up, distToGround + .1f);
+
+        LayerMask mask = LayerMask.GetMask("Terrain");
+        tempPosition = transform.position;
+        
+        // tempPosition.y -= offset;
+        // Debug.Log("ORIGIN: " + tempPosition);
+
+        RaycastHit2D hit1 = Physics2D.Raycast(transform.position - sprite.bounds.extents,
+            //transform.position + new Vector3(0,-1,0),
+            -Vector2.up,
+            distToGround + 5f,
+            mask);
+
+        tempPosition.x += sprite.bounds.extents.x;
+        tempPosition.y -= sprite.bounds.extents.y;
+        RaycastHit2D hit2 = Physics2D.Raycast(tempPosition,
+            //transform.position + new Vector3(0,-1,0),
+            -Vector2.up,
+            distToGround + 5f,
+            mask);
+        
+        Debug.DrawLine(tempPosition, transform.position + new Vector3 (0,-1,0) * 3);
+        Debug.DrawLine(transform.position - sprite.bounds.extents, transform.position + new Vector3(0, -1, 0) * 3);
+
+        // Sends a ray out on either side of the object.  Checks which one is closer to the ground
+        // If they are both of equal(ish) distance, then you can fall off a platform
+        if ((hit2.distance < hit1.distance && hit2.collider != null) || (hit1.collider == null && hit2.collider != null))
+        {
+            Debug.Log("return hit2 during check");
+            return hit2;
+        }
+        else if ((hit1.distance < hit2.distance && hit1.collider != null)|| (hit2.collider == null && hit1.collider != null))
+        {
+            Debug.Log("return hit1 during check");
+            return hit1;
+        }
+        
+
+        // Debug.Log("return hit1 after check");
+        return hit1;
+
+
+
     }
     /// <summary>
     /// AppkyForce Method accelerates based on force
@@ -171,7 +252,17 @@ public class Player : MonoBehaviour
         {
             velocity.x = -maxVelocity;
         }
+
+        if (falling)
+        {
+
+            if (transform.position.y + velocity.y < ground.point.y + .1f)
+            {
+                myBody.MovePosition(new Vector2(transform.position.x, ground.point.y + .1f));
+            }
+        }
         myBody.MovePosition(transform.position + velocity * Time.deltaTime);
+        
     }
 
     /// <summary>
@@ -212,15 +303,15 @@ public class Player : MonoBehaviour
         playerToMouse.Normalize();
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (falling)
-        {
-            falling = false;
-            velocity.y = 0;
-            botCollision = collision;
-        }
-    }
+    //public void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (falling)
+    //    {
+    //        falling = false;
+    //        velocity.y = 0;
+    //        botCollision = collision;
+    //    }
+    //}
     
 
 }
