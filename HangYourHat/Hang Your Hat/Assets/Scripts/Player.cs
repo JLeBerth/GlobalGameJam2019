@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Rigidbody2D myBody;              //players rigidBody
+    public BoxCollider2D box;               // Player's box collider
     public SpriteRenderer sprite;           // The player sprite
     public RaycastHit2D ground;
     public Collision2D botCollision;                  // Stores a vertical collision
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
     public float distToGround;              //Distance from the center of the sprite to the ground
     public float offset;                    // This is so the raycast never hits its own collider
     public float angle;
+    public float bulletsTillReload;        //the number of times the player may shoot before reloading
 
 
     public int baseHealth;                  //the total amount of health the player has
@@ -35,7 +37,7 @@ public class Player : MonoBehaviour
 
     public double reloadTime;               //the amount of time it takes to reload the current gun
     public double timeReloading;            //the amount of time passed since reloading started
-    public double bulletsTillReload;        //the number of times the player may shoot before reloading
+    
 
     public bool falling;                    //boolean of whether the player is currently falling
     public bool rolling;                    // Boolean of whether the player is currently rolling
@@ -46,8 +48,9 @@ public class Player : MonoBehaviour
         position = transform.position;
         myBody = gameObject.GetComponent<Rigidbody2D>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
-        distToGround = sprite.bounds.extents.y;
-        offset = distToGround + .01f;
+        box = gameObject.GetComponent<BoxCollider2D>();
+        // distToGround = sprite.bounds.extents.y;
+        // offset = distToGround + .01f;
 	}
 	
 	// Update is called once per frame
@@ -55,9 +58,14 @@ public class Player : MonoBehaviour
     {
         acceleration = Vector3.zero;
 
-        
 
-		if (currentHealth <= 0)
+        GetAngle();
+
+        angle = Mathf.Atan2(playerToMouse.y, playerToMouse.x);
+
+
+
+        if (currentHealth <= 0)
         {
             PlayerDeath(); 
         }
@@ -72,7 +80,6 @@ public class Player : MonoBehaviour
                 transform.position, 
                 Quaternion.identity);
             // Get angle of fire
-            GetAngle();
             // Change bullet's transform.forward to the angle of fire
             // b.transform.up = playerToMouse;
 
@@ -132,7 +139,6 @@ public class Player : MonoBehaviour
         {
             falling = true;
         }
-
         // Otherwise, the player is grounded, so stop falling and set
         // vertical velocity to zero
         else
@@ -196,17 +202,24 @@ public class Player : MonoBehaviour
 
         LayerMask mask = LayerMask.GetMask("Terrain");
         tempPosition = transform.position;
-        
+
         // tempPosition.y -= offset;
         // Debug.Log("ORIGIN: " + tempPosition);
 
-        RaycastHit2D hit1 = Physics2D.Raycast(transform.position - sprite.bounds.extents,
+
+        tempPosition.x -= sprite.bounds.extents.x - .5f;
+        tempPosition.y -= sprite.bounds.extents.y;
+
+        RaycastHit2D hit1 = Physics2D.Raycast(tempPosition,
+            //transform.position - sprite.bounds.extents,
             //transform.position + new Vector3(0,-1,0),
             -Vector2.up,
             distToGround + 5f,
             mask);
 
-        tempPosition.x += sprite.bounds.extents.x;
+        tempPosition = transform.position;
+
+        tempPosition.x += sprite.bounds.extents.x - .85f;
         tempPosition.y -= sprite.bounds.extents.y;
         RaycastHit2D hit2 = Physics2D.Raycast(tempPosition,
             //transform.position + new Vector3(0,-1,0),
