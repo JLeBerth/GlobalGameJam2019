@@ -14,7 +14,7 @@ public class Saving : MonoBehaviour {
 
 	}
 
-    static void SaveCharacter(Player toSave, CutsceneManager CM, SceneManager SM, int characterSlot)
+    public void SaveCharacter(Player toSave, CutsceneManager CM, SceneManager SM, int characterSlot)
     {
         PlayerPrefs.SetInt("health_CharacterSlot" + characterSlot, toSave.currentHealth);
         PlayerPrefs.SetFloat("bulletsLeft_CharacterSlot" + characterSlot, toSave.bulletsTillReload);
@@ -30,7 +30,7 @@ public class Saving : MonoBehaviour {
         PlayerPrefs.Save();
     }
 
-    static void LoadCharacter(Player toLoad, CutsceneManager CM, SceneManager SM, int characterSlot)
+    public void LoadCharacter(Player toLoad, CutsceneManager CM, SceneManager SM, int characterSlot)
     {
         toLoad.currentHealth = PlayerPrefs.GetInt("health_CharacterSlot" + characterSlot);
         toLoad.bulletsTillReload = PlayerPrefs.GetFloat("bulletsLeft_CharacterSlot" + characterSlot);
