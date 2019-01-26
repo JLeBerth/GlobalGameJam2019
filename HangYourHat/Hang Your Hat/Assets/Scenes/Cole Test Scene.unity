@@ -195,11 +195,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myBody: {fileID: 0}
+  sprite: {fileID: 0}
   position: {x: 0, y: 0}
+  tempPosition: {x: 0, y: 0}
   velocity: {x: 0, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
   mousePos: {x: 0, y: 0}
   playerToMouse: {x: 0, y: 0}
+  bullet: {fileID: 0}
   mass: 1
   maxAcceleration: 1
   maxVelocity: 1
@@ -209,6 +212,7 @@ MonoBehaviour:
   jumpSpeed: 1
   timer: 0
   distToGround: 0
+  offset: 0
   baseHealth: 1
   currentHealth: 1
   reloadTime: 0
@@ -474,6 +478,8 @@ MonoBehaviour:
   mass: 0.1
   bWander: 0
   bShoot: 0
+  moveRight: 0
+  moveLeft: 0
   health: 3
 --- !u!61 &2069651629
 BoxCollider2D:

@@ -30,6 +30,8 @@ public class Enemy : MonoBehaviour {
     // Bools
     public bool bWander;             // Should the enemy wander? (Based on player distance?)
     public bool bShoot;              // Should the enemy shoot at the player?
+    public bool moveRight;
+    public bool moveLeft;
 
     //public bool onPlatform;          // Tells if the enemy is on a platform or not
 
@@ -63,7 +65,7 @@ public class Enemy : MonoBehaviour {
 
         // Check player distance and associated fxns
         playerDistance = GetDistanceSqrd(playerObject);
-        Wander();
+        StartCoroutine(Wander());
         Shoot();
 	}
 
@@ -111,7 +113,7 @@ public class Enemy : MonoBehaviour {
     /// <summary>
     /// Checks if the player is close enough, and wanders if they are
     /// </summary>
-    public void Wander()
+    IEnumerator Wander()
     {
         // Check if the player is close enough to begin wandering
         if (playerDistance < wanderLimit)
@@ -125,11 +127,19 @@ public class Enemy : MonoBehaviour {
 
         if (bWander) // If the player is close enough, do below code
         {
-            transform.position = Vector3.Lerp(transform.position, (transform.position + new Vector3(2f, 0f, 0f)), (Mathf.Sin(velocity.x * Time.deltaTime) + 1.0f) / 2.0f);
-            /*transform.position = Vector3.Lerp(transform.position, (transform.position + new Vector3(5f, 0f, 0f)), Mathf.PingPong(Time.time * velocity.x, 1.0f));
-            transform.Rotate(Vector3.up * 10f * Time.deltaTime);
-            velocity.x = 0f;*/
-            //Debug.Log("WAAAANDER");
+            for (int i = 0; i < 5; i++)
+            {
+                enemyPosition.x++;
+                Debug.Log("right");
+            }
+
+            yield return 0;
+
+            for (int i = 0; i < 5; i++)
+            {
+                enemyPosition.x--;
+                Debug.Log("left");
+            }
         }
     }
 
