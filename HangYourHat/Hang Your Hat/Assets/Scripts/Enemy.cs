@@ -158,6 +158,11 @@ public class Enemy : MonoBehaviour {
         }
     }
 
+    public void TakeDamage()
+    {
+        alive = false;
+    }
+
     /// <summary>
     /// Gets the distance between this object and the given object
     /// </summary>
