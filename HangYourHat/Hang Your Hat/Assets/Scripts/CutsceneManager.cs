@@ -18,6 +18,7 @@ public class CutsceneManager : MonoBehaviour
     public GameObject Stetson;
     public GameObject Sherry;
     public GameObject Orca;
+    public TownGate tg;
 
 
 	// Use this for initialization
@@ -113,6 +114,7 @@ public class CutsceneManager : MonoBehaviour
             case 11:
                 saver.SaveLine(1, currentLine+1);
                 //transition to town code
+                tg.ChangeScene("Home");
                 break;
             case 12:
                 Stetson.SetActive(true);
@@ -122,6 +124,7 @@ public class CutsceneManager : MonoBehaviour
             case 15:
                 saver.SaveLine(1, currentLine + 1);
                 //transition to level1 code
+                tg.ChangeScene("Level1");
                 break;
             case 16:
                 Stetson.SetActive(true);
@@ -149,6 +152,7 @@ public class CutsceneManager : MonoBehaviour
             case 30:
                 saver.SaveLine(1, currentLine + 1);
                 //transition to town code
+                tg.ChangeScene("Home");
                 break;
             case 31:
                 backgrounds[3].SetActive(true);
@@ -158,6 +162,7 @@ public class CutsceneManager : MonoBehaviour
             case 46:
                 saver.SaveLine(1, currentLine + 1);
                 //transition to town code
+                tg.ChangeScene("Home");
                 break;
 
             default:
