@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Clickable : MonoBehaviour {
 
@@ -93,6 +94,11 @@ public class Clickable : MonoBehaviour {
         {
             lvl2.SetActive(true);
         }
+
+        if(line == 97)
+        {
+            SceneManager.LoadScene("StartScreen");
+        }
             shop.SetActive(false);
 
         
@@ -120,6 +126,9 @@ public class Clickable : MonoBehaviour {
         {
             shop.SetActive(true);
         }
+
+
+         
         bg.SetActive(true);
         shop_bldg.SetActive(false);
         unlock.SetActive(false);

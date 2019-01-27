@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
     public GameObject bullet;               // The bullet
     public GameObject pivotPoint;           // The point at which the gun pivots in the hand
     public GameObject bulletSpawn;          // Point from the gun where the bullet spawns
+    public TownGate tg;
 
     public float mass;                      //the mass of a player
     public float maxAcceleration;             //the maximum acceleration of a player
@@ -558,7 +560,8 @@ public class Player : MonoBehaviour
     /// </summary>
     public void PlayerDeath()
     {
-
+        Scene curScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(curScene.name);
     }
 
     /// <summary>
