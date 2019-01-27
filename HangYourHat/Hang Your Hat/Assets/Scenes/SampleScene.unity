@@ -206,28 +206,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cf040b7a692914419e51604e3abc24d, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &370902537 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1928265495987846, guid: 17270f42f289d0049b72f4c6d4644fae,
-    type: 2}
-  m_PrefabInternal: {fileID: 315226834}
---- !u!95 &370902539 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 95018033178927290, guid: 17270f42f289d0049b72f4c6d4644fae,
-    type: 2}
-  m_PrefabInternal: {fileID: 315226834}
---- !u!114 &370902541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 370902537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fa40f58ed5f11442860b3ab0ec92857, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 370902539}
 --- !u!1 &515788071 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1218680546445636, guid: 17270f42f289d0049b72f4c6d4644fae,
@@ -523,6 +501,64 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.38, y: 7.57}
   m_EdgeRadius: 0
+--- !u!1 &697100101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 697100103}
+  - component: {fileID: 697100102}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &697100102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 697100101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b79a02c74adc8cc42a51b6a1aceab81c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 0}
+  playerScript: {fileID: 0}
+  playerObject: {fileID: 515788071}
+  playerHealth: {fileID: 0}
+  playerAmmo: {fileID: 0}
+  playerBullets: []
+  healthTextures: []
+  bullets: []
+  enemyPrefab: {fileID: 0}
+  enemies:
+  - {fileID: 1618670007}
+  enemyObjectPlaceholder: {fileID: 0}
+  enemyScript: {fileID: 0}
+  enemyBulletPrefab: {fileID: 1157379710717696, guid: 2f360354bf6263c4c8e50e2b05ea3c8e,
+    type: 2}
+  CM: {fileID: 0}
+  saver: {fileID: 0}
+  enemiesLeft: 0
+--- !u!4 &697100103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 697100101}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.87786275, y: 1.861658, z: -0.02907655}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &943493251
 Prefab:
   m_ObjectHideFlags: 0
@@ -619,6 +655,11 @@ Transform:
   m_Father: {fileID: 662741520}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1618670007 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1357669717469540, guid: 5cf040b7a692914419e51604e3abc24d,
+    type: 2}
+  m_PrefabInternal: {fileID: 320633402}
 --- !u!1 &2110987825
 GameObject:
   m_ObjectHideFlags: 0
