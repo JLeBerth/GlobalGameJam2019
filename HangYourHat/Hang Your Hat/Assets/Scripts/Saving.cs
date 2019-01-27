@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Saving : MonoBehaviour {
+    public bool hasSaved;
 
 	// Use this for initialization
 	void Start () {
-		
+        hasSaved = false;
 	}
 	
 	// Update is called once per frame
@@ -16,6 +17,8 @@ public class Saving : MonoBehaviour {
 
     public void SaveCharacter(Player toSave, CutsceneManager CM, SceneManager SM, int characterSlot)
     {
+        hasSaved = true;
+
         PlayerPrefs.SetInt("health_CharacterSlot" + characterSlot, toSave.currentHealth);
         PlayerPrefs.SetFloat("bulletsLeft_CharacterSlot" + characterSlot, toSave.bulletsTillReload);
         PlayerPrefs.SetFloat("xPos_CharacterSlot" + characterSlot, toSave.position.x);
@@ -32,13 +35,16 @@ public class Saving : MonoBehaviour {
 
     public void LoadCharacter(Player toLoad, CutsceneManager CM, SceneManager SM, int characterSlot)
     {
-        toLoad.currentHealth = PlayerPrefs.GetInt("health_CharacterSlot" + characterSlot);
-        toLoad.bulletsTillReload = PlayerPrefs.GetFloat("bulletsLeft_CharacterSlot" + characterSlot);
-        toLoad.position.x = PlayerPrefs.GetFloat("xPos_CharacterSlot" + characterSlot);
-        toLoad.position.y = PlayerPrefs.GetFloat("yPos_CharacterSlot" + characterSlot);
+        if (hasSaved)
+        {
+            toLoad.currentHealth = PlayerPrefs.GetInt("health_CharacterSlot" + characterSlot);
+            toLoad.bulletsTillReload = PlayerPrefs.GetFloat("bulletsLeft_CharacterSlot" + characterSlot);
+            toLoad.position.x = PlayerPrefs.GetFloat("xPos_CharacterSlot" + characterSlot);
+            toLoad.position.y = PlayerPrefs.GetFloat("yPos_CharacterSlot" + characterSlot);
 
-        CM.currentLine = PlayerPrefs.GetInt("dialogue_CharacterSlot" + characterSlot);
+            CM.currentLine = PlayerPrefs.GetInt("dialogue_CharacterSlot" + characterSlot);
 
-        SM.enemiesLeft = PlayerPrefs.GetInt("enemiesLeft_CharacterSlot" + characterSlot);
+            SM.enemiesLeft = PlayerPrefs.GetInt("enemiesLeft_CharacterSlot" + characterSlot);
+        }
     }
 }

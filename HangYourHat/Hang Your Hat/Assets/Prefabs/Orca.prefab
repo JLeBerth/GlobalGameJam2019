@@ -11,6 +11,21 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1357669717469540}
   m_IsPrefabAsset: 1
+--- !u!1 &1297779084827964
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4931729883822494}
+  m_Layer: 0
+  m_Name: Bullet Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1357669717469540
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,7 +84,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1357669717469540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.4, y: 0.41, z: 0}
+  m_LocalPosition: {x: 2.1846316, y: 1.7188118, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4700960556007784}
@@ -85,7 +100,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.86, y: 0.08, z: 0}
   m_LocalScale: {x: -0.6172797, y: 0.534497, z: 0.41052}
-  m_Children: []
+  m_Children:
+  - {fileID: 4931729883822494}
   m_Father: {fileID: 4700960556007784}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -101,6 +117,19 @@ Transform:
   m_Children:
   - {fileID: 4341350860123268}
   m_Father: {fileID: 4282555261331044}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4931729883822494
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1297779084827964}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.38982624, y: 0.12346949, z: -0.058382623}
+  m_LocalScale: {x: -1.6200112, y: 1.8709179, z: 2.435935}
+  m_Children: []
+  m_Father: {fileID: 4341350860123268}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50645264660200540
@@ -185,17 +214,23 @@ MonoBehaviour:
   playerObject: {fileID: 0}
   enemyRigid: {fileID: 0}
   pivotPoint: {fileID: 1601084001828336}
+  bulletSpawn: {fileID: 1297779084827964}
   playerDistance: 0
   wanderLimit: 150
   shootLimit: 85
   enemySpeed: 4
   mass: 0.1
+  maxBullets: 0
+  currentBullets: 0
+  shootTimer: 0
+  currentShootTimer: 0
+  reloadTimer: 0
+  currentReloadTimer: 0
   bWander: 0
   bShoot: 0
-  moveRight: 0
-  moveLeft: 0
   backToStart: 0
   alive: 0
+  reload: 0
   health: 3
 --- !u!212 &212308836499630506
 SpriteRenderer:

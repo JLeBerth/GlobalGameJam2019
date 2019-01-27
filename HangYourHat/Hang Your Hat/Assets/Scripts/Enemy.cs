@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour {
     public GameObject playerObject; // Holds the player object
     public Rigidbody2D enemyRigid;  // Holds the enemy rigidBody
     public GameObject pivotPoint;   // Holds the pivotPoint for the gun
+    public GameObject bulletSpawn;  // Where the bullet spawns
 
     // Floats
     public float playerDistance;   // Distance of the player from the enemy (DISTANCES MEASURED IN DISTANCE SQUARED)
@@ -25,16 +26,25 @@ public class Enemy : MonoBehaviour {
     public float enemySpeed;        // Max speed that the enemy moves
     public float mass;
 
+    public float maxBullets;
+    public float currentBullets;
+    public float shootTimer;
+    public float currentShootTimer;
+    public float reloadTimer;
+    public float currentReloadTimer;
+
     /*public float furthestLeft;      // If on platform, the enemy will only walk so far left or right to stay on the platform. If not, will default to 8
     public float furthestRight;*/
 
     // Bools
     public bool bWander;             // Should the enemy wander? (Based on player distance?)
     public bool bShoot;              // Should the enemy shoot at the player?
-    public bool moveRight;
-    public bool moveLeft;
+    private bool moveRight;
+    private bool moveLeft;
     public bool backToStart;
     public bool alive;
+
+    public bool reload;
 
     //public bool onPlatform;          // Tells if the enemy is on a platform or not
 
@@ -52,6 +62,9 @@ public class Enemy : MonoBehaviour {
 
         enemyRigid = this.GetComponent<Rigidbody2D>();
         startPos = this.transform.position;
+
+        currentShootTimer = 0;
+        currentReloadTimer = 0;
 	}
 	
 	// Update is called once per frame
@@ -84,7 +97,7 @@ public class Enemy : MonoBehaviour {
     /// <summary>
     /// Checks if the player is close enough, and shoots at them if they are
     /// </summary>
-    public void Shoot (GameObject _shootAt)
+    public void Shoot (GameObject _shootAt, GameObject _bullet)
     {
         // Check if the player is close enough to begin shooting
         if (playerDistance < shootLimit)
@@ -98,6 +111,7 @@ public class Enemy : MonoBehaviour {
 
         if (bShoot) // If the player is close enough, do below code
         {
+            // Gun look at player
             Vector2 toPlayer = _shootAt.transform.position - pivotPoint.transform.position;
 
             float angleRad;
@@ -108,6 +122,16 @@ public class Enemy : MonoBehaviour {
             angleRad += 180f;
 
             pivotPoint.transform.rotation = Quaternion.Euler (0, 0, angleRad);
+
+            // Shoot at player:
+            if (currentShootTimer == 0 && currentReloadTimer == 0)
+            {
+                GameObject b = Instantiate(_bullet,
+                bulletSpawn.transform.position,
+                Quaternion.identity);
+
+
+            }
 
             //Debug.log("SHOOOOT");
         }
