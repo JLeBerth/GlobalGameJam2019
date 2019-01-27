@@ -75,10 +75,10 @@ public class BulletManager : MonoBehaviour
                 }
 
 
-                else if (bullets[i].transform.position.x < -width ||
-                    bullets[i].transform.position.x > width ||
-                    bullets[i].transform.position.y < -height ||
-                    bullets[i].transform.position.y > height)
+                else if (bullets[i].transform.position.x < cam.transform.position.x -width ||
+                    bullets[i].transform.position.x > cam.transform.position.x + width ||
+                    bullets[i].transform.position.y < cam.transform.position.y - height ||
+                    bullets[i].transform.position.y > cam.transform.position.y + height)
                 {
                     GameObject tempBullet = bullets[i];
                     bullets.Remove(bullets[i]);
