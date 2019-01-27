@@ -265,6 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66fe1373000c09e42890ad59f9d41c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animation: {fileID: 0}
   myBody: {fileID: 0}
   box: {fileID: 0}
   sprite: {fileID: 0}
@@ -274,6 +275,8 @@ MonoBehaviour:
   acceleration: {x: 0, y: 0, z: 0}
   mousePos: {x: 0, y: 0, z: 0}
   playerToMouse: {x: 0, y: 0, z: 0}
+  scaleBy: {x: 0, y: 0, z: 0}
+  normalScale: {x: 0, y: 0, z: 0}
   bullet: {fileID: 0}
   pivotPoint: {fileID: 0}
   bulletSpawn: {fileID: 0}
@@ -411,6 +414,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1259564107}
   - component: {fileID: 1259564106}
+  - component: {fileID: 1259564108}
   m_Layer: 0
   m_Name: Scene Manager
   m_TagString: Untagged
@@ -432,12 +436,19 @@ MonoBehaviour:
   playerPrefab: {fileID: 0}
   playerScript: {fileID: 0}
   playerObject: {fileID: 394957828}
+  playerHealth: {fileID: 0}
+  playerAmmo: {fileID: 0}
+  playerBullets: []
+  healthTextures: []
+  bullets: []
   enemyPrefab: {fileID: 1357669717469540, guid: 5cf040b7a692914419e51604e3abc24d,
     type: 2}
   enemies:
   - {fileID: 924791372}
   enemyObjectPlaceholder: {fileID: 0}
   enemyScript: {fileID: 0}
+  bulletPrefab: {fileID: 1157379710717696, guid: 2f360354bf6263c4c8e50e2b05ea3c8e,
+    type: 2}
   CM: {fileID: 0}
   saver: {fileID: 0}
   enemiesLeft: 0
@@ -454,3 +465,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1259564108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1259564105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4969b7e9fb4e564382b386002f171c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 0
+  height: 0
+  speed: 10
+  player: {fileID: 394957831}

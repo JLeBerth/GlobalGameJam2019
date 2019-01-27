@@ -24,7 +24,8 @@ public class SceneManager : MonoBehaviour {
     public GameObject enemyObjectPlaceholder;                   // Placeholder for enemy object for adding enemies
     public Enemy enemyScript;
 
-    // Platform Vars
+    // Bullet Vars
+    public GameObject bulletPrefab;
 
     // Save Vars
     public CutsceneManager CM;
@@ -38,10 +39,10 @@ public class SceneManager : MonoBehaviour {
 
         enemyScript.playerObject = playerObject;
 
-        for (int i = 0; i < 10; i++)
+        /*for (int i = 0; i < 10; i++)
         {
             AddEnemy(Random.Range(-10, 10), Random.Range(-5, 5));
-        }
+        }*/
     }
 	
 	// Update is called once per frame
@@ -59,8 +60,6 @@ public class SceneManager : MonoBehaviour {
             playerObject.GetComponent<SpriteRenderer>().color = Color.white;
         }
 
-        playerObject.transform.position += new Vector3(.05f, 0);
-
         // Enemy Updates
         for (int i = 0; i < enemies.Count; i++)
         {
@@ -68,7 +67,7 @@ public class SceneManager : MonoBehaviour {
 
             enemyScript.playerDistance = enemyScript.GetDistanceSqrd(playerObject);
 
-            enemyScript.Shoot(playerObject); // Shoots at the player if they are nearby
+            enemyScript.Shoot(playerObject, bulletPrefab); // Shoots at the player if they are nearby
 
             enemyScript.Wander(); // Wanders if player is nearby
 
