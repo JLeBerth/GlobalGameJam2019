@@ -105,6 +105,7 @@ public class CutsceneManager : MonoBehaviour
         switch (currentLine)
         {
             case 1:
+                AudioSource.PlayClipAtPoint(soundEffects[0], Vector3.zero);
                 inScene = true;
                 dialogueActive = false;
                 dialogueBox.SetActive(false);
@@ -119,8 +120,14 @@ public class CutsceneManager : MonoBehaviour
                 dialogueActive = true;
                 break;
             case 5:
+                AudioSource.PlayClipAtPoint(soundEffects[2], Vector3.zero);
                 backgrounds[0].SetActive(false);
                 backgrounds[1].SetActive(true);
+                break;
+            case 6:
+                AudioSource.PlayClipAtPoint(soundEffects[2], Vector3.zero);
+                AudioSource.PlayClipAtPoint(soundEffects[2], Vector3.zero);
+                AudioSource.PlayClipAtPoint(soundEffects[2], Vector3.zero);
                 break;
             case 11:
                 currentLine++;
@@ -132,6 +139,10 @@ public class CutsceneManager : MonoBehaviour
                 Orca.SetActive(true);
                 backgrounds[6].SetActive(true);
                 dialogueBox.SetActive(true);
+                break;
+            case 14:
+                AudioSource.PlayClipAtPoint(soundEffects[3], Vector3.zero);
+                AudioSource.PlayClipAtPoint(soundEffects[7], Vector3.zero);
                 break;
             case 15:
                 currentLine++;
@@ -149,6 +160,9 @@ public class CutsceneManager : MonoBehaviour
                 dialogueBox.SetActive(true);
                 break;
             case 25:
+                AudioSource.PlayClipAtPoint(soundEffects[3], Vector3.zero);
+                AudioSource.PlayClipAtPoint(soundEffects[7], Vector3.zero);
+                AudioSource.PlayClipAtPoint(soundEffects[3], Vector3.zero);
                 backgrounds[5].SetActive(false);
                 backgrounds[4].SetActive(true);
                 Sherry.SetActive(true);
