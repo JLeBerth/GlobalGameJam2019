@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
         // Shooting
         if (Input.GetMouseButtonDown(0))
         {
-            if (bulletsTillReload > 0)
+            if (bulletsTillReload > 0 && !reloading)
             {
                 bulletsTillReload--;
                 //Make GameObject from Bullet prefab
