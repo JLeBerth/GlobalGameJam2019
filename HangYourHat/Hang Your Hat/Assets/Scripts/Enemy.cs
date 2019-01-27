@@ -146,6 +146,8 @@ public class Enemy : MonoBehaviour {
             else if (currentReloadTimer > 0)
             {
                 currentReloadTimer -= Time.deltaTime;
+
+                currentBullets = 6;
             }
             else if (currentShootTimer > 0)
             {

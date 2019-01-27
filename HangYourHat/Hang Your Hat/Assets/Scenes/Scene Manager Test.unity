@@ -275,6 +275,8 @@ MonoBehaviour:
   acceleration: {x: 0, y: 0, z: 0}
   mousePos: {x: 0, y: 0, z: 0}
   playerToMouse: {x: 0, y: 0, z: 0}
+  scaleBy: {x: 0, y: 0, z: 0}
+  normalScale: {x: 0, y: 0, z: 0}
   bullet: {fileID: 0}
   pivotPoint: {fileID: 0}
   bulletSpawn: {fileID: 0}
@@ -400,26 +402,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114107218071417636, guid: 5cf040b7a692914419e51604e3abc24d,
-        type: 2}
-      propertyPath: shootTimer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114107218071417636, guid: 5cf040b7a692914419e51604e3abc24d,
-        type: 2}
-      propertyPath: currentShootTimer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114107218071417636, guid: 5cf040b7a692914419e51604e3abc24d,
-        type: 2}
-      propertyPath: reloadTimer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114107218071417636, guid: 5cf040b7a692914419e51604e3abc24d,
-        type: 2}
-      propertyPath: currentReloadTimer
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cf040b7a692914419e51604e3abc24d, type: 2}
   m_IsPrefabAsset: 0
@@ -496,5 +478,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 0
   height: 0
-  speed: 1
+  speed: 10
   player: {fileID: 394957831}

@@ -39,10 +39,10 @@ public class SceneManager : MonoBehaviour {
 
         enemyScript.playerObject = playerObject;
 
-        for (int i = 0; i < 10; i++)
+        /*for (int i = 0; i < 10; i++)
         {
             AddEnemy(Random.Range(-10, 10), Random.Range(-5, 5));
-        }
+        }*/
     }
 	
 	// Update is called once per frame
@@ -59,8 +59,6 @@ public class SceneManager : MonoBehaviour {
         {
             playerObject.GetComponent<SpriteRenderer>().color = Color.white;
         }
-
-        playerObject.transform.position += new Vector3(.05f, 0);
 
         // Enemy Updates
         for (int i = 0; i < enemies.Count; i++)

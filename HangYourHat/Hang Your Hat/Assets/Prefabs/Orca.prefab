@@ -222,10 +222,10 @@ MonoBehaviour:
   mass: 0.1
   maxBullets: 6
   currentBullets: 6
-  shootTimer: 5
-  currentShootTimer: 5
-  reloadTimer: 10
-  currentReloadTimer: 10
+  shootTimer: 2
+  currentShootTimer: 2
+  reloadTimer: 5
+  currentReloadTimer: 5
   bWander: 0
   bShoot: 0
   backToStart: 0
