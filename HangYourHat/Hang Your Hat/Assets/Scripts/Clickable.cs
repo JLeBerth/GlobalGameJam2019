@@ -21,6 +21,8 @@ public class Clickable : MonoBehaviour {
     public Saving saver;
     public Player player;
 
+    CutsceneManager csm;
+
     // Stores what line the dialogue is currently on
     public int line;
 
@@ -46,7 +48,7 @@ public class Clickable : MonoBehaviour {
             saloon.SetActive(true);
         }
 
-        if (line >= 60)
+        if (line >= 50)
         {
             shop.SetActive(true);
         }
@@ -79,9 +81,10 @@ public class Clickable : MonoBehaviour {
             lvl2.SetActive(true);
         }
 
-        if (line > 60)
+        if (line > 50)
         {
             shop.SetActive(true);
+
         }
 
         bg.SetActive(false);
@@ -103,7 +106,7 @@ public class Clickable : MonoBehaviour {
             saloon.SetActive(true);
         }
 
-        if (line >= 60)
+        if (line >= 50)
         {
             shop.SetActive(true);
         }
