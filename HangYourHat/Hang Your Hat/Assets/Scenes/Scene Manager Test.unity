@@ -190,34 +190,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &166398309
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 166398310}
-  m_Layer: 0
-  m_Name: Bullet Spawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &166398310
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 166398309}
-  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.38982624, y: 0.12346949, z: -0.058382623}
-  m_LocalScale: {x: -1.6200112, y: 1.8709179, z: 2.435935}
-  m_Children: []
-  m_Father: {fileID: 1471433958}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &394957828
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,6 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66fe1373000c09e42890ad59f9d41c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animation: {fileID: 0}
   myBody: {fileID: 0}
   box: {fileID: 0}
   sprite: {fileID: 0}
@@ -429,9 +402,24 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114107218071417636, guid: 5cf040b7a692914419e51604e3abc24d,
         type: 2}
-      propertyPath: bulletSpawn
-      value: 
-      objectReference: {fileID: 166398309}
+      propertyPath: shootTimer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114107218071417636, guid: 5cf040b7a692914419e51604e3abc24d,
+        type: 2}
+      propertyPath: currentShootTimer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114107218071417636, guid: 5cf040b7a692914419e51604e3abc24d,
+        type: 2}
+      propertyPath: reloadTimer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114107218071417636, guid: 5cf040b7a692914419e51604e3abc24d,
+        type: 2}
+      propertyPath: currentReloadTimer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cf040b7a692914419e51604e3abc24d, type: 2}
   m_IsPrefabAsset: 0
@@ -444,6 +432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1259564107}
   - component: {fileID: 1259564106}
+  - component: {fileID: 1259564108}
   m_Layer: 0
   m_Name: Scene Manager
   m_TagString: Untagged
@@ -465,14 +454,19 @@ MonoBehaviour:
   playerPrefab: {fileID: 0}
   playerScript: {fileID: 0}
   playerObject: {fileID: 394957828}
+  playerHealth: {fileID: 0}
+  playerAmmo: {fileID: 0}
+  playerBullets: []
+  healthTextures: []
+  bullets: []
   enemyPrefab: {fileID: 1357669717469540, guid: 5cf040b7a692914419e51604e3abc24d,
     type: 2}
   enemies:
   - {fileID: 924791372}
   enemyObjectPlaceholder: {fileID: 0}
   enemyScript: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  BM: {fileID: 0}
+  bulletPrefab: {fileID: 1157379710717696, guid: 2f360354bf6263c4c8e50e2b05ea3c8e,
+    type: 2}
   CM: {fileID: 0}
   saver: {fileID: 0}
   enemiesLeft: 0
@@ -489,8 +483,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1471433958 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4341350860123268, guid: 5cf040b7a692914419e51604e3abc24d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1142744102}
+--- !u!114 &1259564108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1259564105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4969b7e9fb4e564382b386002f171c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 0
+  height: 0
+  speed: 1
+  player: {fileID: 394957831}

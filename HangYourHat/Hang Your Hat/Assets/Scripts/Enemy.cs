@@ -124,13 +124,32 @@ public class Enemy : MonoBehaviour {
             pivotPoint.transform.rotation = Quaternion.Euler (0, 0, angleRad);
 
             // Shoot at player:
-            if (currentShootTimer == 0 && currentReloadTimer == 0)
+            if (currentShootTimer <= 0 && currentReloadTimer <= 0)
             {
                 GameObject b = Instantiate(_bullet,
                 bulletSpawn.transform.position,
                 Quaternion.identity);
 
+                b.transform.rotation = Quaternion.Euler(0, 0, angleRad + 180);
 
+                BulletManager.bullets.Add(b);
+
+                currentBullets -= 1;
+
+                currentShootTimer = shootTimer;
+
+                if (currentBullets <= 0)
+                {
+                    currentReloadTimer = reloadTimer;
+                }
+            }
+            else if (currentReloadTimer > 0)
+            {
+                currentReloadTimer -= Time.deltaTime;
+            }
+            else if (currentShootTimer > 0)
+            {
+                currentShootTimer -= Time.deltaTime;
             }
 
             //Debug.log("SHOOOOT");

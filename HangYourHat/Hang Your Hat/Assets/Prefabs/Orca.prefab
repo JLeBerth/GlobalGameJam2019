@@ -220,16 +220,16 @@ MonoBehaviour:
   shootLimit: 85
   enemySpeed: 4
   mass: 0.1
-  maxBullets: 0
-  currentBullets: 0
-  shootTimer: 0
-  currentShootTimer: 0
-  reloadTimer: 0
-  currentReloadTimer: 0
+  maxBullets: 6
+  currentBullets: 6
+  shootTimer: 5
+  currentShootTimer: 5
+  reloadTimer: 10
+  currentReloadTimer: 10
   bWander: 0
   bShoot: 0
   backToStart: 0
-  alive: 0
+  alive: 1
   reload: 0
   health: 3
 --- !u!212 &212308836499630506
