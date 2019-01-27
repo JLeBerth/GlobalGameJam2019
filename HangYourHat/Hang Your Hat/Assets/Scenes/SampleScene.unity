@@ -152,16 +152,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 95517189261499962, guid: 17270f42f289d0049b72f4c6d4644fae,
-        type: 2}
-      propertyPath: m_CullingMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114697087113136220, guid: 17270f42f289d0049b72f4c6d4644fae,
-        type: 2}
-      propertyPath: animation
-      value: 
-      objectReference: {fileID: 1667089826}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17270f42f289d0049b72f4c6d4644fae, type: 2}
   m_IsPrefabAsset: 0
@@ -216,6 +206,28 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cf040b7a692914419e51604e3abc24d, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &370902537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1928265495987846, guid: 17270f42f289d0049b72f4c6d4644fae,
+    type: 2}
+  m_PrefabInternal: {fileID: 315226834}
+--- !u!95 &370902539 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95018033178927290, guid: 17270f42f289d0049b72f4c6d4644fae,
+    type: 2}
+  m_PrefabInternal: {fileID: 315226834}
+--- !u!114 &370902541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 370902537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fa40f58ed5f11442860b3ab0ec92857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 370902539}
 --- !u!1 &515788071 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1218680546445636, guid: 17270f42f289d0049b72f4c6d4644fae,
@@ -417,6 +429,7 @@ MonoBehaviour:
   offset: 0
   angle: 0
   bulletsTillReload: 0
+  maxBullets: 0
   baseHealth: 0
   currentHealth: 0
   reloadTime: 0
@@ -424,6 +437,7 @@ MonoBehaviour:
   falling: 0
   rolling: 0
   facingLeft: 0
+  reloading: 0
 --- !u!212 &662741519
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -605,11 +619,6 @@ Transform:
   m_Father: {fileID: 662741520}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1667089826 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 95517189261499962, guid: 17270f42f289d0049b72f4c6d4644fae,
-    type: 2}
-  m_PrefabInternal: {fileID: 315226834}
 --- !u!1 &2110987825
 GameObject:
   m_ObjectHideFlags: 0
