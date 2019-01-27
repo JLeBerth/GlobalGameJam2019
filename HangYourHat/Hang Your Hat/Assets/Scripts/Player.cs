@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
         position = transform.position;
         myBody = gameObject.GetComponent<Rigidbody2D>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
-        box = gameObject.GetComponent<BoxCollider2D>();
+        // box = gameObject.GetComponent<BoxCollider2D>();
         scaleBy = new Vector3(1, 1, 1);
         normalScale = transform.localScale;
         // distToGround = sprite.bounds.extents.y;
@@ -272,12 +272,19 @@ public class Player : MonoBehaviour
         LayerMask mask = LayerMask.GetMask("Collision");
         tempPosition = transform.position;
 
+        
+
         // tempPosition.y -= offset;
         // Debug.Log("ORIGIN: " + tempPosition);
 
 
-        tempPosition.x -= sprite.bounds.extents.x - .7f;
+        tempPosition.x -= sprite.bounds.extents.x - .525f;
         tempPosition.y -= sprite.bounds.extents.y;
+
+        if (facingLeft)
+        {
+            tempPosition.x += .28f;
+        }
 
         RaycastHit2D hit1 = Physics2D.Raycast(tempPosition,
             //transform.position - sprite.bounds.extents,
@@ -286,10 +293,22 @@ public class Player : MonoBehaviour
             distToGround + 5f,
             mask);
 
+
+
+        Debug.DrawLine(tempPosition, transform.position + new Vector3(0, -1, 0) * 3);
+
         tempPosition = transform.position;
 
-        tempPosition.x += sprite.bounds.extents.x - .85f;
+        tempPosition.x += sprite.bounds.extents.x - .825f;
         tempPosition.y -= sprite.bounds.extents.y;
+
+
+        if (facingLeft)
+        {
+            tempPosition.x += .28f;
+        }
+
+
         RaycastHit2D hit2 = Physics2D.Raycast(tempPosition,
             //transform.position + new Vector3(0,-1,0),
             -Vector2.up,
@@ -297,7 +316,7 @@ public class Player : MonoBehaviour
             mask);
         
         Debug.DrawLine(tempPosition, transform.position + new Vector3 (0,-1,0) * 3);
-        Debug.DrawLine(transform.position - sprite.bounds.extents, transform.position + new Vector3(0, -1, 0) * 3);
+        // Debug.DrawLine(transform.position - sprite.bounds.extents, transform.position + new Vector3(0, -1, 0) * 3);
 
         // Sends a ray out on either side of the object.  Checks which one is closer to the ground
         // If they are both of equal(ish) distance, then you can fall off a platform
