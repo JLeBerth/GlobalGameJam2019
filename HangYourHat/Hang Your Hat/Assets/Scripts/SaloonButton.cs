@@ -39,14 +39,15 @@ public class SaloonButton : MonoBehaviour {
     private void OnMouseDown()
     {
         Debug.Log("Clicked");
-        if (saver.ReturnLine(1)  == 0)
+        if (saver.ReturnLine(1)  == 31)
         {
             tg.ChangeScene("StartScreen");
-            // manager.Saloon();
+            
         }
         else
         {
             // heal
+            manager.Saloon();
         }
     }
 }

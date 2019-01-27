@@ -35,8 +35,8 @@ public class ExitButton : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        tg.ChangeScene("StartScreen");
-        /*
+        // tg.ChangeScene("StartScreen");
+        
         Debug.Log("Clicked");
         if (manager.exiting || manager.story)
         {
@@ -46,6 +46,6 @@ public class ExitButton : MonoBehaviour {
         {
             manager.NextLevel();
         }
-        */
+        
     }
 }
