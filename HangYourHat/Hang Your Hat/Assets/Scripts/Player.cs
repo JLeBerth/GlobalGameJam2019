@@ -240,7 +240,7 @@ public class Player : MonoBehaviour
         // Debug.Log("ORIGIN: " + tempPosition);
 
 
-        tempPosition.x -= sprite.bounds.extents.x - .5f;
+        tempPosition.x -= sprite.bounds.extents.x - .7f;
         tempPosition.y -= sprite.bounds.extents.y;
 
         RaycastHit2D hit1 = Physics2D.Raycast(tempPosition,
