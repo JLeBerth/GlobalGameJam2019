@@ -5,18 +5,20 @@ using UnityEngine.UI;
 
 public class Clickable : MonoBehaviour {
 
-    public Button saloon;
+    public GameObject saloon;
+    public GameObject shop;
+    public GameObject exit;
 
     // Use this for initialization
     void Start()
     {
-
+        shop.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        saloon.onClick.AddListener(Saloon);
+        // saloon.onClick.AddListener(Saloon);
     }
 
     public void Saloon()
@@ -25,15 +27,14 @@ public class Clickable : MonoBehaviour {
         
     }
 
-    private void OnMouseOver()
+    public void NextLevel()
     {
-        Debug.Log("Testing");
-    }
+        //exit.SetActive(false);
+        saloon.SetActive(false);
 
-    public void ChangeTint()
-    {
 
     }
+    
     
 
 

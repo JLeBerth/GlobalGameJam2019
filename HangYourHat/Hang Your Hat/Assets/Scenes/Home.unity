@@ -167,6 +167,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &263246207 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1602888763516640, guid: 76388af53cd87a6499f340597ff54d07,
+    type: 2}
+  m_PrefabInternal: {fileID: 2034142736}
 --- !u!1 &298908736
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,6 +366,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1478530396 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1863584247483554, guid: a617e0fe90672504ca6076bfc060476e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1909133281}
 --- !u!1 &1689703916
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +379,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1689703918}
+  - component: {fileID: 1689703917}
   m_Layer: 0
   m_Name: ButtonManager
   m_TagString: Untagged
@@ -376,6 +387,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1689703917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1689703916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e93b82aff2a824898044642944a9f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saloon: {fileID: 263246207}
+  shop: {fileID: 2063328996}
+  exit: {fileID: 1478530396}
 --- !u!4 &1689703918
 Transform:
   m_ObjectHideFlags: 0
@@ -473,3 +498,8 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76388af53cd87a6499f340597ff54d07, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &2063328996 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1239266279385078, guid: de505f3689a48474a9dcf9b2ea6ea87c,
+    type: 2}
+  m_PrefabInternal: {fileID: 932999823}
