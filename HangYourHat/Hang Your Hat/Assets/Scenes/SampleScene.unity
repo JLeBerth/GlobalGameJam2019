@@ -378,6 +378,8 @@ MonoBehaviour:
   acceleration: {x: 0, y: 0, z: 0}
   mousePos: {x: 0, y: 0, z: 0}
   playerToMouse: {x: 0, y: 0, z: 0}
+  scaleBy: {x: 0, y: 0, z: 0}
+  normalScale: {x: 0, y: 0, z: 0}
   bullet: {fileID: 0}
   pivotPoint: {fileID: 0}
   bulletSpawn: {fileID: 0}
