@@ -54,7 +54,11 @@ public class Saving : MonoBehaviour {
 
     public int ReturnLine(int characterSlot)
     {
-        Debug.Log(PlayerPrefs.GetInt("dialogue_CharacterSlot" + characterSlot));
-        return PlayerPrefs.GetInt("dialogue_CharacterSlot" + characterSlot);
+        if (hasSaved)
+        {
+            Debug.Log(PlayerPrefs.GetInt("dialogue_CharacterSlot" + characterSlot));
+            return PlayerPrefs.GetInt("dialogue_CharacterSlot" + characterSlot);
+        }
+        return -1;
     }
 }

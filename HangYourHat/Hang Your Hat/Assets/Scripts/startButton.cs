@@ -25,6 +25,13 @@ public class startButton : MonoBehaviour
     private void OnMouseDown()
     {
         Debug.Log("clicked");
-        csm.GetComponent<CutsceneManager>().StartGame();
+        if (csm.GetComponent<CutsceneManager>().currentLine == -1)
+        {
+            csm.GetComponent<CutsceneManager>().StartGame();
+        }
+        else
+        {
+            Debug.Log("FLOOPE)");
+        }
     }
 }

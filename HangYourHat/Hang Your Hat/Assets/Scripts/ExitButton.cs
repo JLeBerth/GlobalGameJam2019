@@ -5,14 +5,15 @@ using UnityEngine;
 public class ExitButton : MonoBehaviour {
 
     public SpriteRenderer render;
-
+    public Saving saver;
+    public TownGate tg;
     // This is the button manager.  Ignore the stupid script name
     public Clickable manager;
 
     // Use this for initialization
     void Start()
     {
-
+        saver.SaveLine(1, 12);
     }
 
     // Update is called once per frame
@@ -34,6 +35,8 @@ public class ExitButton : MonoBehaviour {
 
     private void OnMouseDown()
     {
+        tg.ChangeScene("StartScreen");
+        /*
         Debug.Log("Clicked");
         if (manager.exiting || manager.story)
         {
@@ -43,5 +46,6 @@ public class ExitButton : MonoBehaviour {
         {
             manager.NextLevel();
         }
+        */
     }
 }

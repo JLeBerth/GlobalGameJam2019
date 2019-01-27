@@ -703,6 +703,16 @@ Prefab:
       propertyPath: manager
       value: 
       objectReference: {fileID: 1689703917}
+    - target: {fileID: 114869622433281794, guid: a617e0fe90672504ca6076bfc060476e,
+        type: 2}
+      propertyPath: tg
+      value: 
+      objectReference: {fileID: 2016520384}
+    - target: {fileID: 114869622433281794, guid: a617e0fe90672504ca6076bfc060476e,
+        type: 2}
+      propertyPath: saver
+      value: 
+      objectReference: {fileID: 2066959853}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a617e0fe90672504ca6076bfc060476e, type: 2}
   m_IsPrefabAsset: 0

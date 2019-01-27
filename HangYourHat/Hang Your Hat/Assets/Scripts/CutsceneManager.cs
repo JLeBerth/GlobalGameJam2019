@@ -29,7 +29,7 @@ public class CutsceneManager : MonoBehaviour
         Orca.SetActive(false);
         dialogueActive = true;
         inScene = false;
-        dialogueBox.SetActive(true);
+        dialogueBox.SetActive(false);
         dialogue.Add("First Line!");
 
         myFont = (Font)Resources.Load("Fonts/Saddlebag", typeof(Font));
@@ -38,10 +38,16 @@ public class CutsceneManager : MonoBehaviour
         {
             thisBG.SetActive(false);
         }
-        currentLine = 0;
         backgrounds[2].SetActive(true);
         currentDialogue = dialogue[currentLine];
-        NextLine();
+        currentLine = saver.ReturnLine(1);
+        Debug.Log(currentLine);
+        if (currentLine != -1)
+        {
+            inScene = true;
+            UpdateFrame();
+        }
+              
 	}
 	
 	// Update is called once per frame
@@ -64,16 +70,9 @@ public class CutsceneManager : MonoBehaviour
         Debug.Log("clicked");
         if (!inScene)
         {
-            currentLine = saver.ReturnLine(1);
+            currentLine = 0;
             inScene = true;
-            if (currentLine == 0)
-            {
-                NextLine();
-            }
-            else
-            {
-                UpdateFrame();
-            }
+            NextLine();
         }
     }
     //switches to next line, or switches scenes
