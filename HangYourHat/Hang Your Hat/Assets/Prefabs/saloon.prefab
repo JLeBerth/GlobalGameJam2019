@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4929122244609048}
   - component: {fileID: 212330245212569182}
   - component: {fileID: 61914601447473954}
+  - component: {fileID: 114760872397312702}
   m_Layer: 0
   m_Name: saloon
   m_TagString: Untagged
@@ -66,6 +67,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 15, y: 7}
   m_EdgeRadius: 0
+--- !u!114 &114760872397312702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1602888763516640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9237c793fc6a46040ac236f3eb01ca7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  render: {fileID: 212330245212569182}
 --- !u!212 &212330245212569182
 SpriteRenderer:
   m_ObjectHideFlags: 1
