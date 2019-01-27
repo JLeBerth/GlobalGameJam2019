@@ -57,7 +57,7 @@ public class BulletManager : MonoBehaviour
 
                     if (hit.collider.gameObject.tag == "Enemy")
                     {
-                        //hit.collider.gameObject.GetCompnent<Enemy>().TakeDamage();
+                        hit.collider.gameObject.GetComponent<Enemy>().TakeDamage();
                     }
 
                     else if (hit.collider.gameObject.tag == "Bullet")
