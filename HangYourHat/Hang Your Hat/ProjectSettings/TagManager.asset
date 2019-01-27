@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Enemy
   - Bullet
+  - Miabode
+  - Level1
+  - Town1
+  - Level2
+  - GhostTown
   layers:
   - Default
   - TransparentFX

@@ -292,6 +292,7 @@ MonoBehaviour:
   offset: 0
   angle: 0
   bulletsTillReload: 6
+  maxBullets: 0
   baseHealth: 3
   currentHealth: 3
   reloadTime: 1
@@ -299,6 +300,7 @@ MonoBehaviour:
   falling: 0
   rolling: 0
   facingLeft: 0
+  reloading: 0
 --- !u!212 &394957832
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -358,11 +360,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &924791372 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1357669717469540, guid: 5cf040b7a692914419e51604e3abc24d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1142744102}
+--- !u!1001 &563398536
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4624811820549582, guid: bfc2673491c1c2e47b1afa5cfdd5b860, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624811820549582, guid: bfc2673491c1c2e47b1afa5cfdd5b860, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624811820549582, guid: bfc2673491c1c2e47b1afa5cfdd5b860, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624811820549582, guid: bfc2673491c1c2e47b1afa5cfdd5b860, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624811820549582, guid: bfc2673491c1c2e47b1afa5cfdd5b860, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624811820549582, guid: bfc2673491c1c2e47b1afa5cfdd5b860, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624811820549582, guid: bfc2673491c1c2e47b1afa5cfdd5b860, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624811820549582, guid: bfc2673491c1c2e47b1afa5cfdd5b860, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bfc2673491c1c2e47b1afa5cfdd5b860, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &1142744102
 Prefab:
   m_ObjectHideFlags: 0
@@ -413,8 +452,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1259564107}
-  - component: {fileID: 1259564106}
   - component: {fileID: 1259564108}
+  - component: {fileID: 1259564106}
   m_Layer: 0
   m_Name: Scene Manager
   m_TagString: Untagged
@@ -430,25 +469,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1259564105}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b79a02c74adc8cc42a51b6a1aceab81c, type: 3}
+  m_Script: {fileID: 11500000, guid: 659a200ecdd6cae4392e78ecaf2a5fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 0}
   playerScript: {fileID: 0}
-  playerObject: {fileID: 394957828}
+  playerObject: {fileID: 0}
   playerHealth: {fileID: 0}
   playerAmmo: {fileID: 0}
   playerBullets: []
   healthTextures: []
   bullets: []
-  enemyPrefab: {fileID: 1357669717469540, guid: 5cf040b7a692914419e51604e3abc24d,
-    type: 2}
-  enemies:
-  - {fileID: 924791372}
+  enemyPrefab: {fileID: 0}
+  enemies: []
   enemyObjectPlaceholder: {fileID: 0}
   enemyScript: {fileID: 0}
-  bulletPrefab: {fileID: 1157379710717696, guid: 2f360354bf6263c4c8e50e2b05ea3c8e,
-    type: 2}
+  enemyBulletPrefab: {fileID: 0}
   CM: {fileID: 0}
   saver: {fileID: 0}
   enemiesLeft: 0
@@ -479,4 +515,4 @@ MonoBehaviour:
   width: 0
   height: 0
   speed: 10
-  player: {fileID: 394957831}
+  player: {fileID: 0}
