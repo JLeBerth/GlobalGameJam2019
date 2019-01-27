@@ -127,7 +127,7 @@ public class Enemy : MonoBehaviour {
             // Shoot at player:
             if (currentShootTimer <= 0 && currentReloadTimer <= 0)
             {
-                gun.GetComponent<EnemyGun>().Animate();
+                gun.GetComponent<EnemyGun>().Animate(); 
                 GameObject b = Instantiate(_bullet,
                 bulletSpawn.transform.position,
                 Quaternion.identity);
