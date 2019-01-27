@@ -152,6 +152,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 61178280978467938, guid: 17270f42f289d0049b72f4c6d4644fae,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 61178280978467938, guid: 17270f42f289d0049b72f4c6d4644fae,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: -0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 114697087113136220, guid: 17270f42f289d0049b72f4c6d4644fae,
+        type: 2}
+      propertyPath: box
+      value: 
+      objectReference: {fileID: 515788073}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17270f42f289d0049b72f4c6d4644fae, type: 2}
   m_IsPrefabAsset: 0
@@ -209,6 +224,11 @@ Prefab:
 --- !u!1 &515788071 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1218680546445636, guid: 17270f42f289d0049b72f4c6d4644fae,
+    type: 2}
+  m_PrefabInternal: {fileID: 315226834}
+--- !u!61 &515788073 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 61178280978467938, guid: 17270f42f289d0049b72f4c6d4644fae,
     type: 2}
   m_PrefabInternal: {fileID: 315226834}
 --- !u!1 &519420028

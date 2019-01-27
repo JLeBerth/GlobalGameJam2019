@@ -15,7 +15,7 @@ public class Saving : MonoBehaviour {
 
 	}
 
-    public void SaveCharacter(Player toSave, CutsceneManager CM, SceneManager SM, int characterSlot)
+    public void SaveCharacter(Player toSave, CutsceneManager CM, SceneManagementScript SM, int characterSlot)
     {
         hasSaved = true;
 
@@ -25,15 +25,14 @@ public class Saving : MonoBehaviour {
         PlayerPrefs.SetFloat("yPos_CharacterSlot" + characterSlot, toSave.position.y);
 
         PlayerPrefs.SetInt("dialogue_CharacterSlot" + characterSlot, CM.currentLine);
-
-        PlayerPrefs.SetInt("enemiesLeft_CharacterSlot" + characterSlot, SM.enemies.Count);
+        
 
         // Upgrade System/ New Weapons/ Level player is on  --->  FOR FUTURE
 
         PlayerPrefs.Save();
     }
 
-    public void LoadCharacter(Player toLoad, CutsceneManager CM, SceneManager SM, int characterSlot)
+    public void LoadCharacter(Player toLoad, CutsceneManager CM, SceneManagementScript SM, int characterSlot)
     {
         if (hasSaved)
         {

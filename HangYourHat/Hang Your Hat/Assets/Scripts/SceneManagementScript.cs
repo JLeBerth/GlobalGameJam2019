@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneManager : MonoBehaviour {
+public class SceneManagementScript : MonoBehaviour {
 
     // Player Vars
     public GameObject playerPrefab;
@@ -37,8 +37,8 @@ public class SceneManager : MonoBehaviour {
     public int enemiesLeft;
 
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         rotationOffset = 1;
 
@@ -55,9 +55,9 @@ public class SceneManager : MonoBehaviour {
             AddEnemy(Random.Range(-10, 10), Random.Range(-5, 5));
         }*/
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
 
         // Player Updates
@@ -65,30 +65,31 @@ public class SceneManager : MonoBehaviour {
         {
             playerAmmo.transform.rotation = Quaternion.Euler(0, 0, 13.5f * rotationOffset);
             //playerAmmo.transform.rotation = Quaternion.Euler(0, 0, 18 * rotationOffset);
-            rotationOffset ++;
+            rotationOffset++;
             switch (rotationOffset)
             {
-                case 20: bullets[1].SetActive(true);
+                case 20:
+                    bullets[0].SetActive(true);
                     break;
 
                 case 40:
-                    bullets[2].SetActive(true);
+                    bullets[1].SetActive(true);
                     break;
 
                 case 60:
-                    bullets[3].SetActive(true);
+                    bullets[2].SetActive(true);
                     break;
 
                 case 80:
-                    bullets[4].SetActive(true);
+                    bullets[3].SetActive(true);
                     break;
 
                 case 100:
-                    bullets[5].SetActive(true);
+                    bullets[4].SetActive(true);
                     break;
 
                 case 120:
-                    bullets[6].SetActive(true);
+                    bullets[5].SetActive(true);
                     break;
             }
 
@@ -114,7 +115,7 @@ public class SceneManager : MonoBehaviour {
             if (!enemyScript.alive)
             {
                 //Increase cash (by 1 for testing)
-                coal++; 
+                coal++;
                 enemyObjectPlaceholder = enemies[i];
                 enemies.Remove(enemies[i]);
                 Destroy(enemyObjectPlaceholder);
@@ -127,7 +128,7 @@ public class SceneManager : MonoBehaviour {
             saver.SaveCharacter(playerScript, CM, this, 1);
             Debug.Log("save");
         }
-        
+
         if (Input.GetKeyDown(KeyCode.L))
         {
             saver.LoadCharacter(playerScript, CM, this, 1);
@@ -150,7 +151,7 @@ public class SceneManager : MonoBehaviour {
     /// </summary>
     private void SetHealthCounter()
     {
-        if(playerScript.currentHealth != lastFrameHealth)
+        if (playerScript.currentHealth != lastFrameHealth)
         {
             int currenthImage = playerScript.baseHealth - playerScript.currentHealth;
             playerHealth.GetComponent<SpriteRenderer>().sprite = healthTextures[currenthImage];
@@ -159,14 +160,14 @@ public class SceneManager : MonoBehaviour {
 
     private void SetBulletCounter()
     {
-        if(playerScript.bulletsTillReload != lastFrameBullets)
+        if (playerScript.bulletsTillReload != lastFrameBullets)
         {
             int numberBullets = (int)playerScript.bulletsTillReload;
-            for(int i=0; i< numberBullets; i++)
+            for (int i = 0; i < numberBullets; i++)
             {
                 bullets[i].SetActive(true);
             }
-            for(int y = numberBullets; y < 6; y++)
+            for (int y = numberBullets; y < 6; y++)
             {
                 bullets[y].SetActive(false);
             }
