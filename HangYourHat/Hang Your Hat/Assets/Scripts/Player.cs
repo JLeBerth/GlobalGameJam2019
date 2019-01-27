@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public Vector3 acceleration;            //the players acceleration added to velocity
     public Vector3 mousePos;                //locates where the mouse is
     public Vector3 playerToMouse;           //draws a line between the player and the mouse position
+    public Vector3 scaleBy;
+    public Vector3 normalScale;
     public GameObject bullet;               // The bullet
     public GameObject pivotPoint;           // The point at which the gun pivots in the hand
     public GameObject bulletSpawn;          // Point from the gun where the bullet spawns
@@ -53,6 +55,8 @@ public class Player : MonoBehaviour
         myBody = gameObject.GetComponent<Rigidbody2D>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
         box = gameObject.GetComponent<BoxCollider2D>();
+        scaleBy = new Vector3(1, 1, 1);
+        normalScale = transform.localScale;
         // distToGround = sprite.bounds.extents.y;
         // offset = distToGround + .01f;
 	}
@@ -113,21 +117,30 @@ public class Player : MonoBehaviour
             facingLeft = true;
         }
         
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.Space) && timer > 1f)
+        {
+            rolling = true;
+            Transform temp = GetComponentInChildren<Transform>();
+            Vector3 tempScale = temp.localScale;
+            transform.localScale = scaleBy;
+            temp.localScale = tempScale;
+            timer = 0;
+
+        }
+
+        if (rolling)
+        {
+            //transform.localScale = new Vector3(1, 1, 1);
+            animation.Play("Roll");
+        }
+        
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             animation.Play("walk");
         }
         else
         {
             animation.Play("Idle");
-        }
-
-
-        if (Input.GetKey(KeyCode.Space) && timer > .2f)
-        {
-            rolling = true;
-            timer = 0;
-
         }
 
 
@@ -186,9 +199,10 @@ public class Player : MonoBehaviour
 
         // Timer for roll
         timer += .01f;
-        if (rolling && timer >= .1f)
+        if (rolling && timer >= .2f)
         {
             rolling = false;
+            transform.localScale = normalScale;
         }
 
         // if rolling, then roll
