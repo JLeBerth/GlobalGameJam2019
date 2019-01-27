@@ -79,6 +79,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   render: {fileID: 212330245212569182}
+  manager: {fileID: 0}
+  saver: {fileID: 0}
+  tg: {fileID: 0}
 --- !u!212 &212330245212569182
 SpriteRenderer:
   m_ObjectHideFlags: 1

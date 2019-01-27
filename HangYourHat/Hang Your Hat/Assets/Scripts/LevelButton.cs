@@ -6,6 +6,7 @@ public class LevelButton : MonoBehaviour
 {
     public SpriteRenderer render;
     public int level;
+    public TownGate tg;
 	// Use this for initialization
 	void Start () {
 		
@@ -29,6 +30,6 @@ public class LevelButton : MonoBehaviour
 
     private void OnMouseDown()
     {
-        
+        tg.ChangeScene("Level1");
     }
 }

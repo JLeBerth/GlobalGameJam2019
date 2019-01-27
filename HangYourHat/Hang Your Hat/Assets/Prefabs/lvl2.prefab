@@ -80,6 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   render: {fileID: 212229119512783650}
   level: 2
+  tg: {fileID: 0}
 --- !u!212 &212229119512783650
 SpriteRenderer:
   m_ObjectHideFlags: 1

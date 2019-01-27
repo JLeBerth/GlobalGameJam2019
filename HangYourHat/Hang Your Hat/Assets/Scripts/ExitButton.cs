@@ -35,7 +35,7 @@ public class ExitButton : MonoBehaviour {
     private void OnMouseDown()
     {
         Debug.Log("Clicked");
-        if (manager.exiting)
+        if (manager.exiting || manager.story)
         {
             manager.Exit();
         }

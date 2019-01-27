@@ -7,6 +7,12 @@ public class SaloonButton : MonoBehaviour {
 
     public SpriteRenderer render;
 
+    public Clickable manager;
+
+    public Saving saver;
+
+    public TownGate tg;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -33,5 +39,14 @@ public class SaloonButton : MonoBehaviour {
     private void OnMouseDown()
     {
         Debug.Log("Clicked");
+        if (saver.ReturnLine(1)  == 0)
+        {
+            tg.ChangeScene("StartScreen");
+            // manager.Saloon();
+        }
+        else
+        {
+            // heal
+        }
     }
 }

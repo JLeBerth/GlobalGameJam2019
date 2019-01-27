@@ -10,6 +10,10 @@ public class Clickable : MonoBehaviour {
     public GameObject exit;
     public GameObject lvl1;
     public GameObject lvl2;
+    public GameObject saloon_bldg;
+
+    // Bool to see if story is active so the exit button knows what to do
+    public bool story;
 
     public GameObject bg;
 
@@ -23,6 +27,7 @@ public class Clickable : MonoBehaviour {
         shop.SetActive(false);
         lvl1.SetActive(false);
         lvl2.SetActive(false);
+        saloon_bldg.SetActive(false);
     }
 
     // Update is called once per frame
@@ -33,7 +38,9 @@ public class Clickable : MonoBehaviour {
 
     public void Saloon()
     {
-        Debug.Log("Clicked the saloon");
+        saloon_bldg.SetActive(true);
+        story = true;
+
         
     }
 
@@ -60,7 +67,9 @@ public class Clickable : MonoBehaviour {
 
         saloon.SetActive(true);
         bg.SetActive(true);
+        saloon_bldg.SetActive(false);
 
+        story = false;
         exiting = false;
     }
 
