@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour {
     public Rigidbody2D enemyRigid;  // Holds the enemy rigidBody
     public GameObject pivotPoint;   // Holds the pivotPoint for the gun
     public GameObject bulletSpawn;  // Where the bullet spawns
+    public GameObject gun;            // the gun
 
     // Floats
     public float playerDistance;   // Distance of the player from the enemy (DISTANCES MEASURED IN DISTANCE SQUARED)
@@ -126,6 +127,7 @@ public class Enemy : MonoBehaviour {
             // Shoot at player:
             if (currentShootTimer <= 0 && currentReloadTimer <= 0)
             {
+                gun.GetComponent<EnemyGun>().Animate(); 
                 GameObject b = Instantiate(_bullet,
                 bulletSpawn.transform.position,
                 Quaternion.identity);
