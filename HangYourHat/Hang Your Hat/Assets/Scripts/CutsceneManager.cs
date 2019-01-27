@@ -18,6 +18,8 @@ public class CutsceneManager : MonoBehaviour
     public GameObject Stetson;
     public GameObject Sherry;
     public GameObject Orca;
+    public GameObject Gunther;
+    public GameObject Sonny;
     public TownGate tg;
 
 
@@ -27,6 +29,8 @@ public class CutsceneManager : MonoBehaviour
         Stetson.SetActive(false);
         Sherry.SetActive(false);
         Orca.SetActive(false);
+        Gunther.SetActive(false);
+        Sonny.SetActive(false);
         dialogueActive = true;
         inScene = false;
         dialogueBox.SetActive(false);
@@ -126,7 +130,7 @@ public class CutsceneManager : MonoBehaviour
             case 12:
                 Stetson.SetActive(true);
                 Orca.SetActive(true);
-                backgrounds[5].SetActive(true);
+                backgrounds[6].SetActive(true);
                 dialogueBox.SetActive(true);
                 break;
             case 15:
@@ -172,6 +176,54 @@ public class CutsceneManager : MonoBehaviour
                 //transition to town code
                 tg.ChangeScene("Home");
                 break;
+            case 47:
+                backgrounds[7].SetActive(true);
+                Stetson.SetActive(true);
+                break;
+            case 48:
+                Gunther.SetActive(true);
+                Sonny.SetActive(true);
+                break;
+            case 49:
+                dialogueActive = false;
+                dialogueBox.SetActive(false);
+                break;
+            case 50:
+                dialogueActive = true;
+                dialogueBox.SetActive(true);
+                break;
+            case 68:
+                backgrounds[7].SetActive(false);
+                backgrounds[1].SetActive(true);
+                dialogueActive = false;
+                dialogueBox.SetActive(false);
+                break;
+            case 69:
+                dialogueActive = true;
+                dialogueBox.SetActive(true);
+                break;
+            case 96:
+                currentLine++;
+                tg.ChangeScene("Home");
+                break;
+            case 97:
+                backgrounds[1].SetActive(true);
+                Stetson.SetActive(true);
+                Sonny.SetActive(true);
+                break;
+            case 106:
+                dialogueActive = false;
+                dialogueBox.SetActive(false);
+                Sonny.SetActive(false);
+                break;
+            case 107:
+                dialogueActive = true;
+                dialogueBox.SetActive(true);
+                break;
+            case 108:
+                tg.ChangeScene("Home");
+                break;
+
 
             default:
                 break;

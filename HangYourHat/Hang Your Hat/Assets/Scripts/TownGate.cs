@@ -7,12 +7,9 @@ public class TownGate : MonoBehaviour {
     public Player player;
 
 	// Use this for initialization
-	void Start () {
-<<<<<<< HEAD
-        
-=======
->>>>>>> 1b30e4fc422ed8c62c2c5297e322926445cd30bc
-		
+	void Start ()
+    {
+
 	}
 	
 	// Update is called once per frame
