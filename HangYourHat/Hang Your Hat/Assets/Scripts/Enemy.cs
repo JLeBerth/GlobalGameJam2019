@@ -135,6 +135,7 @@ public class Enemy : MonoBehaviour {
                 b.transform.rotation = Quaternion.Euler(0, 0, angleRad + 180);
 
                 BulletManager.bullets.Add(b);
+                BulletManager.bulletDic.Add(b, "Enemy");
 
                 currentBullets -= 1;
 
