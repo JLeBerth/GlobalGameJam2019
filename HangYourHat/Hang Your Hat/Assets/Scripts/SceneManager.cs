@@ -28,6 +28,9 @@ public class SceneManager : MonoBehaviour {
     // Bullet Vars
     public GameObject enemyBulletPrefab;
 
+    //Currency Var
+    public static int coal;
+
     // Save Vars
     public CutsceneManager CM;
     public Saving saver;
@@ -43,6 +46,9 @@ public class SceneManager : MonoBehaviour {
         enemyScript = enemies[0].GetComponent<Enemy>();
 
         enemyScript.playerObject = playerObject;
+
+        //currency initialization
+        coal = 0;
 
         /*for (int i = 0; i < 10; i++)
         {
@@ -119,6 +125,8 @@ public class SceneManager : MonoBehaviour {
             // Enemy Dying
             if (!enemyScript.alive)
             {
+                //Increase cash (by 1 for testing)
+                coal++; 
                 enemyObjectPlaceholder = enemies[i];
                 enemies.Remove(enemies[i]);
                 Destroy(enemyObjectPlaceholder);
