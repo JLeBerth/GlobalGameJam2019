@@ -158,9 +158,9 @@ public class CutsceneManager : MonoBehaviour
                 Orca.SetActive(false);
                 break;
             case 30:
-                currentLine++;
                 //transition to town code
                 tg.ChangeScene("Home");
+                currentLine++;
                 break;
             case 31:
                 backgrounds[3].SetActive(true);
@@ -168,9 +168,9 @@ public class CutsceneManager : MonoBehaviour
                 Sherry.SetActive(true);
                 break;
             case 46:
-                currentLine++;
                 //transition to town code
                 tg.ChangeScene("Home");
+                currentLine++;
                 break;
 
             default:

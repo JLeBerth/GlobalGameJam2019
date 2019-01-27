@@ -7,11 +7,7 @@ public class TownGate : MonoBehaviour {
     public Player player;
 
 	// Use this for initialization
-	void Start () {
-<<<<<<< HEAD
-        
-=======
->>>>>>> 1b30e4fc422ed8c62c2c5297e322926445cd30bc
+	void Start () { 
 		
 	}
 	
@@ -42,6 +38,10 @@ public class TownGate : MonoBehaviour {
 
                     ChangeScene("StartScreen");
                 }
+                else
+                {
+                    ChangeScene("Home");
+                }
             }
             else if (this.tag == "Level2")
             {
@@ -49,8 +49,14 @@ public class TownGate : MonoBehaviour {
             }
             else if (this.tag == "GhostTown")
             {
-                ChangeScene("GhostTown");
-
+                if (CutsceneManager.currentLine == 46)
+                {
+                    ChangeScene("StartScreen");
+                }
+                else
+                {
+                    ChangeScene("Home");
+                }
             }
             else if (this.tag == "Cutscene") 
             {
