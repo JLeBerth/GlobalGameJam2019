@@ -30,14 +30,6 @@ public class CutsceneManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		if(Input.GetKeyDown(KeyCode.A))
-        {
-            dialogueBox.SetActive(false);
-        }
-        if(Input.GetKeyDown(KeyCode.B))
-        {
-            dialogueBox.SetActive(true);
-        }
         if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             NextLine();
@@ -55,6 +47,12 @@ public class CutsceneManager : MonoBehaviour
         {
             case 1:
                 backgrounds[0].SetActive(true);
+                break;
+            case 2:
+                backgrounds[0].SetActive(false);
+                backgrounds[1].SetActive(true);
+                break;
+            default:
                 break;
         }
 
