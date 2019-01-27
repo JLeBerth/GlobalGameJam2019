@@ -191,6 +191,7 @@ public class CutsceneManager : MonoBehaviour
                 currentLine++;
                 break;
             case 47:
+                AudioSource.PlayClipAtPoint(soundEffects[3], Vector3.zero);
                 backgrounds[7].SetActive(true);
                 Stetson.SetActive(true);
                 break;
@@ -199,6 +200,7 @@ public class CutsceneManager : MonoBehaviour
                 Sonny.SetActive(true);
                 break;
             case 49:
+                AudioSource.PlayClipAtPoint(soundEffects[3], Vector3.zero);
                 dialogueActive = false;
                 dialogueBox.SetActive(false);
                 break;
