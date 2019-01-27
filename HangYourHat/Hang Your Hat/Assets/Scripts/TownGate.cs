@@ -7,9 +7,8 @@ public class TownGate : MonoBehaviour {
     public Player player;
 
 	// Use this for initialization
-	void Start ()
-    {
-
+	void Start () { 
+		
 	}
 	
 	// Update is called once per frame
@@ -39,6 +38,10 @@ public class TownGate : MonoBehaviour {
 
                     ChangeScene("StartScreen");
                 }
+                else
+                {
+                    ChangeScene("Home");
+                }
             }
             else if (this.tag == "Level2")
             {
@@ -46,8 +49,14 @@ public class TownGate : MonoBehaviour {
             }
             else if (this.tag == "GhostTown")
             {
-                ChangeScene("GhostTown");
-
+                if (CutsceneManager.currentLine == 46)
+                {
+                    ChangeScene("StartScreen");
+                }
+                else
+                {
+                    ChangeScene("Home");
+                }
             }
             else if (this.tag == "Cutscene") 
             {
