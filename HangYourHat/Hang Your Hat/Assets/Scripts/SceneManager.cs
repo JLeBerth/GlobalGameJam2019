@@ -59,18 +59,6 @@ public class SceneManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (enemyScript.bShoot)
-        {
-            playerObject.GetComponent<SpriteRenderer>().color = Color.red;
-        }
-        else if (enemyScript.bWander)
-        {
-            playerObject.GetComponent<SpriteRenderer>().color = Color.blue;
-        }
-        else
-        {
-            playerObject.GetComponent<SpriteRenderer>().color = Color.white;
-        }
 
         // Player Updates
         if (playerScript.reloading)
