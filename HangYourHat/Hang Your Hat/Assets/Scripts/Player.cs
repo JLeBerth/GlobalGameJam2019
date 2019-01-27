@@ -209,7 +209,7 @@ public class Player : MonoBehaviour
     public RaycastHit2D IsGrounded()
     {
 
-        LayerMask mask = LayerMask.GetMask("Terrain");
+        LayerMask mask = LayerMask.GetMask("Collision");
         tempPosition = transform.position;
 
         // tempPosition.y -= offset;
@@ -321,6 +321,21 @@ public class Player : MonoBehaviour
     public void PlayerDeath()
     {
 
+    }
+
+    /// <summary>
+    /// Causes the player to take damage
+    /// </summary>
+    public void TakeDamage()
+    {
+        if (!rolling)
+        {
+            currentHealth--;
+        }
+        if (currentHealth <= 0)
+        {
+            PlayerDeath();
+        }
     }
 
     /// <summary>

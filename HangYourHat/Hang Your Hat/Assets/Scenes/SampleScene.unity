@@ -122,11 +122,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4308382289369572, guid: 17270f42f289d0049b72f4c6d4644fae, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -10.32
+      value: -8.62
       objectReference: {fileID: 0}
     - target: {fileID: 4308382289369572, guid: 17270f42f289d0049b72f4c6d4644fae, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.68
+      value: -1.35
       objectReference: {fileID: 0}
     - target: {fileID: 4308382289369572, guid: 17270f42f289d0049b72f4c6d4644fae, type: 2}
       propertyPath: m_LocalPosition.z
@@ -205,6 +205,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: dcaf361e66fb2a74680fb629e62e032d, type: 2}
+    - target: {fileID: 1357669717469540, guid: 5cf040b7a692914419e51604e3abc24d, type: 2}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cf040b7a692914419e51604e3abc24d, type: 2}
   m_IsPrefabAsset: 0
@@ -527,7 +531,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1041510018956866, guid: 6def3d131f629354bacd870cb6ace4db, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4945219723448380, guid: 6def3d131f629354bacd870cb6ace4db, type: 2}
       propertyPath: m_LocalScale.x
@@ -602,6 +606,7 @@ MonoBehaviour:
   width: 0
   height: 0
   speed: 10
+  player: {fileID: 114697087113136220, guid: 17270f42f289d0049b72f4c6d4644fae, type: 2}
 --- !u!4 &2110987827
 Transform:
   m_ObjectHideFlags: 0

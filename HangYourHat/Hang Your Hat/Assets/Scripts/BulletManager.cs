@@ -12,7 +12,8 @@ public class BulletManager : MonoBehaviour
     public float height;
     public static List<GameObject> bullets;
     public float speed;
-    LayerMask mask;
+    private LayerMask mask;
+    public Player player;
 
 
 
@@ -29,7 +30,7 @@ public class BulletManager : MonoBehaviour
         height = 2f * cam.orthographicSize;
         width = height * cam.aspect;
 
-        mask = LayerMask.GetMask("Terrain");
+        mask = LayerMask.GetMask("Collision");
     }
 	
 	// Update is called once per frame
@@ -53,6 +54,23 @@ public class BulletManager : MonoBehaviour
                     GameObject tempBullet = bullets[i];
                     bullets.Remove(bullets[i]);
                     Destroy(tempBullet);
+
+                    if (hit.collider.gameObject.tag == "Enemy")
+                    {
+                        //hit.collider.gameObject.GetCompnent<Enemy>().TakeDamage();
+                    }
+
+                    else if (hit.collider.gameObject.tag == "Bullet")
+                    {
+                        GameObject tempBullet2 = hit.collider.gameObject;
+                        bullets.Remove(hit.collider.gameObject);
+                        Destroy(tempBullet2);
+                    }
+                    else if (hit.collider.gameObject.tag == "Player")
+                    {
+                        //hit player
+                        player.TakeDamage();
+                    }
                     Debug.Log("This shit ded");
                 }
 

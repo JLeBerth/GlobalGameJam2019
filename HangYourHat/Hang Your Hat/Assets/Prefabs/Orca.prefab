@@ -24,9 +24,9 @@ GameObject:
   - component: {fileID: 61542537617981826}
   - component: {fileID: 114107218071417636}
   - component: {fileID: 95480082826938260}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Orca
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,6 +195,7 @@ MonoBehaviour:
   moveRight: 0
   moveLeft: 0
   backToStart: 0
+  alive: 0
   health: 3
 --- !u!212 &212308836499630506
 SpriteRenderer:
