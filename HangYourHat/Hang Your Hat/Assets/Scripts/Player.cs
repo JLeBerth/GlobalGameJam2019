@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     public float offset;                    // This is so the raycast never hits its own collider
     public float angle;
     public float bulletsTillReload;        //the number of times the player may shoot before reloading
+    public float maxBullets;                // the number of bullets the player can hold, max
 
 
     public int baseHealth;                  //the total amount of health the player has
@@ -47,6 +48,7 @@ public class Player : MonoBehaviour
     public bool falling;                    //boolean of whether the player is currently falling
     public bool rolling;                    // Boolean of whether the player is currently rolling
     public bool facingLeft;
+    public bool reloading;
 
 	// Use this for initialization
 	void Start ()
@@ -101,6 +103,34 @@ public class Player : MonoBehaviour
                 // Add bullet to manager list
                 BulletManager.bullets.Add(b);
             }
+            else
+            {
+                if (!reloading)
+                {
+                    Reload();
+                }
+            }
+        }
+
+        // Reloading
+        if (Input.GetMouseButton(1) || Input.GetKey(KeyCode.R))
+        {
+            if (!reloading)
+            {
+                Reload();
+            }
+        }
+        if (reloading)
+        {
+            timeReloading -= Time.deltaTime;
+
+            if (timeReloading <= 0)
+            {
+                bulletsTillReload = maxBullets;
+                reloading = false;
+            }
+
+            Debug.Log("RELOOOADING!!!");
         }
 
         // moving right
@@ -224,6 +254,12 @@ public class Player : MonoBehaviour
         //move player after calculations
         
 
+    }
+
+    public void Reload()
+    {
+        timeReloading = reloadTime;
+        reloading = true;
     }
 
     /// <summary>
@@ -352,10 +388,8 @@ public class Player : MonoBehaviour
     /// </summary>
     public void TakeDamage()
     {
-        Debug.Log("Maybe Ouch");
         if (!rolling)
         {
-            Debug.Log("Ouchi Ouch");
             currentHealth--;
         }
         if (currentHealth <= 0)

@@ -17,6 +17,7 @@ public class SceneManager : MonoBehaviour {
     public List<GameObject> bullets;
     private float lastFrameBullets;
     private int lastFrameHealth;
+    private int rotationOffset;
 
     // Enemy Vars
     public GameObject enemyPrefab;
@@ -36,6 +37,8 @@ public class SceneManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        rotationOffset = 1;
+
         playerScript = playerObject.GetComponent<Player>();
         enemyScript = enemies[0].GetComponent<Enemy>();
 
@@ -63,6 +66,45 @@ public class SceneManager : MonoBehaviour {
             playerObject.GetComponent<SpriteRenderer>().color = Color.white;
         }
 
+        // Player Updates
+        if (playerScript.reloading)
+        {
+            playerAmmo.transform.rotation = Quaternion.Euler(0, 0, 13.5f * rotationOffset);
+            //playerAmmo.transform.rotation = Quaternion.Euler(0, 0, 18 * rotationOffset);
+            rotationOffset ++;
+            switch (rotationOffset)
+            {
+                case 20: bullets[1].SetActive(true);
+                    break;
+
+                case 40:
+                    bullets[2].SetActive(true);
+                    break;
+
+                case 60:
+                    bullets[3].SetActive(true);
+                    break;
+
+                case 80:
+                    bullets[4].SetActive(true);
+                    break;
+
+                case 100:
+                    bullets[5].SetActive(true);
+                    break;
+
+                case 120:
+                    bullets[6].SetActive(true);
+                    break;
+            }
+
+        }
+        else
+        {
+            playerAmmo.transform.rotation = Quaternion.Euler(0, 0, 0);
+            rotationOffset = 1;
+        }
+
         // Enemy Updates
         for (int i = 0; i < enemies.Count; i++)
         {
@@ -87,12 +129,16 @@ public class SceneManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.K))
         {
             saver.SaveCharacter(playerScript, CM, this, 1);
+            Debug.Log("save");
         }
         
         if (Input.GetKeyDown(KeyCode.L))
         {
-            saver.SaveCharacter(playerScript, CM, this, 1);
+            saver.LoadCharacter(playerScript, CM, this, 1);
+            Debug.Log("load");
         }
+
+        // GUI Updates
 
         //update bullet count
         SetBulletCounter();

@@ -111,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1218680546445636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.86, y: 0.93, z: 0}
+  m_LocalPosition: {x: -7.17, y: -1.38, z: 0}
   m_LocalScale: {x: 0.38403553, y: 0.38403553, z: 0.38403553}
   m_Children:
   - {fileID: 4300350019909990}
@@ -233,6 +233,7 @@ MonoBehaviour:
   offset: 0
   angle: 0
   bulletsTillReload: 6
+  maxBullets: 6
   baseHealth: 3
   currentHealth: 3
   reloadTime: 2
@@ -240,6 +241,7 @@ MonoBehaviour:
   falling: 0
   rolling: 0
   facingLeft: 0
+  reloading: 0
 --- !u!212 &212009871767139646
 SpriteRenderer:
   m_ObjectHideFlags: 1

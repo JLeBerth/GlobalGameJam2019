@@ -17,6 +17,8 @@ public class CutsceneManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        dialogue.Add("First Line!");
+
         myFont = (Font)Resources.Load("Fonts/Saddlebag", typeof(Font));
         fontMaterial = (Material)Resources.Load("Materials/Text_Mat", typeof(Material));
         foreach(GameObject thisBG in backgrounds)
