@@ -11,6 +11,7 @@ TagManager:
   - Town1
   - Level2
   - GhostTown
+  - Cutscene
   layers:
   - Default
   - TransparentFX

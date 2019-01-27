@@ -1,7 +1,19 @@
 fileFormatVersion: 2
 guid: ce24bafee324cbc4db3714bbb25f18e4
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Pride_and_Accomplish_0
+    21300002: Pride_and_Accomplish_1
+    21300004: Pride_and_Accomplish_2
+    21300006: Pride_and_Accomplish_3
+    21300008: Pride_and_Accomplish_4
+    21300010: Pride_and_Accomplish_5
+    21300012: Pride_and_Accomplish_6
+    21300014: Pride_and_Accomplish_7
+    21300016: Pride_and_Accomplish_8
+    21300018: Pride_and_Accomplish_9
+    21300020: Pride_and_Accomplish_10
+    21300022: Pride_and_Accomplish_11
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -40,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -69,9 +81,282 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Pride_and_Accomplish_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 225.75
+        width: 75.333336
+        height: 75.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 710cccb764c3fe34fa33ab79f2e11ce8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pride_and_Accomplish_1
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 225.75
+        width: 75.333336
+        height: 75.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bae230c823b628848885a4a0e474bae4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pride_and_Accomplish_2
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 225.75
+        width: 75.333336
+        height: 75.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c035d631450c4d41924f9e2fafa12b3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pride_and_Accomplish_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 150.75
+        width: 75.333336
+        height: 75.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9baab6bde25c6b458394666e5b336d6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pride_and_Accomplish_4
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 150.75
+        width: 75.333336
+        height: 75.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8dd81a9547a8584eadb34e14ec0e30d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pride_and_Accomplish_5
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 150.75
+        width: 75.333336
+        height: 75.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca2f6621c43c79b48bea9ccb91c07139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pride_and_Accomplish_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 75.75
+        width: 75.333336
+        height: 75.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 389c294c83b58e24b88444eaf8b03a25
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pride_and_Accomplish_7
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 75.75
+        width: 75.333336
+        height: 75.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c5b88748e6d44e4996327827dc23fd8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pride_and_Accomplish_8
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 75.75
+        width: 75.333336
+        height: 75.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88488f0211f88d44ea4daf663fcb6ffb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pride_and_Accomplish_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.75
+        width: 75.333336
+        height: 75.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 369395bfb0e8c86479b8e41a9ba69b3e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pride_and_Accomplish_10
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 0.75
+        width: 75.333336
+        height: 75.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5ca7ddf062006545a27b71cba74a540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pride_and_Accomplish_11
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0.75
+        width: 75.333336
+        height: 75.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a406e2c2801b4ad48b0411f982e4df03
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

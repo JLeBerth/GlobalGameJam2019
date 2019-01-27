@@ -67,13 +67,17 @@ public class BulletManager : MonoBehaviour
 
                 if (hit.collider != null)
                 {
-                    GameObject tempBullet = bullets[i];
+
+                    /*GameObject tempBullet = bullets[i];
                     bullets.Remove(bullets[i]);
-                    Destroy(tempBullet);
+                    Destroy(tempBullet);*/
 
                     if (hit.collider.gameObject.tag == "Enemy")
                     {
                         hit.collider.gameObject.GetComponent<Enemy>().TakeDamage();
+                        GameObject tempBullet = bullets[i];
+                        bullets.Remove(bullets[i]);
+                        Destroy(tempBullet);
                     }
 
                     else if (hit.collider.gameObject.tag == "Bullet")
@@ -81,11 +85,26 @@ public class BulletManager : MonoBehaviour
                         GameObject tempBullet2 = hit.collider.gameObject;
                         bullets.Remove(hit.collider.gameObject);
                         Destroy(tempBullet2);
+                        GameObject tempBullet = bullets[i];
+                        bullets.Remove(bullets[i]);
+                        Destroy(tempBullet);
                     }
                     else if (hit.collider.gameObject.tag == "Player")
                     {
                         //hit player
                         player.GetComponent<Player>().TakeDamage();
+                        if (!player.GetComponent<Player>().rolling)
+                        {
+                            GameObject tempBullet = bullets[i];
+                            bullets.Remove(bullets[i]);
+                            Destroy(tempBullet);
+                        }
+                    }
+                    else
+                    {
+                        GameObject tempBullet = bullets[i];
+                        bullets.Remove(bullets[i]);
+                        Destroy(tempBullet);
                     }
                 }
 

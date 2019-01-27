@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
     public int currentHealth;               //the current remaining health the player has
     public int gunUsage;
     public Dictionary<string, bool> guns;    //all the possible guns to have, and which you have
+    public List<GameObject> gunsList;           // all possible guns
 
     public double reloadTime;               //the amount of time it takes to reload the current gun
     public double timeReloading;            //the amount of time passed since reloading started
@@ -348,21 +349,68 @@ public class Player : MonoBehaviour
             case 0: bulletsTillReload = 6;
                 maxBullets = 6;
 
+                for (int i = 0; i < gunsList.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        gunsList[i].SetActive(true);
+                    }
+                    else
+                    {
+                        gunsList[i].SetActive(false);
+                    }
+                }
                 break;
 
             case 1:
                 bulletsTillReload = 12;
                 maxBullets = 12;
+
+                for (int i = 0; i < gunsList.Count; i++)
+                {
+                    if (i == 1)
+                    {
+                        gunsList[i].SetActive(true);
+                    }
+                    else
+                    {
+                        gunsList[i].SetActive(false);
+                    }
+                }
                 break;
 
             case 2:
                 bulletsTillReload = 6;
                 maxBullets = 6;
+
+                for (int i = 0; i < gunsList.Count; i++)
+                {
+                    if (i == 2)
+                    {
+                        gunsList[i].SetActive(true);
+                    }
+                    else
+                    {
+                        gunsList[i].SetActive(false);
+                    }
+                }
                 break;
 
             case 3:
                 bulletsTillReload = 6;
                 maxBullets = 6;
+
+                for (int i = 0; i < gunsList.Count; i++)
+                {
+                    if (i == 3)
+                    {
+                        gunsList[i].SetActive(true);
+                    }
+                    else
+                    {
+                        gunsList[i].SetActive(false);
+                    }
+                }
                 break;
 
         }

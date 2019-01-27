@@ -1,15 +1,13 @@
 fileFormatVersion: 2
-guid: 179de64a1e735a04b9ab8d9e0f792194
+guid: d21dd7d239205514498845ee2b4a0faf
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Hemingway_0
-    21300002: Hemingway_1
-    21300004: Hemingway_2
-    21300006: Hemingway_3
-    21300008: Hemingway_4
-    21300010: Hemingway_5
-    21300012: Hemingway_6
-    21300014: Hemingway_7
+    21300000: Golden_Ratio_0
+    21300002: Golden_Ratio_1
+    21300004: Golden_Ratio_2
+    21300006: Golden_Ratio_3
+    21300008: Golden_Ratio_4
+    21300010: Golden_Ratio_5
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -114,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hemingway_0
+      name: Golden_Ratio_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 225.75
-        width: 141
-        height: 75.25
+        y: 250
+        width: 62
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,39 +126,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5945bf891d401724f9076f85f5fd37c4
+      spriteID: 334e8ba0ea2f03c4bbdcf757b5fa7d10
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hemingway_1
-      rect:
-        serializedVersion: 2
-        x: 141
-        y: 225.75
-        width: 141
-        height: 75.25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eb1e92dea93635341a0f2163c29c0e12
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hemingway_2
+      name: Golden_Ratio_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 150.75
-        width: 141
-        height: 75.25
+        y: 200
+        width: 62
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,39 +146,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9db8f26bd22ea7a459ff3a8dd442bb07
+      spriteID: 86b45e5c29799394c827c99391c058c6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hemingway_3
-      rect:
-        serializedVersion: 2
-        x: 141
-        y: 150.75
-        width: 141
-        height: 75.25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 318d89991bb87b04d94bf91591d3d175
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hemingway_4
+      name: Golden_Ratio_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 75.75
-        width: 141
-        height: 75.25
+        y: 150
+        width: 62
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,39 +166,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2fbb807517ce3dc499989e1189b0b5b4
+      spriteID: 0e02113b3f927a64cacece0404d09716
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hemingway_5
-      rect:
-        serializedVersion: 2
-        x: 141
-        y: 75.75
-        width: 141
-        height: 75.25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 050712be581380d409ce79c6d53f24d4
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hemingway_6
+      name: Golden_Ratio_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 0.75
-        width: 141
-        height: 75.25
+        y: 100
+        width: 62
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -248,19 +186,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afe9123f15dc1ca43b8e3490a94b4af3
+      spriteID: bbf884e229eeb634aa54572ac2f76a75
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hemingway_7
+      name: Golden_Ratio_4
       rect:
         serializedVersion: 2
-        x: 141
-        y: 0.75
-        width: 141
-        height: 75.25
+        x: 0
+        y: 50
+        width: 62
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,7 +206,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0fca5775cb9b77439f5e8b388ee8b43
+      spriteID: 3ed2d4711ba185b4586388c2634fb59d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden_Ratio_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 62
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f42dada81fd22d4594c10cf0dc2a007
       vertices: []
       indices: 
       edges: []
@@ -276,7 +234,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c7ed9917d8e8ada4f9f86acd2f740424
+    spriteID: 4e668e2bacb31074bb6365ca51c1d8e0
     vertices: []
     indices: 
     edges: []

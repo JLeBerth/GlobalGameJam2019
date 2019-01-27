@@ -36,6 +36,10 @@ public class TownGate : MonoBehaviour {
                 ChangeScene("GhostTown");
 
             }
+            else if (this.tag == "Cutscene") 
+            {
+                ChangeScene("StartScreen");
+            }
         }
 	}
 
