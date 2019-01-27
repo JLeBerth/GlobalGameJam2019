@@ -18,6 +18,10 @@ public class startButton : MonoBehaviour
 		
 	}
 
+    private void OnMouseEnter()
+    {
+        Debug.Log("Hover");
+    }
     private void OnMouseDown()
     {
         Debug.Log("clicked");

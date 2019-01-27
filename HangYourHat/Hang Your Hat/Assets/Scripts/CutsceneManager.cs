@@ -15,14 +15,20 @@ public class CutsceneManager : MonoBehaviour
     public Saving saver;
     bool inScene;
     bool dialogueActive;
+    public GameObject Stetson;
+    public GameObject Sherry;
+    public GameObject Orca;
 
 
 	// Use this for initialization
 	void Start ()
     {
+        Stetson.SetActive(false);
+        Sherry.SetActive(false);
+        Orca.SetActive(false);
         dialogueActive = true;
         inScene = false;
-        dialogueBox.SetActive(false);
+        dialogueBox.SetActive(true);
         dialogue.Add("First Line!");
 
         myFont = (Font)Resources.Load("Fonts/Saddlebag", typeof(Font));
@@ -88,21 +94,77 @@ public class CutsceneManager : MonoBehaviour
         {
             case 1:
                 inScene = true;
-                dialogueBox.SetActive(true);
-                backgrounds[0].SetActive(true);
+                dialogueActive = false;
+                dialogueBox.SetActive(false);
                 backgrounds[2].SetActive(false);
                 break;
             case 2:
-                dialogueBox.SetActive(false);
-                dialogueActive = false;
+                backgrounds[0].SetActive(true);
+                Stetson.SetActive(true);
+                break;
+            case 3:
+                dialogueBox.SetActive(true);
+                dialogueActive = true;
+                break;
+            case 5:
                 backgrounds[0].SetActive(false);
                 backgrounds[1].SetActive(true);
                 break;
+            case 11:
+                saver.SaveLine(1, currentLine+1);
+                //transition to town code
+                break;
+            case 12:
+                Stetson.SetActive(true);
+                Orca.SetActive(true);
+                backgrounds[6].SetActive(true);
+                break;
+            case 15:
+                saver.SaveLine(1, currentLine + 1);
+                //transition to level1 code
+                break;
+            case 16:
+                Stetson.SetActive(true);
+                backgrounds[5].SetActive(true);
+                dialogueActive = false;
+                dialogueBox.SetActive(false);
+                break;
+            case 17:
+                dialogueActive = true;
+                dialogueBox.SetActive(true);
+                break;
+            case 25:
+                backgrounds[5].SetActive(false);
+                backgrounds[4].SetActive(true);
+                Sherry.SetActive(true);
+                Orca.SetActive(true);
+                dialogueActive = false;
+                dialogueBox.SetActive(false);
+                break;
+            case 26:
+                dialogueActive = true;
+                dialogueBox.SetActive(true);
+                Orca.SetActive(false);
+                break;
+            case 30:
+                saver.SaveLine(1, currentLine + 1);
+                //transition to town code
+                break;
+            case 31:
+                backgrounds[3].SetActive(true);
+                Stetson.SetActive(true);
+                Sherry.SetActive(true);
+                break;
+            case 46:
+                saver.SaveLine(1, currentLine + 1);
+                //transition to town code
+                break;
+
             default:
                 break;
         }
 
-        if (dialogueActive)
+        if (!dialogueActive)
         {
             currentDialogue = " ";
         }
