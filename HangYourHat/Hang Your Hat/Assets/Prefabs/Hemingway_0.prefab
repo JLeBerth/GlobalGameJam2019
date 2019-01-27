@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 95493464909325962}
+  player: {fileID: 0}
 --- !u!212 &212728640845361136
 SpriteRenderer:
   m_ObjectHideFlags: 1

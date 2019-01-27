@@ -71,19 +71,22 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (CutsceneManager.currentLine > 50)
         {
-            gunUsage++;
-            if (gunUsage < guns.Count)
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-                Debug.Log("Change To: " + gunUsage);
-                ChangeGun(gunUsage);
+                gunUsage++;
+                if (gunUsage < guns.Count)
+                {
+                    Debug.Log("Change To: " + gunUsage);
+                    ChangeGun(gunUsage);
+                }
+                else
+                {
+                    ChangeGun(0);
+                }
+
             }
-            else
-            {
-                ChangeGun(0);
-            }
-            
         }
 
         acceleration = Vector3.zero;

@@ -7,7 +7,7 @@ public class CutsceneManager : MonoBehaviour
     public AudioClip[] soundEffects;
     public List<string> dialogue;
     private string currentDialogue;
-    public int currentLine;
+    public static int currentLine = -1;
     public GameObject dialogueBox;
     public List<GameObject> backgrounds;
     private Font myFont;
@@ -31,7 +31,6 @@ public class CutsceneManager : MonoBehaviour
         inScene = false;
         dialogueBox.SetActive(false);
         dialogue.Add("First Line!");
-
         myFont = (Font)Resources.Load("Fonts/Saddlebag", typeof(Font));
         fontMaterial = (Material)Resources.Load("Materials/Text_Mat", typeof(Material));
         foreach(GameObject thisBG in backgrounds)
@@ -39,11 +38,12 @@ public class CutsceneManager : MonoBehaviour
             thisBG.SetActive(false);
         }
         backgrounds[2].SetActive(true);
-        currentDialogue = dialogue[currentLine];
-        currentLine = saver.ReturnLine(1);
+        currentDialogue = dialogue[0];
         Debug.Log(currentLine);
         if (currentLine != -1)
         {
+            backgrounds[2].SetActive(false);
+            dialogueBox.SetActive(true);
             inScene = true;
             UpdateFrame();
         }
@@ -58,6 +58,13 @@ public class CutsceneManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
                 NextLine();
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+            {
+                StartGame();
             }
         }
         
@@ -118,7 +125,8 @@ public class CutsceneManager : MonoBehaviour
             case 12:
                 Stetson.SetActive(true);
                 Orca.SetActive(true);
-                backgrounds[6].SetActive(true);
+                backgrounds[5].SetActive(true);
+                dialogueBox.SetActive(true);
                 break;
             case 15:
                 saver.SaveLine(1, currentLine + 1);
@@ -185,6 +193,6 @@ public class CutsceneManager : MonoBehaviour
         textStyle.font.material = fontMaterial;
         textStyle.fontSize = 30;
         GUI.backgroundColor = Color.clear;
-        GUI.Box(new Rect(105, 380, Screen.width - 200, Screen.height), currentDialogue, textStyle);
+        GUI.Box(new Rect(Screen.width  / 10f, Screen.height - (Screen.height /4), Screen.width - 2* (Screen.width / 13f), Screen.height), currentDialogue, textStyle);
     }
 }

@@ -24,7 +24,7 @@ public class Saving : MonoBehaviour {
         PlayerPrefs.SetFloat("xPos_CharacterSlot" + characterSlot, toSave.position.x);
         PlayerPrefs.SetFloat("yPos_CharacterSlot" + characterSlot, toSave.position.y);
 
-        PlayerPrefs.SetInt("dialogue_CharacterSlot" + characterSlot, CM.currentLine);
+        PlayerPrefs.SetInt("dialogue_CharacterSlot" + characterSlot, CutsceneManager.currentLine);
         
 
         // Upgrade System/ New Weapons/ Level player is on  --->  FOR FUTURE
@@ -41,7 +41,7 @@ public class Saving : MonoBehaviour {
             toLoad.position.x = PlayerPrefs.GetFloat("xPos_CharacterSlot" + characterSlot);
             toLoad.position.y = PlayerPrefs.GetFloat("yPos_CharacterSlot" + characterSlot);
 
-            CM.currentLine = PlayerPrefs.GetInt("dialogue_CharacterSlot" + characterSlot);
+            CutsceneManager.currentLine = PlayerPrefs.GetInt("dialogue_CharacterSlot" + characterSlot);
 
         }
     }
