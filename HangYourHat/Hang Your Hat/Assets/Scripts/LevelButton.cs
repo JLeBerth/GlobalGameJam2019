@@ -30,6 +30,14 @@ public class LevelButton : MonoBehaviour
 
     private void OnMouseDown()
     {
-        tg.ChangeScene("Level1");
+        if (CutsceneManager.currentLine == 12)
+        {
+            tg.ChangeScene("StartScreen");
+
+        }
+        else
+        {
+            tg.ChangeScene("Level1");
+        }
     }
 }

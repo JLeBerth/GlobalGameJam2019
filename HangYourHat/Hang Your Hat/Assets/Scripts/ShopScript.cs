@@ -6,6 +6,8 @@ public class ShopScript : MonoBehaviour {
 
     public SpriteRenderer render;
 
+    public Clickable manager;
+
     // Use this for initialization
     void Start()
     {
@@ -32,5 +34,6 @@ public class ShopScript : MonoBehaviour {
     private void OnMouseDown()
     {
         Debug.Log("Clicked");
+        manager.Shop();
     }
 }

@@ -8,7 +8,7 @@ public class TownGate : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        CutsceneManager.currentLine = 55;
+        //CutsceneManager.currentLine = 55;
 		
 	}
 	
@@ -34,7 +34,11 @@ public class TownGate : MonoBehaviour {
             }
             else if (this.tag == "Town1")
             {
-                ChangeScene("Town1");
+                if (CutsceneManager.currentLine == 16)
+                {
+
+                    ChangeScene("StartScreen");
+                }
             }
             else if (this.tag == "Level2")
             {

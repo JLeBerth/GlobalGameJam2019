@@ -12,16 +12,19 @@ public class Clickable : MonoBehaviour {
     public GameObject lvl2;
     public GameObject saloon_bldg;
     public GameObject shop_bldg;
+    public GameObject unlock;
 
     // Bool to see if story is active so the exit button knows what to do
     public bool story;
+
+    public bool hasUnlocked;
 
     public GameObject bg;
 
     public Saving saver;
     public Player player;
 
-    CutsceneManager csm;
+    // public CutsceneManager csm;
 
     // Stores what line the dialogue is currently on
     public int line;
@@ -36,21 +39,24 @@ public class Clickable : MonoBehaviour {
         saloon_bldg.SetActive(false);
         shop_bldg.SetActive(false);
         saloon.SetActive(false);
+        unlock.SetActive(false);
+        hasUnlocked = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        line = saver.ReturnLine(1);
+        line = CutsceneManager.currentLine;
         // saloon.onClick.AddListener(Saloon);
-        if (line >= 30)
+        if (line >= 30 && !exiting)
         {
             saloon.SetActive(true);
         }
 
-        if (line >= 50)
+        if (line >= 50 && !exiting)
         {
             shop.SetActive(true);
+            
         }
     }
 
@@ -65,6 +71,13 @@ public class Clickable : MonoBehaviour {
     public void Shop()
     {
         shop_bldg.SetActive(true);
+        if (!hasUnlocked)
+        {
+            Debug.Log("There's no way");
+            unlock.SetActive(true);
+            hasUnlocked = true;
+        }
+        // unlock.SetActive(true);
         story = true;
     }
 
@@ -80,12 +93,9 @@ public class Clickable : MonoBehaviour {
         {
             lvl2.SetActive(true);
         }
+            shop.SetActive(false);
 
-        if (line > 50)
-        {
-            shop.SetActive(true);
-
-        }
+        
 
         bg.SetActive(false);
 
@@ -112,6 +122,7 @@ public class Clickable : MonoBehaviour {
         }
         bg.SetActive(true);
         shop_bldg.SetActive(false);
+        unlock.SetActive(false);
         saloon_bldg.SetActive(false);
 
         story = false;

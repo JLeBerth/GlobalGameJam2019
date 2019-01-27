@@ -39,7 +39,7 @@ public class SaloonButton : MonoBehaviour {
     private void OnMouseDown()
     {
         Debug.Log("Clicked");
-        if (saver.ReturnLine(1)  == 31)
+        if (CutsceneManager.currentLine  == 31)
         {
             tg.ChangeScene("StartScreen");
             

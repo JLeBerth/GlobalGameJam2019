@@ -86,6 +86,7 @@ public class CutsceneManager : MonoBehaviour
     public void NextLine()
     {
         currentLine++;
+        Debug.Log(currentLine);
         saver.SaveLine(1, currentLine);
         UpdateFrame();
 
@@ -118,7 +119,7 @@ public class CutsceneManager : MonoBehaviour
                 backgrounds[1].SetActive(true);
                 break;
             case 11:
-                saver.SaveLine(1, currentLine+1);
+                currentLine++;
                 //transition to town code
                 tg.ChangeScene("Home");
                 break;
@@ -129,7 +130,7 @@ public class CutsceneManager : MonoBehaviour
                 dialogueBox.SetActive(true);
                 break;
             case 15:
-                saver.SaveLine(1, currentLine + 1);
+                currentLine++;
                 //transition to level1 code
                 tg.ChangeScene("Level1");
                 break;
@@ -157,7 +158,7 @@ public class CutsceneManager : MonoBehaviour
                 Orca.SetActive(false);
                 break;
             case 30:
-                saver.SaveLine(1, currentLine + 1);
+                currentLine++;
                 //transition to town code
                 tg.ChangeScene("Home");
                 break;
@@ -167,7 +168,7 @@ public class CutsceneManager : MonoBehaviour
                 Sherry.SetActive(true);
                 break;
             case 46:
-                saver.SaveLine(1, currentLine + 1);
+                currentLine++;
                 //transition to town code
                 tg.ChangeScene("Home");
                 break;
