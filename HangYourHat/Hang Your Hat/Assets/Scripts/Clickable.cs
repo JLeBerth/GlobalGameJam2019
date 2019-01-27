@@ -22,6 +22,19 @@ public class Clickable : MonoBehaviour {
     public void Saloon()
     {
         Debug.Log("Clicked the saloon");
+        
     }
+
+    private void OnMouseOver()
+    {
+        Debug.Log("Testing");
+    }
+
+    public void ChangeTint()
+    {
+
+    }
+    
+
 
 }

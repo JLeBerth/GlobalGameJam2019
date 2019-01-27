@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4677767036293046}
   - component: {fileID: 212390143644016790}
   - component: {fileID: 61480545732510218}
+  - component: {fileID: 114392776834599002}
   m_Layer: 0
   m_Name: shop
   m_TagString: Untagged
@@ -66,6 +67,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 15, y: 7}
   m_EdgeRadius: 0
+--- !u!114 &114392776834599002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1239266279385078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac42d02e8aae0b4392baa42b722b683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  render: {fileID: 212390143644016790}
 --- !u!212 &212390143644016790
 SpriteRenderer:
   m_ObjectHideFlags: 1
