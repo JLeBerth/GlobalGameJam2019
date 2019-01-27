@@ -175,7 +175,7 @@ public class Enemy : MonoBehaviour {
 
         if (bWander && !bShoot) // If the player is close enough, do below code
         {
-            if (enemyPosition.x >= startPos.x + 5f)
+            if (enemyPosition.x >= startPos.x + 2f)
             {
                 backToStart = true;
             }
@@ -187,13 +187,13 @@ public class Enemy : MonoBehaviour {
             // Move left
             if (backToStart)
             {
-                ApplyForce(new Vector3(-1f, 0f, 0f));
+                ApplyForce(new Vector3(-2f, 0f, 0f));
                 //Debug.Log("left");
             }
             // Move right
             else if (backToStart == false)
             {
-                ApplyForce(new Vector3(1f, 0f, 0f));
+                ApplyForce(new Vector3(2f, 0f, 0f));
                 //Debug.Log("right");
             }
         }
