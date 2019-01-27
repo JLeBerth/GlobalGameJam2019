@@ -122,11 +122,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4308382289369572, guid: 17270f42f289d0049b72f4c6d4644fae, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -8.62
+      value: -4.76
       objectReference: {fileID: 0}
     - target: {fileID: 4308382289369572, guid: 17270f42f289d0049b72f4c6d4644fae, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.35
+      value: 1.06
       objectReference: {fileID: 0}
     - target: {fileID: 4308382289369572, guid: 17270f42f289d0049b72f4c6d4644fae, type: 2}
       propertyPath: m_LocalPosition.z
@@ -174,7 +174,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4282555261331044, guid: 5cf040b7a692914419e51604e3abc24d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5.4
+      value: 5.72
       objectReference: {fileID: 0}
     - target: {fileID: 4282555261331044, guid: 5cf040b7a692914419e51604e3abc24d, type: 2}
       propertyPath: m_LocalPosition.y
@@ -216,6 +216,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cf040b7a692914419e51604e3abc24d, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &515788071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1218680546445636, guid: 17270f42f289d0049b72f4c6d4644fae,
+    type: 2}
+  m_PrefabInternal: {fileID: 315226834}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +231,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -240,6 +246,22 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9142c25675fb6f4fa54a4410de487c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 8
+  position: 7
+  player: {fileID: 515788071}
+  speed: 0.15
+  camSpeed: {x: 0, y: 0, z: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -618,7 +640,7 @@ MonoBehaviour:
   width: 0
   height: 0
   speed: 10
-  player: {fileID: 114697087113136220, guid: 17270f42f289d0049b72f4c6d4644fae, type: 2}
+  player: {fileID: 0}
 --- !u!4 &2110987827
 Transform:
   m_ObjectHideFlags: 0
