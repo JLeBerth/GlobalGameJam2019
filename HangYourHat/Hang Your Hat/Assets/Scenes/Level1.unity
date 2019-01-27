@@ -539,6 +539,9 @@ MonoBehaviour:
   player: {fileID: 957435488}
   speed: 0.15
   camSpeed: {x: 0, y: 0, z: 0}
+  levelSize: 96
+  camWidth: 0
+  startPos: {x: 0, y: 0, z: 0}
 --- !u!1001 &1125982788
 Prefab:
   m_ObjectHideFlags: 0
