@@ -17,25 +17,30 @@ public class TownGate : MonoBehaviour {
         {
             if (this.tag == "Miabode")
             {
-                SceneManager.LoadScene("Home");
+                ChangeScene("Home");
             }
             else if (this.tag == "Level1")
             {
-                SceneManager.LoadScene("Level1");
+                ChangeScene("Level1");
             }
             else if (this.tag == "Town1")
             {
-                SceneManager.LoadScene("Town1");
+                ChangeScene("Town1");
             }
             else if (this.tag == "Level2")
             {
-                SceneManager.LoadScene("Level2");
+                ChangeScene("Level2");
             }
             else if (this.tag == "GhostTown")
             {
-                SceneManager.LoadScene("GhostTown");
+                ChangeScene("GhostTown");
 
             }
         }
 	}
+
+    public void ChangeScene(string sceneTag)
+    {
+        SceneManager.LoadScene(sceneTag);
+    }
 }

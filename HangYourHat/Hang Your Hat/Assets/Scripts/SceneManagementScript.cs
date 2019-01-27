@@ -69,27 +69,27 @@ public class SceneManagementScript : MonoBehaviour {
             switch (rotationOffset)
             {
                 case 20:
-                    bullets[1].SetActive(true);
+                    bullets[0].SetActive(true);
                     break;
 
                 case 40:
-                    bullets[2].SetActive(true);
+                    bullets[1].SetActive(true);
                     break;
 
                 case 60:
-                    bullets[3].SetActive(true);
+                    bullets[2].SetActive(true);
                     break;
 
                 case 80:
-                    bullets[4].SetActive(true);
+                    bullets[3].SetActive(true);
                     break;
 
                 case 100:
-                    bullets[5].SetActive(true);
+                    bullets[4].SetActive(true);
                     break;
 
                 case 120:
-                    bullets[6].SetActive(true);
+                    bullets[5].SetActive(true);
                     break;
             }
 
