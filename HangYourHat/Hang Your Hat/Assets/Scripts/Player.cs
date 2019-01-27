@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Animator animation;
     public Rigidbody2D myBody;              //players rigidBody
     public BoxCollider2D box;               // Player's box collider
     public SpriteRenderer sprite;           // The player sprite
@@ -110,6 +111,15 @@ public class Player : MonoBehaviour
         {
             ApplyForce(new Vector2(-maxVelocity, 0));
             facingLeft = true;
+        }
+        
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            animation.Play("walk");
+        }
+        else
+        {
+            animation.Play("Idle");
         }
 
 
