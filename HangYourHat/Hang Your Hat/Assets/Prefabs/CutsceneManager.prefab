@@ -102,6 +102,78 @@ MonoBehaviour:
   - 'Sherry: The liquor''s free.'
   - Sound of dart hitting board
   - Debug line transition to town
+  - Stetson's final bullet rings true as the last bandit dies. He finds himself the
+    lone soul in this abandonded town
+  - From around the corner sprints a man and a child, pursued by a ghostly spectre
+    of the town's past
+  - '*gun sound*'
+  - Smoke swirls from Stetson's gun as his silver bullet rips through the spectre's
+    form and reduces it to nothingness
+  - 'Man: Nice shot, stranger.'
+  - 'Stetson: Was like shooting the side of a barn.'
+  - 'Man: What brings you to Sole Municipality?'
+  - 'Stetson: Just passing through.'
+  - 'Man: Oh, where are you going?'
+  - 'Stetson: Don''t know.'
+  - 'Man: It''s dangerous out there, you shouldn''t go alone. I''ll tell you what,
+    I''m a gunsmith. I notice your revolver is looking a bit rough. I can fix it up
+    for you.'
+  - 'Stetson: How much?'
+  - 'Man: Consider it a returned favor for saving me and my son. We can tag along
+    with you-'
+  - 'Stetson: No, you shouldn''t.'
+  - 'Man: Um-'
+  - 'Stetson: You can go to Neobode, there''s no ghosts flying around there.'
+  - 'Man: Neobode, sounds like Me-abode. Eh?'
+  - 'Stetson: *unamused* Very funny.'
+  - 'Man: We should head back there then, before it gets too dark. Which direction,
+    mysterious stranger?'
+  - 'Stetson: This way, and the name''s Stetson.'
+  - 'Gunther: Gunther, nice to meet you.'
+  - Transition to Neobode
+  - 'Stetson: Here it is. Hope you don''t have to stay long, it''s a mess around here.'
+  - 'Gunther: It ain''t too bad, kinda homey.'
+  - 'Stetson: Don''t let the rats get you down.'
+  - 'Gunther: I think it''s workable real estate. What do you think, Sonny?'
+  - 'Sonny: It''s bigger than any house I''ve ever seen!'
+  - 'Gunther: *laughs*'
+  - 'Stetson: You think you''re gonna stay?'
+  - 'Gunther: Maybe. I can stay anywhere as long as I''m with Sonny.'
+  - 'Sonny: We''re staying for sure!'
+  - 'Gunther: *nods* We''re staying for sure.'
+  - 'Stetson: Well, I''m not going to stop you. You can set up shop...in the shop.'
+  - 'Gunther: Creative.'
+  - 'Sherry: Look who it is! Stet, how was the adventure? I see you made friends.'
+  - 'Stetson: Don''t worry, Sherry, I won''t be here much longer. Just enough for
+    Gunther here to fix De Confianza.'
+  - 'Sherry: So a gunsmith! Good to see the economy of Neobode is booming!'
+  - 'Gunther: Yep, gunsmith by trade. Stetson saved my life, least I can do is fix
+    up his gun.'
+  - 'Sherry: Ah, so you''re a hero, Stet?'
+  - 'Stetson: As much as you''re a sheriff.'
+  - 'Sherry: That''s low, even for you.'
+  - 'Stetson: I''m gonna head out again tonight. We ran out of whiskey.'
+  - 'Gunther: Stop by before you go, I''m working on a new gun.'
+  - 'Stetson: I''ll check in. Where''d your son go?'
+  - 'Gunther: Oh, he probably ran off. He likes wandering around, gets it from his
+    dad. Heh.'
+  - 'Sherry: Don''t let him get too far. There''s bandits everywhere.'
+  - 'Gunther: He can handle himself. He knows not to go too far.'
+  - 'Stetson: See you tonight.'
+  - 'Sherry and Gunther: See ya.'
+  - Stetson is about to leave town again
+  - 'Sonny: *holding toy gun* Reach for the sky!'
+  - 'Stetson: Watch where you''re pointing that thing! *chuckles* I''m the straightest
+    shot in Colorado.'
+  - 'Sonny: Prove it!'
+  - 'Stetson: *unholsters his revolver with lightning speed*'
+  - 'Sonny: Woah! Cool!'
+  - 'Stetson: If you were six years older, you''d be six feet under.'
+  - 'Sonny: Haha!'
+  - 'Stetson: I''ll see you around, kid. I''m heading out.'
+  - 'Sonny: See you later, mister!'
+  - '*Sonny leaves*'
+  - 'Stetson: Nice that kids can still be kids.'
   - Text Changed
   - Text Changed
   - Text Changed
@@ -124,41 +196,16 @@ MonoBehaviour:
   - Text Changed
   - Text Changed
   - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  - Text Changed
-  currentLine: 0
   dialogueBox: {fileID: 0}
   backgrounds:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   saver: {fileID: 0}
+  Stetson: {fileID: 0}
+  Sherry: {fileID: 0}
+  Orca: {fileID: 0}
+  tg: {fileID: 0}

@@ -8,7 +8,6 @@ public class TownGate : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        CutsceneManager.currentLine = 55;
 		
 	}
 	
