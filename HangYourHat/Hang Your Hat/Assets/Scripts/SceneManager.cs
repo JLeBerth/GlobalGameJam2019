@@ -9,6 +9,15 @@ public class SceneManager : MonoBehaviour {
     public Player playerScript;
     public GameObject playerObject;
 
+    //guiElements
+    public GameObject playerHealth;
+    public GameObject playerAmmo;
+    public List<Sprite> playerBullets;
+    public List<Sprite> healthTextures;
+    public List<GameObject> bullets;
+    private int lastFrameBullets;
+    private int lastFrameHealth;
+
     // Enemy Vars
     public GameObject enemyPrefab;
     public List<GameObject> enemies = new List<GameObject>();   // List to hold all enemies in scene
@@ -82,8 +91,40 @@ public class SceneManager : MonoBehaviour {
         {
             saver.SaveCharacter(playerScript, CM, this, 1);
         }
+
+        //update bullet count
+        SetBulletCounter();
+        //update health count
+        SetHealthCounter();
     }
 
+    /// <summary>
+    /// Changes on screen sprite to match the players current health
+    /// </summary>
+    private void SetHealthCounter()
+    {
+        if(playerScript.currentHealth < lastFrameHealth)
+        {
+            int currenthImage = playerScript.baseHealth - playerScript.currentHealth;
+            playerHealth.GetComponent<SpriteRenderer>().sprite = healthTextures[currenthImage];
+        }
+    }
+
+    private void SetBulletCounter()
+    {
+        if(playerScript.bulletsTillReload < lastFrameBullets)
+        {
+            int numberBullets = (int)playerScript.bulletsTillReload;
+            for(int i=0; i< numberBullets; i++)
+            {
+                bullets[i].SetActive(true);
+            }
+            for(int y = numberBullets; numberBullets < 6; y++)
+            {
+                bullets[y].SetActive(false);
+            }
+        }
+    }
     // Add enemies to the scene
     private void AddEnemy(int x, int y)
     {
