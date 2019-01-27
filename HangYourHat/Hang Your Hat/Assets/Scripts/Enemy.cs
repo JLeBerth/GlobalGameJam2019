@@ -188,13 +188,13 @@ public class Enemy : MonoBehaviour {
             if (backToStart)
             {
                 ApplyForce(new Vector3(-1f, 0f, 0f));
-                Debug.Log("left");
+                //Debug.Log("left");
             }
             // Move right
             else if (backToStart == false)
             {
                 ApplyForce(new Vector3(1f, 0f, 0f));
-                Debug.Log("right");
+                //Debug.Log("right");
             }
         }
         else

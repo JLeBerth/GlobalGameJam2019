@@ -82,25 +82,25 @@ public class Player : MonoBehaviour
         // Shooting
         if (Input.GetMouseButtonDown(0))
         {
-            
-            Debug.Log("FIRE!");
-            //Make GameObject from Bullet prefab
-            GameObject b = Instantiate(bullet, 
-                bulletSpawn.transform.position, 
-                Quaternion.identity);
-            // Get angle of fire
-            // Change bullet's transform.forward to the angle of fire
-            // b.transform.up = playerToMouse;
+            if (bulletsTillReload > 0)
+            {
+                bulletsTillReload--;
+                //Make GameObject from Bullet prefab
+                GameObject b = Instantiate(bullet,
+                    bulletSpawn.transform.position,
+                    Quaternion.identity);
+                // Get angle of fire
+                // Change bullet's transform.forward to the angle of fire
+                // b.transform.up = playerToMouse;
 
-            angle = Mathf.Atan2(playerToMouse.y, playerToMouse.x);
-            
-            b.transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * angle);
+                angle = Mathf.Atan2(playerToMouse.y, playerToMouse.x);
 
+                b.transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * angle);
+                
 
-            Debug.Log(Mathf.Rad2Deg * angle);
-            
-            // Add bullet to manager list
-            BulletManager.bullets.Add(b);
+                // Add bullet to manager list
+                BulletManager.bullets.Add(b);
+            }
         }
 
         // moving right
@@ -267,12 +267,12 @@ public class Player : MonoBehaviour
         // If they are both of equal(ish) distance, then you can fall off a platform
         if ((hit2.distance < hit1.distance && hit2.collider != null) || (hit1.collider == null && hit2.collider != null))
         {
-            Debug.Log("return hit2 during check");
+            //Debug.Log("return hit2 during check");
             return hit2;
         }
         else if ((hit1.distance < hit2.distance && hit1.collider != null)|| (hit2.collider == null && hit1.collider != null))
         {
-            Debug.Log("return hit1 during check");
+            //Debug.Log("return hit1 during check");
             return hit1;
         }
         
@@ -352,8 +352,10 @@ public class Player : MonoBehaviour
     /// </summary>
     public void TakeDamage()
     {
+        Debug.Log("Maybe Ouch");
         if (!rolling)
         {
+            Debug.Log("Ouchi Ouch");
             currentHealth--;
         }
         if (currentHealth <= 0)

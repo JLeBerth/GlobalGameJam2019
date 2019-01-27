@@ -13,7 +13,7 @@ public class BulletManager : MonoBehaviour
     public static List<GameObject> bullets;
     public float speed;
     private LayerMask mask;
-    public Player player;
+    public GameObject player;
 
 
 
@@ -36,12 +36,13 @@ public class BulletManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        Debug.Log(bullets.Count);
+
         if (bullets.Count > 0)
         {
             for  (int i = 0; i < bullets.Count; i++)
             {
                 bullets[i].transform.Translate(speed * bullets[i].transform.right * Time.deltaTime, Space.World);
-                Debug.Log("Speed: " + speed * bullets[i].transform.right * Time.deltaTime);
                 
 
                 hit = Physics2D.Raycast(bullets[i].transform.position,
@@ -69,9 +70,8 @@ public class BulletManager : MonoBehaviour
                     else if (hit.collider.gameObject.tag == "Player")
                     {
                         //hit player
-                        player.TakeDamage();
+                        player.GetComponent<Player>().TakeDamage();
                     }
-                    Debug.Log("This shit ded");
                 }
 
 

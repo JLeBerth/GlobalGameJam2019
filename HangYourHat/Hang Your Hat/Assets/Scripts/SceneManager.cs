@@ -15,7 +15,7 @@ public class SceneManager : MonoBehaviour {
     public List<Sprite> playerBullets;
     public List<Sprite> healthTextures;
     public List<GameObject> bullets;
-    private int lastFrameBullets;
+    private float lastFrameBullets;
     private int lastFrameHealth;
 
     // Enemy Vars
@@ -25,7 +25,7 @@ public class SceneManager : MonoBehaviour {
     public Enemy enemyScript;
 
     // Bullet Vars
-    public GameObject bulletPrefab;
+    public GameObject enemyBulletPrefab;
 
     // Save Vars
     public CutsceneManager CM;
@@ -34,7 +34,9 @@ public class SceneManager : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
+        playerScript = playerObject.GetComponent<Player>();
         enemyScript = enemies[0].GetComponent<Enemy>();
 
         enemyScript.playerObject = playerObject;
@@ -46,7 +48,8 @@ public class SceneManager : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         if (enemyScript.bShoot)
         {
             playerObject.GetComponent<SpriteRenderer>().color = Color.red;
@@ -67,7 +70,7 @@ public class SceneManager : MonoBehaviour {
 
             enemyScript.playerDistance = enemyScript.GetDistanceSqrd(playerObject);
 
-            enemyScript.Shoot(playerObject, bulletPrefab); // Shoots at the player if they are nearby
+            enemyScript.Shoot(playerObject, enemyBulletPrefab); // Shoots at the player if they are nearby
 
             enemyScript.Wander(); // Wanders if player is nearby
 
@@ -95,6 +98,9 @@ public class SceneManager : MonoBehaviour {
         SetBulletCounter();
         //update health count
         SetHealthCounter();
+
+        lastFrameBullets = playerScript.bulletsTillReload;
+        lastFrameHealth = playerScript.currentHealth;
     }
 
     /// <summary>
@@ -102,7 +108,7 @@ public class SceneManager : MonoBehaviour {
     /// </summary>
     private void SetHealthCounter()
     {
-        if(playerScript.currentHealth < lastFrameHealth)
+        if(playerScript.currentHealth != lastFrameHealth)
         {
             int currenthImage = playerScript.baseHealth - playerScript.currentHealth;
             playerHealth.GetComponent<SpriteRenderer>().sprite = healthTextures[currenthImage];
@@ -111,14 +117,14 @@ public class SceneManager : MonoBehaviour {
 
     private void SetBulletCounter()
     {
-        if(playerScript.bulletsTillReload < lastFrameBullets)
+        if(playerScript.bulletsTillReload != lastFrameBullets)
         {
             int numberBullets = (int)playerScript.bulletsTillReload;
             for(int i=0; i< numberBullets; i++)
             {
                 bullets[i].SetActive(true);
             }
-            for(int y = numberBullets; numberBullets < 6; y++)
+            for(int y = numberBullets; y < 6; y++)
             {
                 bullets[y].SetActive(false);
             }
