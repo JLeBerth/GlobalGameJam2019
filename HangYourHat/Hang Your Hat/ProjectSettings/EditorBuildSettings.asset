@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GhostTown.unity
     guid: 6bcfe4647b42c7646ab6689162969082
+  - enabled: 1
+    path: Assets/Scenes/Home.unity
+    guid: 58b513635ff71834f8e10ceefdb16f73
   m_configObjects: {}

@@ -1,0 +1,164 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1002005337009894}
+  m_IsPrefabAsset: 1
+--- !u!1 &1002005337009894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4622887587613110}
+  - component: {fileID: 114250179682526772}
+  m_Layer: 0
+  m_Name: CutsceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4622887587613110
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1002005337009894}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.75703305, y: -1.2028384, z: 0.17773438}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114250179682526772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1002005337009894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b78f3a4962080e54884b8bb20e447571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffects: []
+  dialogue:
+  - ' '
+  - '*Explosion*'
+  - '*Room fades in, Stetson appears*'
+  - 'Stetson: Now where did I put it'
+  - 'Stetson: Great'
+  - 'Stetson: Sherry, I need the keys to the saloon.'
+  - 'Stetson: Sherry?'
+  - 'Stetson: Where the hell is she'
+  - '...'
+  - 'Stetson: Huh must''ve skipped town. But where to?'
+  - 'Stetson: Looks like the day''s finally come.'
+  - DEBUG LINE TRANSITION TO TOWN HERE
+  - 'Stetson: Even lonelier here then it was in town.'
+  - '???: WhErE''s YoUr CoAl MeAtBaG?'
+  - ' '
+  - Debut Line Transition to level one
+  - '...'
+  - 'Stetson: Pleasant place.'
+  - 'Stetson: You, where''s the saloon.'
+  - '???: Down the way and to the left, probably shouldn''t look for a drink.'
+  - ???:There's been a brawl a brewing in the bar. Some enforcer's been trying to
+    stop some bandits.
+  - 'Stetson: Blue scarf?'
+  - The local nods.
+  - 'Stetson: Dealth with worse on the way here, I need a drink.'
+  - 'Stetson: She better have the keys.'
+  - '*gunshot noise as fades to saloon*'
+  - Stetson watches as the final bandit is dispatched
+  - 'Sherry: Nice of you to show up Stet, couldn''t go an afternoon dry?'
+  - 'Stetson: Keys to my saloon, and the name ain''t stet.'
+  - 'Sherry: What, you didn''t come here to see me? Don''t worry about it, i''ll Unlock
+    the door when we get home.'
+  - Debug line transition to home
+  - 'Stetson: I''ll be hitting the north road at noon.'
+  - 'Sherry: Where are you off to this time?'
+  - 'Stetson: Why you want to tag along?'
+  - 'Sherry: Nah, I like it here.'
+  - 'Stetson: What''s to like about Neobode?'
+  - 'Sherry: See that dart board over there?'
+  - '...'
+  - 'Sherry: I remember when I was a kid, me and my mother would come here every weekend.'
+  - 'Sherry: We would see who could get the highest score. It was never me.'
+  - 'Sherry: Well, it''s the little things.'
+  - 'Stetson: Looks like i''ll be taking that win.'
+  - 'Sherry: I''ll leave the saloon unlocked for when you get back.'
+  - 'Stetson: What makes you think I''m coming back?'
+  - 'Sherry: The liquor''s free.'
+  - Sound of dart hitting board
+  - Debug line transition to town
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  - Text Changed
+  currentLine: 0
+  dialogueBox: {fileID: 0}
+  backgrounds:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  saver: {fileID: 0}
