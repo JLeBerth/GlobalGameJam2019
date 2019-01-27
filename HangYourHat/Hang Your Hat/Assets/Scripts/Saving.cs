@@ -44,7 +44,18 @@ public class Saving : MonoBehaviour {
 
             CM.currentLine = PlayerPrefs.GetInt("dialogue_CharacterSlot" + characterSlot);
 
-            SM.enemiesLeft = PlayerPrefs.GetInt("enemiesLeft_CharacterSlot" + characterSlot);
         }
+    }
+
+
+    public void SaveLine(int characterSlot, int line)
+    {
+        PlayerPrefs.SetInt("dialogue_CharacterSlot" + characterSlot, line);
+    }
+
+    public int ReturnLine(int characterSlot)
+    {
+        Debug.Log(PlayerPrefs.GetInt("dialogue_CharacterSlot" + characterSlot));
+        return PlayerPrefs.GetInt("dialogue_CharacterSlot" + characterSlot);
     }
 }

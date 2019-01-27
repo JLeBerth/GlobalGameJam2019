@@ -12,11 +12,13 @@ public class CutsceneManager : MonoBehaviour
     public List<GameObject> backgrounds;
     private Font myFont;
     private Material fontMaterial;
+    public Saving saver;
 
 
 	// Use this for initialization
 	void Start ()
     {
+        dialogueBox.SetActive(false);
         dialogue.Add("First Line!");
 
         myFont = (Font)Resources.Load("Fonts/Saddlebag", typeof(Font));
@@ -26,6 +28,11 @@ public class CutsceneManager : MonoBehaviour
             thisBG.SetActive(false);
         }
         currentLine = 0;
+
+        if(currentLine == 0)
+        {
+            backgrounds[2].SetActive(true);
+        }
         currentDialogue = dialogue[currentLine];
 	}
 	
@@ -34,7 +41,33 @@ public class CutsceneManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-            NextLine();
+            //if (currentLine != 0)
+            //{
+                NextLine();
+            //}
+        }
+
+        if (Input.GetKeyDown(KeyCode.S)) 
+        {
+            saver.SaveLine(1, currentLine);
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            currentLine = saver.ReturnLine(1);
+            currentDialogue = dialogue[currentLine];
+
+            switch (currentLine)
+            {
+                case 1:
+                    backgrounds[0].SetActive(true);
+                    break;
+                case 2:
+                    backgrounds[0].SetActive(false);
+                    backgrounds[1].SetActive(true);
+                    break;
+                default:
+                    break;
+            }
         }
 
 	}
@@ -43,6 +76,16 @@ public class CutsceneManager : MonoBehaviour
     public void NextLine()
     {
         currentLine++;
+        UpdateFrame();
+
+        
+    }
+
+    /// <summary>
+    /// Changes the current display to match the current lines frame
+    /// </summary>
+    public void UpdateFrame()
+    {
         currentDialogue = dialogue[currentLine];
 
         switch (currentLine)
@@ -57,10 +100,7 @@ public class CutsceneManager : MonoBehaviour
             default:
                 break;
         }
-
-        
     }
-
     private void OnGUI()
     {
         GUIStyle textStyle = new GUIStyle();
