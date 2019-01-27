@@ -11,9 +11,11 @@ public class BulletManager : MonoBehaviour
     public float width;
     public float height;
     public static List<GameObject> bullets;
+    public static Dictionary<GameObject, string> bulletDic = new Dictionary<GameObject, string>();
     public float speed;
     private LayerMask mask;
     public GameObject player;
+    public float goldRatVar;
 
 
 
@@ -31,6 +33,8 @@ public class BulletManager : MonoBehaviour
         width = height * cam.aspect;
 
         mask = LayerMask.GetMask("Collision");
+
+        goldRatVar = 0;
     }
 	
 	// Update is called once per frame
@@ -43,7 +47,18 @@ public class BulletManager : MonoBehaviour
             for  (int i = 0; i < bullets.Count; i++)
             {
                 bullets[i].transform.Translate(speed * bullets[i].transform.right * Time.deltaTime, Space.World);
-                
+
+                Debug.Log("Using " + player.GetComponent<Player>().gunUsage);
+
+                if (player.GetComponent<Player>().gunUsage == 3 && bulletDic[bullets[i]] == "Player")
+                {
+                    bullets[i].transform.rotation = Quaternion.Euler(0, 0, 10 * goldRatVar);
+
+                    float rotation = .2f;
+                    goldRatVar += rotation;
+
+                    Debug.Log("Scroove");
+                }
 
                 hit = Physics2D.Raycast(bullets[i].transform.position,
                     bullets[i].transform.right,

@@ -34,12 +34,14 @@ public class Player : MonoBehaviour
     public float distToGround;              //Distance from the center of the sprite to the ground
     public float offset;                    // This is so the raycast never hits its own collider
     public float angle;
-    public float bulletsTillReload;        //the number of times the player may shoot before reloading
+    public float bulletsTillReload;         //the number of times the player may shoot before reloading
     public float maxBullets;                // the number of bullets the player can hold, max
 
 
     public int baseHealth;                  //the total amount of health the player has
     public int currentHealth;               //the current remaining health the player has
+    public int gunUsage;
+    public Dictionary<string, bool> guns;    //all the possible guns to have, and which you have
 
     public double reloadTime;               //the amount of time it takes to reload the current gun
     public double timeReloading;            //the amount of time passed since reloading started
@@ -53,6 +55,8 @@ public class Player : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        guns = new Dictionary<string, bool> { { "De Confluenza", true }, { "Pride and Accomp", true }, { "Hemway", true }, { "Golden Ratio", true } };
+
         position = transform.position;
         myBody = gameObject.GetComponent<Rigidbody2D>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
@@ -66,6 +70,21 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            gunUsage++;
+            if (gunUsage < guns.Count)
+            {
+                Debug.Log("Change To: " + gunUsage);
+                ChangeGun(gunUsage);
+            }
+            else
+            {
+                ChangeGun(0);
+            }
+            
+        }
+
         acceleration = Vector3.zero;
 
 
@@ -84,30 +103,89 @@ public class Player : MonoBehaviour
         // Shooting
         if (Input.GetMouseButtonDown(0))
         {
-            if (bulletsTillReload > 0 && !reloading)
+            if (gunUsage == 0 || gunUsage == 1 || gunUsage == 3)
             {
-                bulletsTillReload--;
-                //Make GameObject from Bullet prefab
-                GameObject b = Instantiate(bullet,
-                    bulletSpawn.transform.position,
-                    Quaternion.identity);
-                // Get angle of fire
-                // Change bullet's transform.forward to the angle of fire
-                // b.transform.up = playerToMouse;
-
-                angle = Mathf.Atan2(playerToMouse.y, playerToMouse.x);
-
-                b.transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * angle);
-                
-
-                // Add bullet to manager list
-                BulletManager.bullets.Add(b);
-            }
-            else
-            {
-                if (!reloading)
+                if (bulletsTillReload > 0 && !reloading)
                 {
-                    Reload();
+                    bulletsTillReload--;
+                    //Make GameObject from Bullet prefab
+                    GameObject b = Instantiate(bullet,
+                        bulletSpawn.transform.position,
+                        Quaternion.identity);
+                    // Get angle of fire
+                    // Change bullet's transform.forward to the angle of fire
+                    // b.transform.up = playerToMouse;
+
+                    angle = Mathf.Atan2(playerToMouse.y, playerToMouse.x);
+
+                    b.transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * angle);
+
+
+                    // Add bullet to manager list
+                    BulletManager.bullets.Add(b);
+                    BulletManager.bulletDic.Add(b, "Player");
+                }
+                else
+                {
+                    if (!reloading)
+                    {
+                        Reload();
+                    }
+                }
+
+            }
+            else if(gunUsage == 2)
+            {
+                if (bulletsTillReload > 0 && !reloading)
+                {
+                    bulletsTillReload-=3;
+                    //Make GameObject from Bullet prefab
+                    GameObject b = Instantiate(bullet,
+                        bulletSpawn.transform.position,
+                        Quaternion.identity);
+                    // Get angle of fire
+                    // Change bullet's transform.forward to the angle of fire
+                    // b.transform.up = playerToMouse;
+
+                    angle = Mathf.Atan2(playerToMouse.y, playerToMouse.x);
+
+                    angle = angle * Mathf.Rad2Deg;
+
+                    b.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+                    GameObject b2 = Instantiate(bullet,
+                        bulletSpawn.transform.position,
+                        Quaternion.identity);
+
+                    int change = Random.Range(5, 20);
+                    angle += change;
+
+                    b2.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+                    GameObject b3 = Instantiate(bullet,
+                        bulletSpawn.transform.position,
+                        Quaternion.identity);
+
+                    angle -= change * 2;
+
+                    b3.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+
+                    // Add bullet to manager list
+                    BulletManager.bullets.Add(b);
+                    BulletManager.bullets.Add(b2);
+                    BulletManager.bullets.Add(b3);
+
+                    BulletManager.bulletDic.Add(b, "Player");
+                    BulletManager.bulletDic.Add(b2, "Player");
+                    BulletManager.bulletDic.Add(b3, "Player");
+                }
+                else
+                {
+                    if (!reloading)
+                    {
+                        Reload();
+                    }
                 }
             }
         }
@@ -129,8 +207,7 @@ public class Player : MonoBehaviour
                 bulletsTillReload = maxBullets;
                 reloading = false;
             }
-
-            Debug.Log("RELOOOADING!!!");
+            
         }
 
         // moving right
@@ -260,6 +337,37 @@ public class Player : MonoBehaviour
     {
         timeReloading = reloadTime;
         reloading = true;
+    }
+
+    public void ChangeGun(int gunKeyToChangeTo)
+    {
+        gunUsage = gunKeyToChangeTo;
+
+        switch (gunUsage)
+        {
+            case 0: bulletsTillReload = 6;
+                maxBullets = 6;
+
+                break;
+
+            case 1:
+                bulletsTillReload = 12;
+                maxBullets = 12;
+                break;
+
+            case 2:
+                bulletsTillReload = 6;
+                maxBullets = 6;
+                break;
+
+            case 3:
+                bulletsTillReload = 6;
+                maxBullets = 6;
+                break;
+
+        }
+
+        Debug.Log("Gun Key: " + gunKeyToChangeTo);
     }
 
     /// <summary>
