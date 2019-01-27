@@ -12,6 +12,7 @@ public class CameraManager : MonoBehaviour
     public float levelSize;
     public float camWidth;
     public Vector3 startPos;
+    private Vector3 temp;
 
     float maxPosition;
     float minPosition;
@@ -33,11 +34,21 @@ public class CameraManager : MonoBehaviour
             && transform.position.x < levelSize - camWidth)
         {
             transform.position += camSpeed;
+            if (transform.position.x > levelSize - camWidth)
+            {
+                temp = transform.position;
+                temp.x = levelSize - camWidth;
+                transform.position = temp;
+            }
         }
         if (player.transform.position.x < minPosition
             && transform.position.x > startPos.x)
         {
             transform.position -= camSpeed;
+            if (transform.position.x < startPos.x)
+            {
+                transform.position = startPos;
+            }
         }
 	}
 }
