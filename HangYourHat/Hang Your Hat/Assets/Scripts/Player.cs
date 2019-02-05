@@ -560,6 +560,10 @@ public class Player : MonoBehaviour
         {
             velocity.x = -rollSpeed;
         }
+        if (falling)
+        {
+            velocity.y = 0.7f * jumpSpeed;
+        }
 
         myBody.MovePosition(transform.position + velocity * Time.deltaTime);
     }
