@@ -35,7 +35,7 @@ public class LevelButton : MonoBehaviour
             tg.ChangeScene("StartScreen");
 
         }
-        else if (CutsceneManager.currentLine == 47 && gameObject.tag == "Level2")
+        else if (CutsceneManager.currentLine >= 47 && gameObject.tag == "Level2")
         {
             Debug.Log("In Here");
             tg.ChangeScene("Level2");

@@ -55,6 +55,11 @@ public class Player : MonoBehaviour
     public bool facingLeft;
     public bool reloading;
 
+
+    void Awake()
+    {
+        QualitySettings.vSyncCount = 1;
+    }
 	// Use this for initialization
 	void Start ()
     {
@@ -73,6 +78,7 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+
         if (CutsceneManager.currentLine > 50)
         {
             if (Input.GetKeyDown(KeyCode.Q))
@@ -529,10 +535,14 @@ public class Player : MonoBehaviour
 
             if (transform.position.y + velocity.y < ground.point.y + .1f)
             {
-                myBody.MovePosition(new Vector2(transform.position.x, ground.point.y + .1f));
+                myBody.MovePosition(new Vector2(transform.position.x, ground.point.y + .1f) 
+                    // * Time.deltaTime
+                    );
             }
         }
-        myBody.MovePosition(transform.position + velocity * Time.deltaTime);
+        myBody.MovePosition(transform.position + velocity 
+            * Time.deltaTime
+            );
         
     }
 
