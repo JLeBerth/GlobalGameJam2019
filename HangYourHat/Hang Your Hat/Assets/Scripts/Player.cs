@@ -264,7 +264,8 @@ public class Player : MonoBehaviour
             // CHECKS FOR WHICH DIRECTION TO ROLL!!!
 
             rollDir = Vector3.zero;
-            // Roll up
+
+            // Figures out which keys the user is pressing, and adds to the rollDir Vector as necessary
             if(Input.GetKey(KeyCode.W))
             {
                 rollDir += Vector3.up;
@@ -281,8 +282,11 @@ public class Player : MonoBehaviour
             {
                 rollDir += Vector3.right;
             }
+
+            // If the user pressed two keys, the magnitude will be greater than 1
             if (rollDir.sqrMagnitude > 1)
             {
+                // Just normalize it to get the direction the user wants to go
                 rollDir.Normalize();
             }
 
