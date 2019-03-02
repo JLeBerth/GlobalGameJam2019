@@ -52,6 +52,9 @@ public class Player : MonoBehaviour
 
     public bool falling;                    //boolean of whether the player is currently falling
     public bool rolling;                    // Boolean of whether the player is currently rolling
+    public Vector3 rollDir;             // Direction in which you are rolling
+    public int airRolls = 0;                    // Tracks how many times you've rolled in midair
+    public int maxRolls = 1;                // Tracks how many rolls you can make
     public bool facingLeft;
     public bool reloading;
 
@@ -73,14 +76,17 @@ public class Player : MonoBehaviour
         normalScale = transform.localScale;
         // distToGround = sprite.bounds.extents.y;
         // offset = distToGround + .01f;
+
+        //rollVelocity = velocity;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-
+        // Once you reach a certain point, you get the new guns
         if (CutsceneManager.currentLine > 50)
         {
+            // Q changes guns
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 gunUsage++;
@@ -236,17 +242,55 @@ public class Player : MonoBehaviour
             facingLeft = true;
         }
         
-        if (Input.GetKey(KeyCode.Space) && timer > 1f)
+        // Rolling
+        if (Input.GetKey(KeyCode.LeftShift) 
+            //&& timer > 1f
+            && !rolling
+            && airRolls < maxRolls)
         {
             rolling = true;
+            // This changes the scale so the animation works
             Transform temp = GetComponentInChildren<Transform>();
             Vector3 tempScale = temp.localScale;
             transform.localScale = scaleBy;
             temp.localScale = tempScale;
+
+            // Sets the timer to 0
             timer = 0;
+
+            // Normal roll is in the direction you're currently moving
+            // rollDir = velocity.normalized;
+
+            // CHECKS FOR WHICH DIRECTION TO ROLL!!!
+
+            rollDir = Vector3.zero;
+            // Roll up
+            if(Input.GetKey(KeyCode.W))
+            {
+                rollDir += Vector3.up;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                rollDir += Vector3.down;
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                rollDir += Vector3.left;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                rollDir += Vector3.right;
+            }
+            if (rollDir.sqrMagnitude > 1)
+            {
+                rollDir.Normalize();
+            }
+
+
 
         }
 
+        // ROll animation
         if (rolling)
         {
             //transform.localScale = new Vector3(1, 1, 1);
@@ -273,7 +317,7 @@ public class Player : MonoBehaviour
         }
 
         //jump
-        if (Input.GetKey(KeyCode.W) && 
+        if (Input.GetKey(KeyCode.Space) && 
             !falling
             //IsGrounded()
             )
@@ -296,6 +340,9 @@ public class Player : MonoBehaviour
         {
            falling = false;
             velocity.y = 0;
+
+            // Reset amount of rolls you can perform in midair
+            airRolls = 0;
         }
 
         // Falling
@@ -309,6 +356,10 @@ public class Player : MonoBehaviour
         {
             // Change max velocity so you move faster
             maxVelocity = rollSpeed;
+            if (falling)
+            {
+                airRolls++;
+            }
         }
         else
         {
@@ -316,7 +367,7 @@ public class Player : MonoBehaviour
             maxVelocity = normalSpeed;
         }
 
-        // Timer for roll
+        // Timer for roll animation/ Length
         timer += .01f;
         if (rolling && timer >= .2f)
         {
@@ -328,6 +379,7 @@ public class Player : MonoBehaviour
         if (rolling)
         {
             Roll();
+            
         }
         // Otherwise, move as normal
         else
@@ -551,21 +603,42 @@ public class Player : MonoBehaviour
     /// </summary>
     public void Roll()
     {
+        // if (!facingLeft)
+        // {
+        //     velocity.x = rollSpeed;
+        // }
+        // 
+        // else if (facingLeft)
+        // {
+        //     velocity.x = -rollSpeed;
+        // }
+        // if (falling)
+        // {
+        //     velocity.y = 0.8f * jumpSpeed;
+        // }
+
+        velocity = rollSpeed * rollDir; 
+
+        myBody.MovePosition(transform.position + velocity * Time.deltaTime);
+    }
+
+    public void Roll(Vector3 rollVelocity)
+    {
         if (!facingLeft)
         {
-            velocity.x = rollSpeed;
+            rollVelocity.x = rollSpeed;
         }
 
         else if (facingLeft)
         {
-            velocity.x = -rollSpeed;
+            rollVelocity.x = -rollSpeed;
         }
         if (falling)
         {
-            velocity.y = 0.8f * jumpSpeed;
+            rollVelocity.y = 0.8f * jumpSpeed;
         }
 
-        myBody.MovePosition(transform.position + velocity * Time.deltaTime);
+        myBody.MovePosition(transform.position + rollVelocity * Time.deltaTime);
     }
 
 
