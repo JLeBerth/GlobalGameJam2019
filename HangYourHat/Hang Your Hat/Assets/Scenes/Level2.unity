@@ -1005,15 +1005,6 @@ Prefab:
       propertyPath: m_Name
       value: Orca (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 1357669717469540, guid: 5cf040b7a692914419e51604e3abc24d, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114107218071417636, guid: 5cf040b7a692914419e51604e3abc24d,
-        type: 2}
-      propertyPath: fallSpeed
-      value: -1.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cf040b7a692914419e51604e3abc24d, type: 2}
   m_IsPrefabAsset: 0
@@ -1873,11 +1864,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4282555261331044, guid: 5cf040b7a692914419e51604e3abc24d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 6.35
+      value: 6.1
       objectReference: {fileID: 0}
     - target: {fileID: 4282555261331044, guid: 5cf040b7a692914419e51604e3abc24d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.19
+      value: -1.83
       objectReference: {fileID: 0}
     - target: {fileID: 4282555261331044, guid: 5cf040b7a692914419e51604e3abc24d, type: 2}
       propertyPath: m_LocalPosition.z

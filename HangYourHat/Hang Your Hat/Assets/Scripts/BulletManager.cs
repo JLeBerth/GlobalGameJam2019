@@ -40,7 +40,7 @@ public class BulletManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        Debug.Log(bullets.Count);
+        //Debug.Log(bullets.Count);
 
         if (bullets.Count > 0)
         {
