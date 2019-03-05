@@ -57,7 +57,6 @@ public class BulletManager : MonoBehaviour
                     float rotation = .2f;
                     goldRatVar += rotation;
 
-                    Debug.Log("Scroove");
                 }
 
                 hit = Physics2D.Raycast(bullets[i].transform.position,
@@ -78,6 +77,7 @@ public class BulletManager : MonoBehaviour
                         GameObject tempBullet = bullets[i];
                         bullets.Remove(bullets[i]);
                         Destroy(tempBullet);
+                        Player.coal += 10;
                     }
 
                     else if (hit.collider.gameObject.tag == "Bullet")
