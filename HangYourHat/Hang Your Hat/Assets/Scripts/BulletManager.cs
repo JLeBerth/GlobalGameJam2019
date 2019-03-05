@@ -99,12 +99,21 @@ public class BulletManager : MonoBehaviour
                             bullets.Remove(bullets[i]);
                             Destroy(tempBullet);
                         }
+                        else
+                        {
+                            bullets[i].GetComponent<BoxCollider2D>().enabled = false;
+                        }
                     }
                     else
                     {
                         GameObject tempBullet = bullets[i];
                         bullets.Remove(bullets[i]);
                         Destroy(tempBullet);
+
+                        if (bullets[i].GetComponent<BoxCollider2D>().enabled == false)
+                        {
+                            bullets[i].GetComponent<BoxCollider2D>().enabled = true;
+                        }
                     }
                 }
 

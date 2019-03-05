@@ -123,88 +123,91 @@ public class Player : MonoBehaviour
         // Shooting
         if (Input.GetMouseButtonDown(0))
         {
-            if (gunUsage == 0 || gunUsage == 1 || gunUsage == 3)
+            if (!rolling)
             {
-                if (bulletsTillReload > 0 && !reloading)
+                if (gunUsage == 0 || gunUsage == 1 || gunUsage == 3)
                 {
-                    bulletsTillReload--;
-                    //Make GameObject from Bullet prefab
-                    GameObject b = Instantiate(bullet,
-                        bulletSpawn.transform.position,
-                        Quaternion.identity);
-                    // Get angle of fire
-                    // Change bullet's transform.forward to the angle of fire
-                    // b.transform.up = playerToMouse;
-
-                    angle = Mathf.Atan2(playerToMouse.y, playerToMouse.x);
-
-                    b.transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * angle);
-
-
-                    // Add bullet to manager list
-                    BulletManager.bullets.Add(b);
-                    BulletManager.bulletDic.Add(b, "Player");
-                }
-                else
-                {
-                    if (!reloading)
+                    if (bulletsTillReload > 0 && !reloading)
                     {
-                        Reload();
+                        bulletsTillReload--;
+                        //Make GameObject from Bullet prefab
+                        GameObject b = Instantiate(bullet,
+                            bulletSpawn.transform.position,
+                            Quaternion.identity);
+                        // Get angle of fire
+                        // Change bullet's transform.forward to the angle of fire
+                        // b.transform.up = playerToMouse;
+
+                        angle = Mathf.Atan2(playerToMouse.y, playerToMouse.x);
+
+                        b.transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * angle);
+
+
+                        // Add bullet to manager list
+                        BulletManager.bullets.Add(b);
+                        BulletManager.bulletDic.Add(b, "Player");
                     }
-                }
-
-            }
-            else if(gunUsage == 2)
-            {
-                if (bulletsTillReload > 0 && !reloading)
-                {
-                    bulletsTillReload-=3;
-                    //Make GameObject from Bullet prefab
-                    GameObject b = Instantiate(bullet,
-                        bulletSpawn.transform.position,
-                        Quaternion.identity);
-                    // Get angle of fire
-                    // Change bullet's transform.forward to the angle of fire
-                    // b.transform.up = playerToMouse;
-
-                    angle = Mathf.Atan2(playerToMouse.y, playerToMouse.x);
-
-                    angle = angle * Mathf.Rad2Deg;
-
-                    b.transform.rotation = Quaternion.Euler(0, 0, angle);
-
-                    GameObject b2 = Instantiate(bullet,
-                        bulletSpawn.transform.position,
-                        Quaternion.identity);
-
-                    int change = Random.Range(5, 20);
-                    angle += change;
-
-                    b2.transform.rotation = Quaternion.Euler(0, 0, angle);
-
-                    GameObject b3 = Instantiate(bullet,
-                        bulletSpawn.transform.position,
-                        Quaternion.identity);
-
-                    angle -= change * 2;
-
-                    b3.transform.rotation = Quaternion.Euler(0, 0, angle);
-
-
-                    // Add bullet to manager list
-                    BulletManager.bullets.Add(b);
-                    BulletManager.bullets.Add(b2);
-                    BulletManager.bullets.Add(b3);
-
-                    BulletManager.bulletDic.Add(b, "Player");
-                    BulletManager.bulletDic.Add(b2, "Player");
-                    BulletManager.bulletDic.Add(b3, "Player");
-                }
-                else
-                {
-                    if (!reloading)
+                    else
                     {
-                        Reload();
+                        if (!reloading)
+                        {
+                            Reload();
+                        }
+                    }
+
+                }
+                else if (gunUsage == 2)
+                {
+                    if (bulletsTillReload > 0 && !reloading)
+                    {
+                        bulletsTillReload -= 3;
+                        //Make GameObject from Bullet prefab
+                        GameObject b = Instantiate(bullet,
+                            bulletSpawn.transform.position,
+                            Quaternion.identity);
+                        // Get angle of fire
+                        // Change bullet's transform.forward to the angle of fire
+                        // b.transform.up = playerToMouse;
+
+                        angle = Mathf.Atan2(playerToMouse.y, playerToMouse.x);
+
+                        angle = angle * Mathf.Rad2Deg;
+
+                        b.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+                        GameObject b2 = Instantiate(bullet,
+                            bulletSpawn.transform.position,
+                            Quaternion.identity);
+
+                        int change = Random.Range(5, 20);
+                        angle += change;
+
+                        b2.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+                        GameObject b3 = Instantiate(bullet,
+                            bulletSpawn.transform.position,
+                            Quaternion.identity);
+
+                        angle -= change * 2;
+
+                        b3.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+
+                        // Add bullet to manager list
+                        BulletManager.bullets.Add(b);
+                        BulletManager.bullets.Add(b2);
+                        BulletManager.bullets.Add(b3);
+
+                        BulletManager.bulletDic.Add(b, "Player");
+                        BulletManager.bulletDic.Add(b2, "Player");
+                        BulletManager.bulletDic.Add(b3, "Player");
+                    }
+                    else
+                    {
+                        if (!reloading)
+                        {
+                            Reload();
+                        }
                     }
                 }
             }
