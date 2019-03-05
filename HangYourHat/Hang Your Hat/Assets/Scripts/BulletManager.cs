@@ -92,9 +92,9 @@ public class BulletManager : MonoBehaviour
                     else if (hit.collider.gameObject.tag == "Player")
                     {
                         //hit player
-                        player.GetComponent<Player>().TakeDamage();
                         if (!player.GetComponent<Player>().rolling)
                         {
+                            player.GetComponent<Player>().TakeDamage();
                             GameObject tempBullet = bullets[i];
                             bullets.Remove(bullets[i]);
                             Destroy(tempBullet);

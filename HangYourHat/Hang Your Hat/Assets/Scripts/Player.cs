@@ -660,10 +660,8 @@ public class Player : MonoBehaviour
     /// </summary>
     public void TakeDamage()
     {
-        if (!rolling)
-        {
-            currentHealth--;
-        }
+        currentHealth--;
+       
         if (currentHealth <= 0)
         {
             PlayerDeath();
