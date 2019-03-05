@@ -98,6 +98,14 @@ public class PlayerUnlocks : MonoBehaviour
         }
     }
 
-    public static Node gunUnlocks = new Node("De Confianza", 0, true);
+    public static Node gunUnlocks;
+
+    private void Start()
+    {
+        gunUnlocks = new Node("De Confianza", 0, true); //id -1
+        gunUnlocks.AddNode("Hemingway", 100, false); // id 0,-1
+        gunUnlocks.AddNode("Golden Ratio", 500, false); //id 1,-1
+        gunUnlocks.AddNode("Pride and Accomplishment", 10000, false); // id 2,-1
+    }
 
 }

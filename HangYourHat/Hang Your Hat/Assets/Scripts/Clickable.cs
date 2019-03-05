@@ -72,13 +72,7 @@ public class Clickable : MonoBehaviour {
     public void Shop()
     {
         shop_bldg.SetActive(true);
-        if (!hasUnlocked)
-        {
-            Debug.Log("There's no way");
-            unlock.SetActive(true);
-            hasUnlocked = true;
-        }
-        // unlock.SetActive(true);
+        unlock.SetActive(true);
         story = true;
     }
 
