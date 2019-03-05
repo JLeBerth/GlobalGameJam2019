@@ -14,6 +14,7 @@ public class Clickable : MonoBehaviour {
     public GameObject saloon_bldg;
     public GameObject shop_bldg;
     public GameObject unlock;
+    public GameObject gunButtons;
 
     // Bool to see if story is active so the exit button knows what to do
     public bool story;
@@ -73,6 +74,7 @@ public class Clickable : MonoBehaviour {
     {
         shop_bldg.SetActive(true);
         unlock.SetActive(true);
+        gunButtons.SetActive(true);
         story = true;
     }
 
@@ -127,6 +129,7 @@ public class Clickable : MonoBehaviour {
         shop_bldg.SetActive(false);
         unlock.SetActive(false);
         saloon_bldg.SetActive(false);
+        gunButtons.SetActive(false);
 
         story = false;
         exiting = false;

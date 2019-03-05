@@ -5,7 +5,6 @@ using UnityEngine;
 public class ExitButton : MonoBehaviour {
 
     public SpriteRenderer render;
-    public Saving saver;
     public TownGate tg;
     // This is the button manager.  Ignore the stupid script name
     public Clickable manager;
@@ -13,7 +12,6 @@ public class ExitButton : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        saver.SaveLine(1, 12);
     }
 
     // Update is called once per frame
