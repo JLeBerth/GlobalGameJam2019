@@ -58,6 +58,8 @@ public class Player : MonoBehaviour
     public bool facingLeft;
     public bool reloading;
 
+    public static int coal;                 //currency
+
 
     void Awake()
     {
