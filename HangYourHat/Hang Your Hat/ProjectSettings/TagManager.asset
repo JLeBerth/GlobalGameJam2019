@@ -12,6 +12,7 @@ TagManager:
   - Level2
   - GhostTown
   - Cutscene
+  - Ledge
   layers:
   - Default
   - TransparentFX
