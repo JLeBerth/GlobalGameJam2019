@@ -56,7 +56,34 @@ public class PlayerUnlocks : MonoBehaviour
             nextNodes[nodeIndex].PreviousNode = this;
         }
 
+        /// <summary>
+        /// Adds a node directly at idArray Position
+        /// </summary>
+        /// <param name="toAdd"></param>
+        /// <param name="idArray"></param>
+        public void AddNode(Node toAdd, int[] idArray)
+        {
+            Node currentNode = this;
+            for (int i = 0; i < idArray.Length; i++)
+            {
+                if (idArray[i] == -1)
+                {
+                    int nodeIndex = currentNode.NextNodes.Count;
+                    currentNode.nextNodes.Add(toAdd);
+                    currentNode.nextNodes[nodeIndex].previousNode = currentNode;
+                }
+                else
+                {
+                    currentNode = currentNode.nextNodes[idArray[i]];
+                }
+            }
+        }
 
+        /// <summary>
+        /// Returns the node located at the ID arrays position
+        /// </summary>
+        /// <param name="idArray"></param>
+        /// <returns></returns>
         public Node GetNode(int[] idArray)
         {
             Node currentNode = this;
@@ -77,13 +104,15 @@ public class PlayerUnlocks : MonoBehaviour
         /// <summary>
         /// Unlock method checks cost ans if possible unlocks the node
         /// </summary>
-        public void Unlock()
+        public bool Unlock()
         {
             if(previousNode.unlocked && Player.coal >= cost)
             {
                 Player.coal -= cost;
                 unlocked = true;
+                return true;
             }
+            return false;
         }
 
         /// <summary>
