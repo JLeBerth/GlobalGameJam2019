@@ -124,6 +124,20 @@ public class Clickable : MonoBehaviour {
         if (buttons[5].clicked)
         {
             buttons[5].clicked = false;
+            // EQUIP IT!
+        }
+
+        // Golden Ratio
+        if (buttons[6].clicked)
+        {
+            buttons[6].clicked = false;
+
+            // int[] test = { 1, -1 };
+            // Unlock it?
+            if (!PlayerUnlocks.gunUnlocks.GetNode(new int[]{ 1,-1}, PlayerUnlocks.gunUnlocks).Unlock())
+            {
+                // Display price and prompt user to unlock
+            }
         }
     }
     
@@ -201,7 +215,10 @@ public class Clickable : MonoBehaviour {
         exiting = false;
     }
 
-
+    private void OnGUI()
+    {
+        
+    }
 
 
 }

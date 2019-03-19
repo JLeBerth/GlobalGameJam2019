@@ -9,6 +9,7 @@ public class PlayerUnlocks : MonoBehaviour
     {
         public Node()
         {
+            nextNodes = new List<Node>();
             nodeName = "Default Node";
             unlocked = false;
             cost = 0;
@@ -16,6 +17,7 @@ public class PlayerUnlocks : MonoBehaviour
 
         public Node(string nam, int cos, bool startUnlocked)
         {
+            nextNodes = new List<Node>();
             nodeName = nam;
             cost = cos;
             unlocked = startUnlocked;
@@ -60,10 +62,11 @@ public class PlayerUnlocks : MonoBehaviour
         /// Adds a node directly at idArray Position
         /// </summary>
         /// <param name="toAdd"></param>
+        /// <param name="current"></param>
         /// <param name="idArray"></param>
-        public void AddNode(Node toAdd, int[] idArray)
+        public void AddNode(Node toAdd,Node current , int[] idArray)
         {
-            Node currentNode = this;
+            Node currentNode = current;
             for (int i = 0; i < idArray.Length; i++)
             {
                 if (idArray[i] == -1)
@@ -84,18 +87,23 @@ public class PlayerUnlocks : MonoBehaviour
         /// </summary>
         /// <param name="idArray"></param>
         /// <returns></returns>
-        public Node GetNode(int[] idArray)
+        public Node GetNode(int[] idArray, Node current)
         {
-            Node currentNode = this;
+            Debug.Log("IS THIS WORKING?");
+            
+            Node currentNode = current;
+            Debug.Log(currentNode);
             for(int i = 0; i < idArray.Length; i++)
             {
                 if(idArray[i] == -1)
                 {
+                    Debug.Log(currentNode);
                     return currentNode;
                 }
                 else
                 {
                     currentNode = currentNode.nextNodes[idArray[i]];
+                    Debug.Log(currentNode);
                 }
             }
             return null;
