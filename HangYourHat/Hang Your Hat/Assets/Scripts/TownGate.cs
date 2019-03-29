@@ -9,7 +9,7 @@ public class TownGate : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        CutsceneManager.currentLine = 60;
+        //CutsceneManager.currentLine = 60;
 	}
 	
 	// Update is called once per frame

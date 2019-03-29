@@ -63,13 +63,13 @@ public class Enemy : MonoBehaviour {
 	void Start () {
         alive = true;
 
-        enemyPosition = this.transform.position;
+        //enemyPosition = this.transform.position;
 
         //playerScript = playerObject.GetComponent<Player>();
 
         enemyRigid = this.GetComponent<Rigidbody2D>();
         sprite = this.GetComponent<SpriteRenderer>();
-        startPos = this.transform.position;
+        //startPos = this.transform.position;
 
         currentShootTimer = 0;
         currentReloadTimer = 0;
@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour {
         {
             velocity.x = enemySpeed;
         }
-        else if (velocity.x < -enemySpeed)
+        if (velocity.x < -enemySpeed)
         {
             velocity.x = -enemySpeed;
         }
@@ -110,13 +110,28 @@ public class Enemy : MonoBehaviour {
             if (transform.position.y + velocity.y < ground.point.y + .1f)
             {
                 enemyRigid.MovePosition(new Vector2(transform.position.x, ground.point.y + .1f));
+                Debug.Log("Shouldn't be moving");
             }
         }
 
-        enemyRigid.MovePosition(transform.position + velocity * Time.deltaTime);
+        if (!bShoot)
+        {
+            if (backToStart)
+            {
+                enemyRigid.MovePosition(transform.position + velocity * Time.deltaTime);
+                Debug.Log("Going Left");
+            }
+            else if (!backToStart)
+            {
+                enemyRigid.MovePosition(transform.position + velocity * Time.deltaTime);
+                Debug.Log("Going Right");
+            }
+        }
+
+        acceleration = Vector3.zero;
 
         // Check player distance and associated fxns
-	}
+    }
 
     /// <summary>
     /// Applies a force to the enemy
@@ -204,6 +219,8 @@ public class Enemy : MonoBehaviour {
         if (playerDistance < wanderLimit)
         {
             bWander = true;
+            Debug.Log("Wander");
+
         }
         else
         {
@@ -240,17 +257,24 @@ public class Enemy : MonoBehaviour {
             if (hit1.collider == null && hit2.collider == null) // check if enemy should fall
             {
                 Debug.Log("FAAAAALL");
+                falling = true;
                 ApplyForce(new Vector2(0f, fallSpeed));
+            }
+            else
+            {
+                velocity = Vector3.zero;
             }
 
             if (backToStart) // left
             {
+                //Debug.Log("Going Left");
                 ApplyForce(new Vector3(-enemySpeed, 0f, 0f)); // Move the enemy left
 
                 // Check the down raycast to see if there is no longer a floor beneath the enemy on the left side
                 if ((hit2.distance < hit1.distance && hit2.collider != null) || (hit1.collider == null && hit2.collider != null))
                 {
                     backToStart = false; // if so, turn around
+                    Debug.Log("Turn around at platform left");
                 }
 
                 // Read for wall to the left
@@ -262,18 +286,21 @@ public class Enemy : MonoBehaviour {
 
                 if (forward.collider != null) // if the ray hits something, turn around
                 {
-                    velocity = Vector2.zero;
+                    Debug.Log("Turn Around at Wall Left");
+                    velocity = Vector3.zero;
                     backToStart = false;
                 }
             }
             else if (!backToStart) // right
             {
+                //Debug.Log("Going Right");
                 ApplyForce(new Vector3(enemySpeed, 0f, 0f));
 
                 // Check the down raycasts to see if there is no longer a floor beneath the enemy on the right
                 if ((hit1.distance < hit2.distance && hit1.collider != null) || (hit2.collider == null && hit1.collider != null))
                 {
                     backToStart = true; // if so, turn around
+                    Debug.Log("Turn around at platform right");
                 }
 
                 // Read for wall to the right
@@ -285,7 +312,8 @@ public class Enemy : MonoBehaviour {
 
                 if (forward.collider != null) // if the ray hits, turn around
                 {
-                    velocity = Vector2.zero;
+                    Debug.Log("Turn Around at Wall Right");
+                    velocity = Vector3.zero;
                     backToStart = true;
                 }
             }
@@ -314,6 +342,7 @@ public class Enemy : MonoBehaviour {
         }
         else
         {
+            Debug.Log("Stoppage");
             velocity = Vector3.zero;
         }
 
