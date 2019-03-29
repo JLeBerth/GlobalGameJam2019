@@ -34,6 +34,7 @@ public class TownGate : MonoBehaviour {
             }
             else if (this.tag == "Town1")
             {
+                
                 if (CutsceneManager.currentLine == 16)
                 {
 

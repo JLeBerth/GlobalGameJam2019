@@ -100,6 +100,11 @@ public class Clickable : MonoBehaviour {
             Debug.Log("Saloon");
             buttons[2].clicked = false;
             Saloon();
+
+            if (CutsceneManager.currentLine < 32)
+            {
+                tg.ChangeScene("StartScreen"); // if first saloon click, change to cutscene
+            }
         }
 
         // Level 1
@@ -108,7 +113,14 @@ public class Clickable : MonoBehaviour {
             Debug.Log("Level1");
             buttons[3].clicked = false;
 
-            tg.ChangeScene("Level1");
+            if (CutsceneManager.currentLine < 13)
+            {
+                tg.ChangeScene("StartScreen"); // if first level play, change to cutscene
+            }
+            else
+            {
+                tg.ChangeScene("Level1");
+            }
         }
 
         // Level 2
